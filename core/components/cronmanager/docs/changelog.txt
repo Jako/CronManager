@@ -1,0 +1,5 @@
+Changelog file for Cron Manager component.
+
+Cron Manager 1.0
+====================================
+- Initial commit

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="cronmanager" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM">
+	<object class="modCronjob" table="cronjobs" extends="xPDOSimpleObject">
+		<field key="snippet" dbtype="integer" precision="11" phptype="string" null="false" default="" />
+		<field key="properties" dbtype="text" phptype="string" null="true" default="null" />
+		<field key="minutes" dbtype="int" precision="11" phptype="integer" null="false" default="60" />
+		<field key="lastrun" dbtype="datetime" phptype="datetime" null="true" default="null" />
+		<field key="nextrun" dbtype="datetime" phptype="datetime" null="true" default="null" />
+		<field key="sortorder" dbtype="int" precision="11" phptype="integer" null="false" default="0" />
+		<field key="active" dbtype="int" precision="1" phptype="boolean" null="false" default="0" />
+		
+		<composite alias="Log" class="modCronjobLog" local="id" foreign="cronjob" cardinality="many" owner="local" />
+		<aggregate alias="Snippet" class="modSnippet" local="snippet" foreign="id" cardinality="one" owner="foreign" />
+	</object>
+	
+	<object class="modCronjobLog" table="cronjobs_log" extends="xPDOSimpleObject">
+		<field key="cronjob" dbtype="integer" precision="11" phptype="string" null="false" />
+		<field key="message" dbtype="text" phptype="string" null="false" />
+		<field key="logdate" dbtype="datetime" phptype="datetime" null="false" />
+		
+		<aggregate alias="Cronjob" class="modCronjob" local="cronjob" foreign="id" cardinality="one" owner="foreign" />
+	</object>
+</model>
