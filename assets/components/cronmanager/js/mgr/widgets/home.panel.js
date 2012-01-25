@@ -3,24 +3,26 @@ CronManager.panel.Home = function(config) {
     Ext.apply(config,{
         border: false,
 		baseCls: 'modx-formpanel',
+        cls: 'container',
 		items: [{
             html: '<h2>' + _('cronmanager') + '</h2>',
 			border: false,
 			cls: 'modx-page-header'
         },{
             xtype: 'modx-tabs',
-			bodyStyle: 'padding: 10px',
 			defaults: { border: false, autoHeight: true },
 			border: true,
 			items: [{
                 title: _('cronmanager.cronjobs'),
 				defaults: { autoHeight: true },
 				items: [{
-                    html: '<p>' + _('cronmanager.cronjobs_desc') + '</p><br />',
+                    html: '<p>' + _('cronmanager.cronjobs_desc') + '</p>',
+                    bodyCssClass: 'panel-desc',
 					border: false
                 },{
-				   xtype: 'cronmanager-grid-cronjobs',
-				   preventRender: true
+                    xtype: 'cronmanager-grid-cronjobs',
+                    preventRender: true,
+                    cls: 'main-wrapper'
 				}]
             }]
         }]
