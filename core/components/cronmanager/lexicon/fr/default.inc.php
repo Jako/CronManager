@@ -46,4 +46,10 @@ $_lang['cronmanager.log.date'] = "Date du log";
 $_lang['cronmanager.log.message'] = "Message de log";
 $_lang['cronmanager.log.errorload'] = "Impossible d'exécuter la tâche pour ce log.";
 
+$_lang['cronmanager.log_day'] = 'Jour';
+$_lang['cronmanager.log_message'] = 'message';
+$_lang['cronmanager.log_messages'] = 'messages';
+$_lang['cronmanager.logs_delete_selected'] = 'Supprimer les logs sélectionnés';
+$_lang['cronmanager.logs_delete_selected_confirm'] = 'Êtes-vous sûr de vouloir supprimer de manière définitive les messages de logs sélectionnés ?';
+
 ?>
