@@ -34,7 +34,8 @@ foreach($logs as $log) {
     
 	$logArray = $log->toArray();
 	$logArray['logdate'] = strftime('%d-%m-%Y, %H:%M:%S', strtotime($logArray['logdate']));
-	
+	$logArray['day'] = strftime('%Y-%m-%d', strtotime($logArray['logdate']));
+
 	$list[] = $logArray;
 }
 
