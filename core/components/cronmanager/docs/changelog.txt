@@ -2,6 +2,7 @@ Changelog file for Cron Manager component.
 
 Cron Manager 1.0.1
 ====================================
+- Cron job next run editable via the grid
 - Some addition to the logs grid
 - Made the UI 2.2 compatible
 
