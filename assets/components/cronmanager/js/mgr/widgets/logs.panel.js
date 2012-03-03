@@ -4,6 +4,7 @@ CronManager.panel.Home = function(config) {
 		url: CronManager.config.connectorUrl,
         border: false,
 		baseCls: 'modx-formpanel',
+        cls: 'container',
 		items: [{
             html: '<h2>' + _('cronmanager.log') + '</h2>',
 			border: false,
@@ -11,18 +12,19 @@ CronManager.panel.Home = function(config) {
 			cls: 'modx-page-header'
         },{
             xtype: 'modx-tabs',
-			bodyStyle: 'padding: 10px',
 			defaults: { border: false, autoHeight: true },
 			border: true,
 			items: [{
                 title: _('cronmanager.logs'),
 				defaults: { autoHeight: true },
 				items: [{
-                    html: '<p>' + _('cronmanager.logs_desc') + '</p><br />',
-					border: false
+                    html: '<p>' + _('cronmanager.logs_desc') + '</p>',
+					border: false,
+                    bodyCssClass: 'panel-desc'
                 },{
-				   xtype: 'cronmanager-grid-cronjoblog',
-				   preventRender: true
+                    xtype: 'cronmanager-grid-cronjoblog',
+                    preventRender: true,
+                    cls: 'main-wrapper'
 				}]
             }]
         }],

@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * @var modX $modx
+ * @var array $scriptProperties
+ */
 $isLimit = !empty($scriptProperties['limit']);
 $cronid = $modx->getOption('cronid', $scriptProperties, false);
 $start = $modx->getOption('start', $scriptProperties, 0);
@@ -30,11 +33,13 @@ $logs = $modx->getCollection('modCronjobLog', $c);
  
 // iterate
 $list = array();
+/** @var modCronjobLog $log */
 foreach($logs as $log) {
     
 	$logArray = $log->toArray();
-	$logArray['logdate'] = strftime('%d-%m-%Y, %H:%M:%S', strtotime($logArray['logdate']));
-	
+	//$logArray['logdate'] = strftime('%d-%m-%Y, %H:%M:%S', strtotime($logArray['logdate']));
+	$logArray['day'] = strftime('%Y-%m-%d', strtotime($logArray['logdate']));
+
 	$list[] = $logArray;
 }
 

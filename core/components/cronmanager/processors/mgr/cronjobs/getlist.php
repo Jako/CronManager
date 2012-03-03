@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * @var modX $modx
+ * @var array $scriptProperties
+ */
 $isLimit = !empty($scriptProperties['limit']);
 $start = $modx->getOption('start', $scriptProperties, 0);
 $limit = $modx->getOption('limit', $scriptProperties, 20);
@@ -19,6 +22,7 @@ $cronjobs = $modx->getCollection('modCronjob', $c);
  
 // iterate
 $list = array();
+/** @var modCronJob $cronjob */
 foreach($cronjobs as $cronjob) {
     
 	$cronArray = $cronjob->toArray();
@@ -32,14 +36,10 @@ foreach($cronjobs as $cronjob) {
 	
 	if(empty($cronArray['nextrun'])) {
 		$cronArray['nextrun'] = '<i>'.$modx->lexicon('cronmanager.runempty').'</i>';
-	} else {
-		$cronArray['nextrun'] = strftime('%d-%m-%Y, %H:%M:%S', strtotime($cronArray['nextrun']));
 	}
 	
 	if(empty($cronArray['lastrun'])) {
 		$cronArray['lastrun'] = '<i>'.$modx->lexicon('cronmanager.runempty').'</i>';
-	} else {
-		$cronArray['lastrun'] = strftime('%d-%m-%Y, %H:%M:%S', strtotime($cronArray['lastrun']));
 	}
 	
 	$list[] = $cronArray;
