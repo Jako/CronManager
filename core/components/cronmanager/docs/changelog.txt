@@ -2,6 +2,7 @@ Changelog file for Cron Manager component.
 
 Cron Manager 1.0.1
 ====================================
+- Enable viewing longer logs messages in a window
 - Prevent having negative values in numberFields
 - Grid dates now supports manager_*_format system settings
 - Cron job next run editable via the grid
