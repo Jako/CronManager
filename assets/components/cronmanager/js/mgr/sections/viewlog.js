@@ -12,7 +12,7 @@ CronManager.page.Home = function(config) {
 				location.href = '?a=' + MODx.request.a;
 			},
 			scope: this
-		},'|',{
+		},'-',{
             text: _('help_ex'),
             handler: MODx.loadHelpPane
         }],
