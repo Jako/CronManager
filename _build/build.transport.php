@@ -7,7 +7,7 @@ set_time_limit(0);
 define('PKG_NAME', 'CronManager');
 define('PKG_NAME_LOWER', 'cronmanager');
 define('PKG_VERSION', '1.0.1');
-define('PKG_RELEASE', 'rc1');
+define('PKG_RELEASE', 'rc2');
 
 /* define build paths */
 $root = dirname(dirname(__FILE__)).'/';
@@ -67,6 +67,9 @@ $vehicle->resolve('file',array(
 $vehicle->resolve('file',array(
     'source' => $sources['source_core'],
     'target' => "return MODX_CORE_PATH . 'components/';",
+));
+$vehicle->resolve('php',array(
+    'source' => $sources['resolvers'] . 'resolve.tablechanges.php',
 ));
 
 $modx->log(modX::LOG_LEVEL_INFO,'Adding in PHP resolvers...');

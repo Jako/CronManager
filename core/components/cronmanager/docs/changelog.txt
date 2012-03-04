@@ -1,6 +1,10 @@
 Changelog file for Cron Manager component.
 
-Cron Manager 1.0.1
+Cron Manager 1.0.1-rc2
+====================================
+- Added an error field to logs
+
+Cron Manager 1.0.1-rc1
 ====================================
 - Enable viewing longer logs messages in a window
 - Prevent having negative values in numberFields
