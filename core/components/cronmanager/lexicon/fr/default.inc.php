@@ -47,10 +47,16 @@ $_lang['cronmanager.log.message'] = "Message de log";
 $_lang['cronmanager.log.errorload'] = "Impossible d'exécuter la tâche pour ce log.";
 
 $_lang['cronmanager.log_day'] = 'Jour';
+$_lang['cronmanager.log_error'] = 'Erreur';
 $_lang['cronmanager.log_message'] = 'message';
 $_lang['cronmanager.log_messages'] = 'messages';
 $_lang['cronmanager.log_view_full'] = 'Voir le log complet';
+$_lang['cronmanager.logs_action'] = 'Actions';
 $_lang['cronmanager.logs_delete_selected'] = 'Supprimer les logs sélectionnés';
 $_lang['cronmanager.logs_delete_selected_confirm'] = 'Êtes-vous sûr de vouloir supprimer de manière définitive les messages de logs sélectionnés ?';
+$_lang['cronmanager.logs_filter_all'] = 'Tous les logs';
+$_lang['cronmanager.logs_filter_error'] = 'Avec erreur(s)';
+$_lang['cronmanager.logs_filter_no_error'] = 'Sans erreur';
+$_lang['cronmanager.logs_purge_no_err'] = 'Purger les logs sans erreur';
 
 ?>

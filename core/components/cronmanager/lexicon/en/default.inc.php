@@ -47,10 +47,16 @@ $_lang['cronmanager.log.message'] = "Log message";
 $_lang['cronmanager.log.errorload'] = "Failed to load the cronjob for this log.";
 
 $_lang['cronmanager.log_day'] = 'Day';
+$_lang['cronmanager.log_error'] = 'Error';
 $_lang['cronmanager.log_message'] = 'message';
 $_lang['cronmanager.log_messages'] = 'messages';
 $_lang['cronmanager.log_view_full'] = 'View the full log';
+$_lang['cronmanager.logs_action'] = 'Actions';
 $_lang['cronmanager.logs_delete_selected'] = 'Delete selected logs';
 $_lang['cronmanager.logs_delete_selected_confirm'] = 'Are you sure you want to permanently delete selected logs messages?';
+$_lang['cronmanager.logs_filter_all'] = 'All logs';
+$_lang['cronmanager.logs_filter_error'] = 'With error(s)';
+$_lang['cronmanager.logs_filter_no_error'] = 'Without error';
+$_lang['cronmanager.logs_purge_no_err'] = 'Purge logs without error';
 
 ?>
