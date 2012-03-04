@@ -2,6 +2,7 @@ Changelog file for Cron Manager component.
 
 Cron Manager 1.0.1-rc2
 ====================================
+- Batch purge logs without error
 - Filter logs containing errors
 - Added an error field to logs
 
