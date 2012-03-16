@@ -46,4 +46,10 @@ $_lang['cronmanager.log.date'] = "Logdate";
 $_lang['cronmanager.log.message'] = "Log message";
 $_lang['cronmanager.log.errorload'] = "Failed to load the cronjob for this log.";
 
+$_lang['cronmanager.log_day'] = 'Day';
+$_lang['cronmanager.log_message'] = 'message';
+$_lang['cronmanager.log_messages'] = 'messages';
+$_lang['cronmanager.logs_delete_selected'] = 'Delete selected logs';
+$_lang['cronmanager.logs_delete_selected_confirm'] = 'Are you sure you want to permanently delete selected logs messages?';
+
 ?>

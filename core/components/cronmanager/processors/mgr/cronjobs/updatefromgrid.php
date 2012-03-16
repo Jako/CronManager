@@ -1,4 +1,8 @@
 <?php
+/**
+ * @var modX $modx
+ * @var array $scriptProperties
+ */
 
 if(empty($scriptProperties['data'])) {
 	return $modx->error->failure($modx->lexicon('cronmanager.error_update'));
@@ -12,7 +16,7 @@ if(!is_array($_DATA)) {
 if(empty($_DATA['id'])) {
 	return $modx->error->failure($modx->lexicon('cronmanager.error_update'));
 }
-
+/** @var $cronjob modCronjob */
 $cronjob = $modx->getObject('modCronjob', $_DATA['id']);
 if(empty($cronjob)) return $modx->error->failure($modx->lexicon('cronmanager.error_update'));
 
@@ -21,6 +25,6 @@ if($cronjob->save() == false) {
     return $modx->error->failure($modx->lexicon('cronmanager.error_save'));
 }
 
-return $modx->error->success('', $poll);
+return $modx->error->success('', $cronjob);
 
 ?>
