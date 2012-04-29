@@ -17,7 +17,8 @@
 		<field key="cronjob" dbtype="integer" precision="11" phptype="string" null="false" />
 		<field key="message" dbtype="text" phptype="string" null="false" />
 		<field key="logdate" dbtype="datetime" phptype="datetime" null="false" />
-		
+        <field key="error" dbtype="tinyint" precision="1" attributes="unsigned" phptype="boolean" null="false" default="0" />
+
 		<aggregate alias="Cronjob" class="modCronjob" local="cronjob" foreign="id" cardinality="one" owner="foreign" />
 	</object>
 </model>
