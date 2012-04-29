@@ -1,8 +1,7 @@
-CronManager.panel.Home = function(config) {
+CronManager.panel.Logs = function(config) {
     config = config || {};
     Ext.apply(config,{
 		url: CronManager.config.connectorUrl,
-        border: false,
 		baseCls: 'modx-formpanel',
         cls: 'container',
 		items: [{
@@ -11,31 +10,26 @@ CronManager.panel.Home = function(config) {
 			id: 'cronmanager-logs-page-header',
 			cls: 'modx-page-header'
         },{
-            xtype: 'modx-tabs',
-			defaults: { border: false, autoHeight: true },
 			border: true,
+			defaults: { autoHeight: true },
 			items: [{
-                title: _('cronmanager.logs'),
-				defaults: { autoHeight: true },
-				items: [{
-                    html: '<p>' + _('cronmanager.logs_desc') + '</p>',
-					border: false,
-                    bodyCssClass: 'panel-desc'
-                },{
-                    xtype: 'cronmanager-grid-cronjoblog',
-                    preventRender: true,
-                    cls: 'main-wrapper'
-				}]
-            }]
-        }],
+				html: '<p>' + _('cronmanager.logs_desc') + '</p>',
+				bodyCssClass: 'panel-desc',
+				border: false
+			},{
+				xtype: 'cronmanager-grid-cronjoblog',
+				preventRender: true,
+				cls: 'main-wrapper'
+			}]
+		}],
 		listeners: {
 			'setup': { fn: this.setup, scope: this }
 		}
     });
-    CronManager.panel.Home.superclass.constructor.call(this,config);
+    CronManager.panel.Logs.superclass.constructor.call(this,config);
 };
 
-Ext.extend(CronManager.panel.Home, MODx.FormPanel, {
+Ext.extend(CronManager.panel.Logs, MODx.FormPanel, {
 	setup: function() {
 		if(!this.config.cronid) {
 			return;
@@ -60,5 +54,5 @@ Ext.extend(CronManager.panel.Home, MODx.FormPanel, {
 	}
 });
 
-//Ext.extend(CronManager.panel.Home,MODx.Panel);
-Ext.reg('cronmanager-panel-home',CronManager.panel.Home);
+//Ext.extend(CronManager.panel.Logs,MODx.Panel);
+Ext.reg('cronmanager-panel-logs',CronManager.panel.Logs);

@@ -9,25 +9,20 @@ CronManager.panel.Home = function(config) {
 			border: false,
 			cls: 'modx-page-header'
         },{
-            xtype: 'modx-tabs',
-			defaults: { border: false, autoHeight: true },
-			border: true,
+			defaults: { autoHeight: true },
 			items: [{
-                title: _('cronmanager.cronjobs'),
-				defaults: { autoHeight: true },
-				items: [{
-                    html: '<p>' + _('cronmanager.cronjobs_desc') + '</p>',
-                    bodyCssClass: 'panel-desc',
-					border: false
-                },{
-                    xtype: 'cronmanager-grid-cronjobs',
-                    preventRender: true,
-                    cls: 'main-wrapper'
-				}]
-            }]
-        }]
+				html: '<p>' + _('cronmanager.cronjobs_desc') + '</p>',
+				bodyCssClass: 'panel-desc',
+				border: false
+			},{
+				xtype: 'cronmanager-grid-cronjobs',
+				preventRender: true,
+				cls: 'main-wrapper'
+			}]
+		}]
     });
     CronManager.panel.Home.superclass.constructor.call(this,config);
 };
+
 Ext.extend(CronManager.panel.Home,MODx.Panel);
 Ext.reg('cronmanager-panel-home',CronManager.panel.Home);

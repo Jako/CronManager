@@ -1,8 +1,8 @@
 Ext.onReady(function() {
-    MODx.load({ xtype: 'cronmanager-page-home'});
+    MODx.load({ xtype: 'cronmanager-page-logs'});
 });
  
-CronManager.page.Home = function(config) {
+CronManager.page.Logs = function(config) {
     config = config || {};
     Ext.applyIf(config,{
         buttons: [{
@@ -17,12 +17,12 @@ CronManager.page.Home = function(config) {
             handler: MODx.loadHelpPane
         }],
 		components: [{
-            xtype: 'cronmanager-panel-home',
-			renderTo: 'cronmanager-panel-home-div',
+            xtype: 'cronmanager-panel-logs',
+			renderTo: 'cronmanager-panel-logs-div',
 			cronid: MODx.request.id
         }]
     });
-    CronManager.page.Home.superclass.constructor.call(this, config);
+    CronManager.page.Logs.superclass.constructor.call(this, config);
 };
-Ext.extend(CronManager.page.Home, MODx.Component);
-Ext.reg('cronmanager-page-home', CronManager.page.Home);
+Ext.extend(CronManager.page.Logs, MODx.Component);
+Ext.reg('cronmanager-page-logs', CronManager.page.Logs);

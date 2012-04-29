@@ -5,6 +5,6 @@ $modx->regClientStartupScript($cronmanager->config['jsUrl'].'mgr/widgets/cronjob
 $modx->regClientStartupScript($cronmanager->config['jsUrl'].'mgr/widgets/logs.panel.js');
 $modx->regClientStartupScript($cronmanager->config['jsUrl'].'mgr/sections/viewlog.js');
  
-return '<div id="cronmanager-panel-home-div"></div>';
+return '<div id="cronmanager-panel-logs-div"></div>';
 
 ?>
