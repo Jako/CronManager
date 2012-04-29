@@ -7,6 +7,7 @@ $xpdo_meta_map['modCronjobLog']= array (
     'cronjob' => NULL,
     'message' => NULL,
     'logdate' => NULL,
+    'error' => 0,
   ),
   'fieldMeta' => 
   array (
@@ -28,6 +29,15 @@ $xpdo_meta_map['modCronjobLog']= array (
       'dbtype' => 'datetime',
       'phptype' => 'datetime',
       'null' => false,
+    ),
+    'error' => 
+    array (
+      'dbtype' => 'tinyint',
+      'precision' => '1',
+      'attributes' => 'unsigned',
+      'phptype' => 'boolean',
+      'null' => false,
+      'default' => 0,
     ),
   ),
   'aggregates' => 

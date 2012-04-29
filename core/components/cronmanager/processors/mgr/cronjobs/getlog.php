@@ -10,16 +10,23 @@ $limit = $modx->getOption('limit', $scriptProperties, 20);
 $sort = $modx->getOption('sort', $scriptProperties, 'id');
 $dir = $modx->getOption('dir', $scriptProperties, 'DESC');
 $query = $modx->getOption('query', $scriptProperties, false);
- 
+$error = $modx->getOption('error', $scriptProperties, 'all');
+
 // build query
 $c = $modx->newQuery('modCronjobLog');
 $c->where(array(
 	'cronjob' => $cronid
 ));
+if ($error != 'all') {
+    $c->where(array('error' => $error));
+}
 if(!empty($query)) {
 	$c->andCondition(array(
 		'message:LIKE' => '%'.$query.'%'
 	));
+}
+if ($error != 'all') {
+    $c->where(array('error' => $error));
 }
 
 $count = $modx->getCount('modCronjobLog', $c);

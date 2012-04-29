@@ -46,10 +46,23 @@ $_lang['cronmanager.log.date'] = "Logdate";
 $_lang['cronmanager.log.message'] = "Log message";
 $_lang['cronmanager.log.errorload'] = "Failed to load the cronjob for this log.";
 
+$_lang['cronmanager.cronjob_err_ns'] = 'No cronjob ID set.';
 $_lang['cronmanager.log_day'] = 'Day';
+$_lang['cronmanager.log_error'] = 'Error';
 $_lang['cronmanager.log_message'] = 'message';
 $_lang['cronmanager.log_messages'] = 'messages';
+$_lang['cronmanager.log_view_full'] = 'View the full log';
+$_lang['cronmanager.logs_actions'] = 'Actions';
 $_lang['cronmanager.logs_delete_selected'] = 'Delete selected logs';
 $_lang['cronmanager.logs_delete_selected_confirm'] = 'Are you sure you want to permanently delete selected logs messages?';
+$_lang['cronmanager.logs_filter_all'] = 'All logs';
+$_lang['cronmanager.logs_filter_error'] = 'With error(s)';
+$_lang['cronmanager.logs_filter_no_error'] = 'Without error';
+$_lang['cronmanager.logs_purge_all'] = 'Purge all logs';
+$_lang['cronmanager.logs_purge_confirm'] = 'Are you sure you want to purge this cronjob\'s logs without error?<br /><br /><p style="color: red; font-weight: bold; text-decoration: underline">Warning</p><br />Make sure your snippet/job correctly defines the error "status", otherwise all your logs for this job will be wiped.';
+$_lang['cronmanager.logs_purge_no_err'] = 'Purge logs without error';
+$_lang['cronmanager.logs_purge_nothing'] = 'Nothing to purge';
+$_lang['cronmanager.logs_purge_success'] = '[[+total]] log(s) successfully purged.';
+$_lang['cronmanager.logs_purge_title'] = 'Purge logs';
 
 ?>
