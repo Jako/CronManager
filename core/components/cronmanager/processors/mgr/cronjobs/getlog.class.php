@@ -7,20 +7,25 @@ class modCronjobLogGetListProcessor extends modObjectGetListProcessor {
     public $defaultSortDirection = 'DESC';
 
     public function prepareQueryBeforeCount(xPDOQuery $c) {
-        $cronjob = $this->getProperty('cronid');
-        if ($cronjob) {
-            $c->where(array('cronjob' => $cronjob));
+        $cronid = $this->getProperty('cronid');
+        if (!empty($cronid)) {
+            $c->where(array(
+               'cronjob' => $cronid,
+            ));
         }
 
-        $error = $this->getProperty('error', 'all');
-        if ($error != 'all') {
+        $error = $this->getProperty('error');
+        if ($error && $error != 'all') {
             $c->where(array('error' => $error));
         }
 
         $query = $this->getProperty('query');
-        if ($query) {
-            $c->where(array('message:LIKE' => '%'. $query .'%'));
+        if(!empty($query)) {
+            $c->andCondition(array(
+                'message:LIKE' => '%'.$query.'%'
+            ));
         }
+
         return $c;
     }
 
