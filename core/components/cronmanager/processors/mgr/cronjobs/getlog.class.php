@@ -14,7 +14,7 @@ class modCronjobLogGetListProcessor extends modObjectGetListProcessor {
             ));
         }
 
-        $error = $this->getProperty('error');
+        $error = $this->getProperty('error', 'all');
         if ($error != 'all') {
             $c->where(array('error' => $error));
         }
