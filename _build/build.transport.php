@@ -6,8 +6,8 @@ set_time_limit(0);
 
 define('PKG_NAME', 'CronManager');
 define('PKG_NAME_LOWER', 'cronmanager');
-define('PKG_VERSION', '1.1.0');
-define('PKG_RELEASE', 'pl');
+define('PKG_VERSION', '1.1.1');
+define('PKG_RELEASE', 'beta');
 
 /* define build paths */
 $root = dirname(dirname(__FILE__)).'/';
@@ -34,7 +34,7 @@ $modx->initialize('mgr');
 echo '<pre>'; /* used for nice formatting of log messages */
 $modx->setLogLevel(modX::LOG_LEVEL_INFO);
 $modx->setLogTarget('ECHO');
- 
+
 $modx->loadClass('transport.modPackageBuilder','',false, true);
 $builder = new modPackageBuilder($modx);
 $builder->createPackage(PKG_NAME_LOWER,PKG_VERSION,PKG_RELEASE);
@@ -94,7 +94,7 @@ $builder->setPackageAttributes(array(
 /* zip up package */
 $modx->log(modX::LOG_LEVEL_INFO,'Packing up transport package zip...');
 $builder->pack();
- 
+
 $tend= explode(" ", microtime());
 $tend= $tend[1] + $tend[0];
 $totalTime= sprintf("%2.4f s",($tend - $tstart));
