@@ -1,0 +1,9 @@
+What is Cron Manager
+
+The cron manager for MODx makes it possible to execute snippets by the crontab of the server. 
+Via the manager of MODx Revolution you could simple add new snippets to the cron list.
+
+Using snippets for your cron management also requires properties and you can add properties 
+manually by setting up key value pairs but also with a propertyset (name).
+
+Read the complete documentation:  http://rtfm.modx.com/display/ADDON/CronManager

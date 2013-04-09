@@ -1,5 +1,23 @@
 Changelog file for Cron Manager component.
 
+Cron Manager 1.2.0-pl
+====================================
+- Added columns to: cronjobs
+    title - brief title
+    description - description of what job is doing
+    debug - Boolean
+    set_nextrun - SET('Load','Success') nextrun can be set on Load or on Success of job
+    auto_clearlogs - 0 for never, Number of Minutes/age of log to clear
+- Added columns to: cronjobs_log
+    start_time - Time that job is called 
+    memory_peak - Memory peak of job in MB
+    status - SET('Started','Completed')
+    execution_time - Caluclated time in miliseconds
+- Added Indexes to: cronjobs_log   
+- Added the above fields to the UI
+- Added the above fields in the EN Lexicon 
+- Added in try/catch for cron.php and will log error
+
 Cron Manager 1.1.0-pl
 ====================================
 - Fixed some UI stuff

@@ -36,6 +36,21 @@ $_lang['cronmanager.remove'] = "Remove cronjob";
 $_lang['cronmanager.remove_confirm'] = "Are you sure you want to remove [[+snippet]] from the cronjob list?";
 $_lang['cronmanager.error_remove'] = "Something is going wrong while removing the cronjob. Please try it again!";
 
+// Added 1.2:
+$_lang['cronmanager.title'] = 'Title';
+$_lang['cronmanager.title_desc'] = 'Give a unique title for you Cron Job.';
+$_lang['cronmanager.description'] = 'Description';
+$_lang['cronmanager.description_desc'] = 'Give a description of what the Cron Job should be doing and links to any documentation.';
+$_lang['cronmanager.debug'] = 'Debug';
+$_lang['cronmanager.debug_desc'] = 'Get error messages';
+$_lang['cronmanager.set_nextrun'] = 'Set Nextrun';
+// State this better
+$_lang['cronmanager.set_nextrun_desc'] = 'Success means the next time will only be set when the job is successful, this will rerun a job until successful.  
+        <br>Load means that success or fail the nextrun time will always be set and will not rerun failed jobs.';
+$_lang['cronmanager.auto_clearlogs'] = 'Auto clear logs ';
+$_lang['cronmanager.auto_clearlogs_desc'] = 'Number: Set to 0 never auto clear.  Set to a number in minutes to clear all logs for this job that are older then the number you enter.';
+// END Added
+
 // log part
 $_lang['cronmanager.log'] = "Logs for cronjob";
 $_lang['cronmanager.log.btnback'] = "Back to cronjobs";
@@ -65,4 +80,16 @@ $_lang['cronmanager.logs_purge_nothing'] = 'Nothing to purge';
 $_lang['cronmanager.logs_purge_success'] = '[[+total]] log(s) successfully purged.';
 $_lang['cronmanager.logs_purge_title'] = 'Purge logs';
 
-?>
+// Added 1.2:
+$_lang['cronmanager.log.start_time'] = 'Start Time';
+$_lang['cronmanager.log.start_time_desc'] = 'The time that the job was started';
+$_lang['cronmanager.log.status'] = 'Status';
+$_lang['cronmanager.log.status_desc'] = '';
+$_lang['cronmanager.log.memory_peak'] = 'Memory(MB)';
+$_lang['cronmanager.log.memory_peak_desc'] = 'The memory peak of the job';
+$_lang['cronmanager.log.execution_time'] = 'Ex Time';
+$_lang['cronmanager.log.execution_time_desc'] = 'Execution time in seconds to the millisecond';
+//$_lang['cronmanager.log.'] = '';
+//$_lang['cronmanager.log._desc'] = '';
+
+
