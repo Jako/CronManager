@@ -41,9 +41,12 @@ foreach($cronjobs as $cronjob) {
         'start_time' => date('Y-m-d H:i:s'),
         'logdate' => date('Y-m-d H:i:s'),
         'status' => 'Started',
+        'message' => 'Start the snippet'
         
     ));
-    $log->save();
+    if ( !$log->save() ) {
+        $modx->log(modX::LOG_LEVEL_ERROR,'[CronManager] Log could not be saved: '.$cronjob->get('title').' ('.$cronjob->get('id').') at: '.date('Y-m-d H:i:s') );
+    }
     $start_job = getTime();
     
     $debug = (boolean) $cronjob->get('debug');
