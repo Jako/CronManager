@@ -15,7 +15,4 @@ if($cronjob->save() == false) {
     return $modx->error->failure($modx->lexicon('cronmanager.create.error_save'));
 }
 
-
 return $modx->error->success('', $cronjob);
-
-?>

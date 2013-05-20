@@ -26,5 +26,3 @@ if($cronjob->save() == false) {
 }
 
 return $modx->error->success('', $cronjob);
-
-?>

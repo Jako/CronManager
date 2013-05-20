@@ -1,5 +1,11 @@
 Changelog file for Cron Manager component.
 
+
+Cron Manager 1.2.1-pl
+====================================
+- Updated UI #18 no more page reloads to view logs
+
+
 Cron Manager 1.2.0-pl
 ====================================
 - Added columns to: cronjobs

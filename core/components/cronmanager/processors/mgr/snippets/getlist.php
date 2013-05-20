@@ -29,5 +29,3 @@ foreach($snippets as $snippet) {
 }
 
 return $this->outputArray($list, $count);
-
-?>

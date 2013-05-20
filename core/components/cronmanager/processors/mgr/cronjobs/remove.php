@@ -14,5 +14,3 @@ if($cronjob->remove() == false) {
 }
 
 return $modx->error->success('', $cronjob);
-
-?>

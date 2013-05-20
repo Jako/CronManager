@@ -20,24 +20,14 @@
 	</object>
 	
 	<object class="modCronjobLog" table="cronjobs_log" extends="xPDOSimpleObject">
-		<field key="cronjob" dbtype="int" precision="11" phptype="integer" null="false" index="index" />
-        <field key="message" dbtype="text" phptype="string" null="false" />
+		<field key="cronjob" dbtype="integer" precision="11" phptype="string" null="false" />
+		<field key="message" dbtype="text" phptype="string" null="false" />
         <field key="logdate" dbtype="datetime" phptype="datetime" null="false" />
         <field key="error" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="0" />
         <field key="start_time" dbtype="datetime" phptype="datetime" null="false" />
-        <field key="memory_peak" dbtype="float" precision="10,3" phptype="float" null="true" default="0.000" />
+        <field key="memory_peak" dbtype="float" precision="10,3" phptype="float" null="true" />
         <field key="status" dbtype="set" precision="'Started','Completed'" phptype="string" null="true" default="Started" />
-        <field key="execution_time" dbtype="float" precision="10,3" phptype="float" null="true" default="0.000" />
-
-        <index alias="CronJog" name="CronJog" primary="false" unique="false" type="BTREE" >
-            <column key="cronjob" length="" collation="A" null="false" />
-        </index>
-        <index alias="Preformance" name="Preformance" primary="false" unique="false" type="BTREE" >
-            <column key="cronjob" length="" collation="A" null="false" />
-            <column key="memory_peak" length="" collation="A" null="true" />
-            <column key="status" length="" collation="A" null="true" />
-            <column key="execution_time" length="" collation="A" null="true" />
-        </index>
+        <field key="job_time" dbtype="float" precision="10,3" phptype="float" null="true" />
         
 		<aggregate alias="Cronjob" class="modCronjob" local="cronjob" foreign="id" cardinality="one" owner="foreign" />
 	</object>

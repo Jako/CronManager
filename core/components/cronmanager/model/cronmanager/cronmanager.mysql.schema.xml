@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model package="cronmanager" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM">
+	<object class="modCronjob" table="cronjobs" extends="xPDOSimpleObject">
+		<field key="title" dbtype="varchar" precision="64" phptype="string" null="true" />
+        <field key="description" dbtype="mediumtext" phptype="string" null="true" />
+        <field key="snippet" dbtype="int" precision="11" phptype="integer" null="false" default="0" />
+        <field key="properties" dbtype="text" phptype="string" null="true" default="null" />
+        <field key="minutes" dbtype="int" precision="11" phptype="integer" null="false" default="60" />
+        <field key="lastrun" dbtype="datetime" phptype="datetime" null="true" default="null" />
+        <field key="nextrun" dbtype="datetime" phptype="datetime" null="true" default="null" />
+        <field key="sortorder" dbtype="int" precision="11" phptype="integer" null="false" default="0" />
+        <field key="active" dbtype="int" precision="1" phptype="integer" null="false" default="0" />
+        <field key="debug" dbtype="int" precision="1" phptype="integer" null="false" default="0" />
+        <field key="set_nextrun" dbtype="set" precision="'Load','Success'" phptype="string" null="false" default="Success" />
+        <field key="auto_clearlogs" dbtype="int" precision="11" phptype="integer" null="false" default="0" />
+		
+		
+		<composite alias="Log" class="modCronjobLog" local="id" foreign="cronjob" cardinality="many" owner="local" />
+		<aggregate alias="Snippet" class="modSnippet" local="snippet" foreign="id" cardinality="one" owner="foreign" />
+	</object>
+	
+	<object class="modCronjobLog" table="cronjobs_log" extends="xPDOSimpleObject">
+		<field key="cronjob" dbtype="int" precision="11" phptype="integer" null="false" index="index" />
+        <field key="message" dbtype="text" phptype="string" null="false" />
+        <field key="logdate" dbtype="datetime" phptype="datetime" null="false" />
+        <field key="error" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="false" default="0" />
+        <field key="start_time" dbtype="datetime" phptype="datetime" null="false" />
+        <field key="memory_peak" dbtype="float" precision="10,3" phptype="float" null="true" default="0.000" />
+        <field key="status" dbtype="set" precision="'Started','Completed'" phptype="string" null="true" default="Started" />
+        <field key="execution_time" dbtype="float" precision="10,3" phptype="float" null="true" default="0.000" />
+
+        <index alias="CronJog" name="CronJog" primary="false" unique="false" type="BTREE" >
+            <column key="cronjob" length="" collation="A" null="false" />
+        </index>
+        <index alias="Preformance" name="Preformance" primary="false" unique="false" type="BTREE" >
+            <column key="cronjob" length="" collation="A" null="false" />
+            <column key="memory_peak" length="" collation="A" null="true" />
+            <column key="status" length="" collation="A" null="true" />
+            <column key="execution_time" length="" collation="A" null="true" />
+        </index>
+        
+		<aggregate alias="Cronjob" class="modCronjob" local="cronjob" foreign="id" cardinality="one" owner="foreign" />
+	</object>
+</model>

@@ -13,14 +13,16 @@ $modx->lexicon->load('cronmanager:default');
 /**
  * Get time as a float in milliseconds
  */
-function getTime() {
-    $timer = explode( ' ', microtime() );
-    //echo '<br />Time1: ',$timer[1],' time: ',$timer[0],' - ',$timer;
-    $timer = $timer[1] + $timer[0];
-    return $timer;
+if ( !function_exists('cronGetTime') ) {
+    function cronGetTime() {
+        $timer = explode( ' ', microtime() );
+        //echo '<br />Time1: ',$timer[1],' time: ',$timer[0],' - ',$timer;
+        $timer = $timer[1] + $timer[0];
+        return $timer;
+    }
 }
-$ex_start_time = getTime();
-$ex_end_time = getTime();
+$ex_start_time = cronGetTime();
+$ex_end_time = cronGetTime();
 $ex_time = round($ex_end_time - $ex_start_time,5);
 
 $rundatetime = date('Y-m-d H:i:s');
@@ -47,7 +49,7 @@ foreach($cronjobs as $cronjob) {
     if ( !$log->save() ) {
         $modx->log(modX::LOG_LEVEL_ERROR,'[CronManager] Log could not be saved: '.$cronjob->get('title').' ('.$cronjob->get('id').') at: '.date('Y-m-d H:i:s') );
     }
-    $start_job = getTime();
+    $start_job = cronGetTime();
     
     $debug = (boolean) $cronjob->get('debug');
     if ( $debug ) {
@@ -120,7 +122,7 @@ foreach($cronjobs as $cronjob) {
             'message' => 'Error: '.$e->getMessage(),
         );
     }
-    $end_job = getTime();
+    $end_job = cronGetTime();
     $ex_time = round($end_job - $start_job, 3);
     
 	// update log data:

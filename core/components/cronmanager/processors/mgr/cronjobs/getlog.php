@@ -14,9 +14,11 @@ $error = $modx->getOption('error', $scriptProperties, 'all');
 
 // build query
 $c = $modx->newQuery('modCronjobLog');
-$c->where(array(
-	'cronjob' => $cronid
-));
+if ( $cronid > 0 ){
+    $c->where(array(
+    	'cronjob' => $cronid
+    ));
+}
 if ($error != 'all') {
     $c->where(array('error' => $error));
 }
@@ -51,5 +53,3 @@ foreach($logs as $log) {
 }
 
 return $this->outputArray($list, $count);
-
-?>

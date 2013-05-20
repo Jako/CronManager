@@ -4,11 +4,12 @@
  * @var array $scriptProperties
  */
 $isLimit = !empty($scriptProperties['limit']);
+$first = $modx->getOption('first', $scriptProperties, 0);
 $start = $modx->getOption('start', $scriptProperties, 0);
 $limit = $modx->getOption('limit', $scriptProperties, 20);
 $sort = $modx->getOption('sort', $scriptProperties, 'snippet');
 $dir = $modx->getOption('dir', $scriptProperties, 'ASC');
- 
+
 // build query
 $c = $modx->newQuery('modCronjob');
 $count = $modx->getCount('modCronjob', $c);
@@ -22,6 +23,13 @@ $cronjobs = $modx->getCollection('modCronjob', $c);
  
 // iterate
 $list = array();
+if( $first ) {
+    $list[] = array(
+        'title' => 'All',
+        'id' => 0,
+        'snippet_name' => 'All'
+    );
+}
 /** @var modCronJob $cronjob */
 foreach($cronjobs as $cronjob) {
     
@@ -47,4 +55,3 @@ foreach($cronjobs as $cronjob) {
 
 return $this->outputArray($list, $count);
 
-?>

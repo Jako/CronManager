@@ -13,5 +13,3 @@ $snippet = $cronjob->getOne('Snippet');
 $cronjob->set('snippet_name', $snippet->get('name'));
 
 return $modx->error->success('', $cronjob->toArray('', true));
-
-?>

@@ -16,6 +16,4 @@ if($cronjob->save() == false) {
     return $modx->error->failure($modx->lexicon('cronmanager.error_update'));
 }
 
-return $modx->error->success('', $customers);
-
-?>
+return $modx->error->success('', $cronjob);
