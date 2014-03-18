@@ -1,7 +1,7 @@
 --------------------
 Extra: Cron Manager
 --------------------
-Version: 1.2.1
+Version: 1.2.2
  
 With the Cron manager you're able to create cronjobs within the manager. 
 When the right script is added to your cronjobs list you could manage snippets 

@@ -5,6 +5,8 @@
 require_once dirname(dirname(dirname(dirname(__FILE__)))).'/config.core.php';
 require_once MODX_CORE_PATH.'config/'.MODX_CONFIG_KEY.'.inc.php';
 require_once MODX_CONNECTORS_PATH.'index.php';
+// set memory:
+ini_set('memory_limit', $modx->getOption('cronmanager.memory_limit',null, '1024M' /*'768M'*/) );
 
 $corePath = $modx->getOption('cronmanager.core_path',null,$modx->getOption('core_path').'components/cronmanager/');
 require_once $corePath.'model/cronmanager/cronmanager.class.php';
@@ -60,7 +62,14 @@ foreach($cronjobs as $cronjob) {
     $set = $cronjob->get('set_nextrun');
     if ( $set == 'Load' ) {
         $cronjob->set('lastrun', $rundatetime);
-        $cronjob->set('nextrun', date('Y-m-d H:i:s', (strtotime($rundatetime)+($cronjob->get('minutes')*60))));
+        $nextrun = strtotime($cronjob->get('nextrun'));
+        if ( strtotime($rundatetime) > $nextrun + ($cronjob->get('minutes')*60) ) {
+            // date('Y-m-d H:i:s')
+            $nextrun = strtotime($rundatetime)+($cronjob->get('minutes')*60);
+        } else {
+            $nextrun += ($cronjob->get('minutes')*60);
+        }
+        $cronjob->set('nextrun', date('Y-m-d H:i:s', $nextrun) );
         $cronjob->save();
     }
     
@@ -134,8 +143,12 @@ foreach($cronjobs as $cronjob) {
 	$log->save();
     
 	$cronjob->set('lastrun', $rundatetime);
-	$cronjob->set('nextrun', date('Y-m-d H:i:s', (strtotime($rundatetime)+($cronjob->get('minutes')*60))));
+	
+	$cronjob->set('nextrun', date('Y-m-d H:i:s', (isset($nextrun) ? $nextrun : (strtotime($rundatetime)+($cronjob->get('minutes')*60))) ) );
+    
 	$cronjob->save();
+    unset($nextrun);
+    
     if ( $debug ) {
         $modx->log(modX::LOG_LEVEL_ERROR,'[CronManager] Job complete:  '.$cronjob->get('title').' ('.$cronjob->get('id').') ran in: '.$ex_time.' seconds' );
     }

@@ -6,7 +6,7 @@ set_time_limit(0);
 
 define('PKG_NAME', 'CronManager');
 define('PKG_NAME_LOWER', 'cronmanager');
-define('PKG_VERSION', '1.2.1');
+define('PKG_VERSION', '1.2.2');
 define('PKG_RELEASE', 'pl');
 
 /* define build paths */

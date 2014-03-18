@@ -1,5 +1,8 @@
 Changelog file for Cron Manager component.
 
+Cron Manager 1.2.2-pl
+====================================
+- Added a run now option
 
 Cron Manager 1.2.1-pl
 ====================================

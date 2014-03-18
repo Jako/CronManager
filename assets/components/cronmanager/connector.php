@@ -17,4 +17,3 @@ $modx->request->handleRequest(array(
     'location' => '',
 ));
 
-?>
