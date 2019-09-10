@@ -1,0 +1,69 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "CronManager\n\n\nCreate and run cronjobs within the manager\n\n\nRequirements\n\n\n\n\nMODX Revolution 2.6+\n\n\nPHP v5.6+\n\n\n\n\nFeatures\n\n\nThe cron manager for MODx makes it possible to execute snippets by the crontab\nof the server. By using the manager of MODx Revolution you can simply add new\nsnippets to the cron list.\n\n\nUsing snippets for your cron management also requires properties and you can add\nproperties manually by setting up key value pairs but also with a propertyset\n(name).", 
+            "title": "Description"
+        }, 
+        {
+            "location": "/#cronmanager", 
+            "text": "Create and run cronjobs within the manager", 
+            "title": "CronManager"
+        }, 
+        {
+            "location": "/#requirements", 
+            "text": "MODX Revolution 2.6+  PHP v5.6+", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/#features", 
+            "text": "The cron manager for MODx makes it possible to execute snippets by the crontab\nof the server. By using the manager of MODx Revolution you can simply add new\nsnippets to the cron list.  Using snippets for your cron management also requires properties and you can add\nproperties manually by setting up key value pairs but also with a propertyset\n(name).", 
+            "title": "Features"
+        }, 
+        {
+            "location": "/installation/", 
+            "text": "Install from MODX Extras\n\n\nSearch for CronManager in the Package Manager of your MODX installation and\ninstall it in there.\n\n\nManual installation\n\n\nIf you can't access the MODX Extras Repository in your MODX installation, you\ncan manually install CronManager.\n\n\n\n\nDownload the transport package from \nMODX Extras\n (or one of the pre built transport packages in \n_packages\n)\n\n\nUpload the zip file to your MODX installation's \ncore/packages\n folder or upload it manually in the MODX Package Manager.\n\n\nIn the MODX Manager, navigate to the Package Manager page, and select 'Search locally for packages' from the dropdown button.\n\n\nCronManager should now show up in the list of available packages. Click the corresponding 'Install' button and follow instructions to complete the installation.\n\n\n\n\nBuild it from source\n\n\nTo build and install the package from source you could use \nGit Package\nManagement\n. The GitHub\nrepository of CronManager contains a\n\nconfig.json\n\nto build that package locally. Use this option, if you want to debug CronManager\nand/or contribute bugfixes and enhancements.", 
+            "title": "Installation"
+        }, 
+        {
+            "location": "/installation/#install-from-modx-extras", 
+            "text": "Search for CronManager in the Package Manager of your MODX installation and\ninstall it in there.", 
+            "title": "Install from MODX Extras"
+        }, 
+        {
+            "location": "/installation/#manual-installation", 
+            "text": "If you can't access the MODX Extras Repository in your MODX installation, you\ncan manually install CronManager.   Download the transport package from  MODX Extras  (or one of the pre built transport packages in  _packages )  Upload the zip file to your MODX installation's  core/packages  folder or upload it manually in the MODX Package Manager.  In the MODX Manager, navigate to the Package Manager page, and select 'Search locally for packages' from the dropdown button.  CronManager should now show up in the list of available packages. Click the corresponding 'Install' button and follow instructions to complete the installation.", 
+            "title": "Manual installation"
+        }, 
+        {
+            "location": "/installation/#build-it-from-source", 
+            "text": "To build and install the package from source you could use  Git Package\nManagement . The GitHub\nrepository of CronManager contains a config.json \nto build that package locally. Use this option, if you want to debug CronManager\nand/or contribute bugfixes and enhancements.", 
+            "title": "Build it from source"
+        }, 
+        {
+            "location": "/usage/", 
+            "text": "Setup the cron script\n\n\nAfter the installation, you need to configure the cron script in your servers\ncrontab list. On most hostings you have a control panel like Direct Admin\navailable and mostly you're able to configure cronjobs via that control panel.\nIf you have access to there server with SSH could add the cronjob with the\n\"crontab -e\" command. Add the following line as cronjob:\n\n\nphp /path/to/your/modx/installation/assets/components/cronmanager/cron.php\n\n\n\n\n\nNote\n\n\nIn some cases this command needs some modifications (i.e. the path to a\nversion specific php file). Please discuss this with your hosting provider.\n\n\n\n\nThe cron connector could also be called as an external webcronjob using the\nfollowing url:\n\n\nhttps://your.domain/assets/components/cronmanager/cron.php\n\n\n\nWe advise you to execute it on every minute, every day in every month (* to all:\nm h dom mon dow). But if you're sure, that there are no needs for an every\nminute cronjob, you could change the crontab interval to your own needs.\n\n\nCustom Manager Page\n\n\nTo use the component, navigate to your manager and click on \"Extras \n CronManager\".\n\n\n\n\nYou could create a new cronjob with a click on the create new cronjob button on\nthe top left above the cronjob grid.\n\n\nThe grid could be filtered by the snippet name with a search input on the top\nright above the cronjob grid.\n\n\nEach cronjob could be edited by a click on the edit icon in the row of the\ncronjob. The log of the cronjob could be seen with a click on the list icon in\nthe row of the cronjob. It could be deleted after a confirmation with a click on\nthe trash icon in the row of the cronjob.\n\n\nThe row of each cronjob shows the executed snippet, the minute interval, the\nlast and the next run and the active state of an entry. The minutes and the\nactive state could be edited inline with a double click. The last and the next\nrun column will contain a date when the cron script is executed.\n\n\nCreate/Edit\n\n\nThe create/edit window for one cronjob has a lot of options, that could be set.\n\n\n\n\nIn the event tab you have to set the executed snippet, the minute interval and\nthe snippet properties. The snippet is executed on the \nsite_start\n resource and\nit should return a json array: \n{\"error\": boolean, \"message\": \"string\"}\n. If\nnot, the output will be saved in the log message and the log entry will be set\nto successful. The minute interval sets the interval the snippet is executed.\nExample: If you enter 15, the snippet would run every 15 minutes (when the\ncron.php file is called every minute). The snippet properties could contain\nkey-value pairs (each on a new line in the format \nkey: value\n), a JSON object\nor the name of a propertyset.\n\n\n\n\nCaution\n\n\nAfter adding a cronjob, it isn't active. You have to change the active state \nto yes in the \nActive\n column of the overview.", 
+            "title": "Usage"
+        }, 
+        {
+            "location": "/usage/#setup-the-cron-script", 
+            "text": "After the installation, you need to configure the cron script in your servers\ncrontab list. On most hostings you have a control panel like Direct Admin\navailable and mostly you're able to configure cronjobs via that control panel.\nIf you have access to there server with SSH could add the cronjob with the\n\"crontab -e\" command. Add the following line as cronjob:  php /path/to/your/modx/installation/assets/components/cronmanager/cron.php   Note  In some cases this command needs some modifications (i.e. the path to a\nversion specific php file). Please discuss this with your hosting provider.   The cron connector could also be called as an external webcronjob using the\nfollowing url:  https://your.domain/assets/components/cronmanager/cron.php  We advise you to execute it on every minute, every day in every month (* to all:\nm h dom mon dow). But if you're sure, that there are no needs for an every\nminute cronjob, you could change the crontab interval to your own needs.", 
+            "title": "Setup the cron script"
+        }, 
+        {
+            "location": "/usage/#custom-manager-page", 
+            "text": "To use the component, navigate to your manager and click on \"Extras   CronManager\".   You could create a new cronjob with a click on the create new cronjob button on\nthe top left above the cronjob grid.  The grid could be filtered by the snippet name with a search input on the top\nright above the cronjob grid.  Each cronjob could be edited by a click on the edit icon in the row of the\ncronjob. The log of the cronjob could be seen with a click on the list icon in\nthe row of the cronjob. It could be deleted after a confirmation with a click on\nthe trash icon in the row of the cronjob.  The row of each cronjob shows the executed snippet, the minute interval, the\nlast and the next run and the active state of an entry. The minutes and the\nactive state could be edited inline with a double click. The last and the next\nrun column will contain a date when the cron script is executed.", 
+            "title": "Custom Manager Page"
+        }, 
+        {
+            "location": "/usage/#createedit", 
+            "text": "The create/edit window for one cronjob has a lot of options, that could be set.   In the event tab you have to set the executed snippet, the minute interval and\nthe snippet properties. The snippet is executed on the  site_start  resource and\nit should return a json array:  {\"error\": boolean, \"message\": \"string\"} . If\nnot, the output will be saved in the log message and the log entry will be set\nto successful. The minute interval sets the interval the snippet is executed.\nExample: If you enter 15, the snippet would run every 15 minutes (when the\ncron.php file is called every minute). The snippet properties could contain\nkey-value pairs (each on a new line in the format  key: value ), a JSON object\nor the name of a propertyset.   Caution  After adding a cronjob, it isn't active. You have to change the active state \nto yes in the  Active  column of the overview.", 
+            "title": "Create/Edit"
+        }, 
+        {
+            "location": "/contributors/", 
+            "text": "The CronManager project was started in 2011 by \nBert Ooost\n and is maintained and developed\nfurther since 2019 by \nThomas Jakobi\n.\n\n\nThanks to everybody who contributed, either by creating pull requests, sending bug reports or donating.", 
+            "title": "Contributors"
+        }
+    ]
+}
