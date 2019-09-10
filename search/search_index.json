@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "CronManager\n\n\nCreate and run cronjobs within the manager\n\n\nRequirements\n\n\n\n\nMODX Revolution 2.6+\n\n\nPHP v5.6+\n\n\n\n\nFeatures\n\n\nThe cron manager for MODx makes it possible to execute snippets by the crontab\nof the server. By using the manager of MODx Revolution you can simply add new\nsnippets to the cron list.\n\n\nUsing snippets for your cron management also requires properties and you can add\nproperties manually by setting up key value pairs but also with a propertyset\n(name).", 
+            "text": "CronManager\n\n\nCreate and run cronjobs within the manager\n\n\nRequirements\n\n\n\n\nMODX Revolution 2.6+\n\n\nPHP v5.6+\n\n\n\n\nFeatures\n\n\nThe CronManager for MODx makes it possible to execute snippets by the crontab\nof the server. By using the manager of MODx Revolution you can simply add new\nsnippets to the cron list.\n\n\nUsing snippets for your cron management also requires properties and you can add\nproperties manually by setting up key value pairs but also with a propertyset\n(name).", 
             "title": "Description"
         }, 
         {
@@ -17,7 +17,7 @@
         }, 
         {
             "location": "/#features", 
-            "text": "The cron manager for MODx makes it possible to execute snippets by the crontab\nof the server. By using the manager of MODx Revolution you can simply add new\nsnippets to the cron list.  Using snippets for your cron management also requires properties and you can add\nproperties manually by setting up key value pairs but also with a propertyset\n(name).", 
+            "text": "The CronManager for MODx makes it possible to execute snippets by the crontab\nof the server. By using the manager of MODx Revolution you can simply add new\nsnippets to the cron list.  Using snippets for your cron management also requires properties and you can add\nproperties manually by setting up key value pairs but also with a propertyset\n(name).", 
             "title": "Features"
         }, 
         {
