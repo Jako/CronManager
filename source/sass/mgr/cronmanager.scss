@@ -1,0 +1,182 @@
+$treehillstudio-color: #a9ba2f;
+$red: #be0000;
+$boxShadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+$borderRadius: 3px;
+.x-toolbar {
+  div.xtb-text {
+    &.xtb-text-warning {
+      color: $red;
+      font-size: 13px;
+      margin: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+.x-toolbar {
+  .x-toolbar-right-row {
+    .x-form-filter-clear {
+      margin-right: 1px;
+    }
+  }
+}
+
+.modx-grid-small {
+  .x-grid3-cell-inner {
+    padding: 8px 5px 8px 5px;
+  }
+  .x-grid3-hd-inner {
+    padding: 8px 18px 8px 5px;
+  }
+  .x-grid3-td-checker {
+    padding: 6px 0 0;
+    &.x-grid3-hd {
+      padding-top: 0;
+    }
+  }
+  .x-panel-tbar {
+    .x-toolbar {
+      padding-top: 2px;
+      &.x-small-editor {
+        .x-form-text {
+          padding: 3px 8px 2px 8px;
+        }
+      }
+      .x-btn {
+        padding: 4px 10px 4px 10px;
+      }
+    }
+  }
+  .x-panel-bbar {
+    .x-toolbar {
+      .x-btn {
+        padding: 2px 2px;
+      }
+      .x-form-text {
+        padding: 2px 3px;
+      }
+    }
+  }
+  .x-tbar-loading {
+    &:before {
+      line-height: 16px;
+    }
+  }
+  .x-tbar-page {
+    &-last, &-next, &-prev, &-first {
+      &:before {
+        line-height: 16px;
+      }
+    }
+  }
+  .x-btn-icon {
+    &.arrow_up, &.arrow_down, &.refresh {
+      button {
+        &:before {
+          line-height: 16px;
+        }
+      }
+    }
+  }
+}
+
+.action-buttons {
+  text-align: center;
+  li {
+    display: inline-block;
+    font-size: 1.1em;
+    line-height: .7;
+    margin-right: 5px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.treehillstudio_about {
+  cursor: pointer;
+  height: 40px;
+  opacity: 0.25;
+  transition: opacity 0.5s;
+  &:hover {
+    opacity: 1;
+  }
+  .x-panel-body {
+    text-align: right;
+  }
+}
+
+.treehillstudio_window {
+  a {
+    color: darken($treehillstudio-color, 10);
+    text-decoration: none;
+    &:hover {
+      color: darken($treehillstudio-color, 25);
+    }
+  }
+}
+
+.home-panel {
+  &.debug {
+    background: linear-gradient(to top right, transparent, transparent, transparent, #ffffff);
+  }
+}
+
+.cronmanager-panel {
+  box-shadow: $boxShadow;
+  border-radius: $borderRadius;
+  margin: 0 0 20px
+}
+
+.ribbon {
+  height: 180px;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  width: 180px;
+  z-index: 10;
+  &:before,
+  &:after {
+    border: 5px solid mix(#000000, $red, 15);
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: -1;
+  }
+  &.top-right {
+    right: -10px;
+    top: -10px;
+    &:before,
+    &:after {
+      border-right-color: transparent;
+      border-top-color: transparent;
+    }
+    &:before {
+      left: 0;
+      top: 0;
+    }
+    &:after {
+      bottom: 0;
+      right: 0;
+    }
+    span {
+      left: -46px;
+      top: 46px;
+      transform: rotate(45deg);
+    }
+  }
+  span {
+    background-color: $red;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+    color: #ffffff;
+    display: block;
+    font: 700 18px/1 'Lato', sans-serif;
+    padding: 15px 0;
+    position: absolute;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+    text-transform: uppercase;
+    width: 300px;
+  }
+}

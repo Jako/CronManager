@@ -1,0 +1,61 @@
+{
+  "name": "CronManager",
+  "lowCaseName": "cronmanager",
+  "description": "Create and run cronjobs within the manager",
+  "author": "Bert Oost, Thomas Jakobi",
+  "version": "1.2.0",
+  "package": {
+    "menus": [
+      {
+        "text": "cronmanager.menu",
+        "description": "cronmanager.menu_desc",
+        "action": "home",
+        "parent": "components"
+      }
+    ],
+    "systemSettings": [
+      {
+        "key": "debug",
+        "type": "combo-boolean",
+        "area": "system",
+        "value": "0"
+      },
+      {
+        "key": "cronjob_id",
+        "area": "system",
+        "value": ""
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "name": "php",
+      "version": ">=5.6"
+    },
+    {
+      "name": "modx",
+      "version": ">=2.6"
+    }
+  ],
+  "database": {
+    "tables": [
+      "modCronjob",
+      "modCronjobLog"
+    ]
+  },
+  "build": {
+    "readme": "docs/readme.md",
+    "license": "docs/license.md",
+    "changelog": "docs/changelog.md",
+    "setupOptions": {
+      "source": "setup.options.php"
+    },
+    "resolver": {
+      "after": [
+        "resolve.synctables.php",
+        "resolve.settings.php",
+        "resolve.treehillstudio.php"
+      ]
+    }
+  }
+}

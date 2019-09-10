@@ -1,15 +1,23 @@
 <?php
+/**
+ * @package cronmanager
+ */
 $xpdo_meta_map['modCronjob']= array (
   'package' => 'cronmanager',
+  'version' => '1.1',
   'table' => 'cronjobs',
+  'extends' => 'xPDOSimpleObject',
+  'tableMeta' => 
+  array (
+    'engine' => 'InnoDB',
+  ),
   'fields' => 
   array (
     'snippet' => 0,
-    'properties' => 'null',
+    'properties' => NULL,
     'minutes' => 60,
-    'lastrun' => 'null',
-    'nextrun' => 'null',
-    'sortorder' => 0,
+    'lastrun' => NULL,
+    'nextrun' => NULL,
     'active' => 0,
   ),
   'fieldMeta' => 
@@ -27,7 +35,6 @@ $xpdo_meta_map['modCronjob']= array (
       'dbtype' => 'text',
       'phptype' => 'string',
       'null' => true,
-      'default' => 'null',
     ),
     'minutes' => 
     array (
@@ -42,22 +49,12 @@ $xpdo_meta_map['modCronjob']= array (
       'dbtype' => 'datetime',
       'phptype' => 'datetime',
       'null' => true,
-      'default' => 'null',
     ),
     'nextrun' => 
     array (
       'dbtype' => 'datetime',
       'phptype' => 'datetime',
       'null' => true,
-      'default' => 'null',
-    ),
-    'sortorder' => 
-    array (
-      'dbtype' => 'int',
-      'precision' => '11',
-      'phptype' => 'integer',
-      'null' => false,
-      'default' => 0,
     ),
     'active' => 
     array (

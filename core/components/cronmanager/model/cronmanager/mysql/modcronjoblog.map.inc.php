@@ -1,11 +1,20 @@
 <?php
+/**
+ * @package cronmanager
+ */
 $xpdo_meta_map['modCronjobLog']= array (
   'package' => 'cronmanager',
+  'version' => '1.1',
   'table' => 'cronjobs_log',
+  'extends' => 'xPDOSimpleObject',
+  'tableMeta' => 
+  array (
+    'engine' => 'InnoDB',
+  ),
   'fields' => 
   array (
-    'cronjob' => NULL,
-    'message' => NULL,
+    'cronjob' => 0,
+    'message' => '',
     'logdate' => NULL,
     'error' => 0,
   ),
@@ -17,18 +26,20 @@ $xpdo_meta_map['modCronjobLog']= array (
       'precision' => '11',
       'phptype' => 'string',
       'null' => false,
+      'default' => 0,
     ),
     'message' => 
     array (
       'dbtype' => 'text',
       'phptype' => 'string',
       'null' => false,
+      'default' => '',
     ),
     'logdate' => 
     array (
       'dbtype' => 'datetime',
       'phptype' => 'datetime',
-      'null' => false,
+      'null' => true,
     ),
     'error' => 
     array (

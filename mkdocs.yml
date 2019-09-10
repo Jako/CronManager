@@ -1,0 +1,58 @@
+site_name: CronManager
+docs_dir: docs
+site_dir: _build/site
+edit_uri: tree/master/docs
+
+repo_name: 'Jako/CronManager'
+repo_url: https://github.com/Jako/CronManager
+
+copyright: '&copy; 2019 <a href="https://treehillstudio.com">Treehill Studio</a>'
+
+pages:
+- Description: 'index.md'
+- Installation: 'installation.md'
+- Usage: 'usage.md'
+- Contributors: 'contributors.md'
+
+extra:
+  matomo:
+    - //matomo.partout.info/
+    - 32
+
+theme:
+  name: null
+  custom_dir: ../../../mkdocs-material/material
+
+  # 404 page
+  static_templates:
+    - 404.html
+
+  # Don't include MkDocs' JavaScript
+  include_search_page: false
+  search_index_only: true
+
+  # Default values, taken from mkdocs_theme.yml
+  language: en
+  feature:
+    tabs: false
+  palette:
+    primary: #40A0DF
+    accent: #0080D4
+  font:
+    text: Dosis
+    text_weights: 300,400,700
+    code: Ubuntu Mono
+    code_weights: 400,700
+    head: Ubuntu
+    head_weights: 400,400i,700,700i
+  favicon: assets/images/favicon.png
+  logo:
+    icon: "\uE80C"
+
+markdown_extensions:
+  - footnotes
+  - tables
+  - admonition
+  - meta
+  - toc(permalink=true)
+  - pymdownx.superfences
