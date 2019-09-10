@@ -7,6 +7,10 @@
  *
  * @var modX $modx
  */
+
+// for access without authorization
+define('MODX_REQP', false);
+
 require_once dirname(dirname(dirname(dirname(__FILE__)))) . '/config.core.php';
 require_once MODX_CORE_PATH . 'config/' . MODX_CONFIG_KEY . '.inc.php';
 require_once MODX_CONNECTORS_PATH . 'index.php';
@@ -17,8 +21,8 @@ $cronmanager = $modx->getService('cronmanager', 'CronManager', $corePath . 'mode
     'core_path' => $corePath
 ));
 
-
-if (php_sapi_name() != "cli" &&
+// check cronjob_id in no cli mode
+if (php_sapi_name() != 'cli' &&
     (!isset($_REQUEST['cronjob_id']) || $_REQUEST['cronjob_id'] !== $cronmanager->getOption('cronjob_id'))
 ) {
     return '';
@@ -63,6 +67,9 @@ foreach ($cronjobs as $cronjob) {
         $properties = array();
     }
 
+    if ($cronmanager->getOption('debug')) {
+        $modx->log(modX::LOG_LEVEL_ERROR, 'CronManager Job: ' . $cronjob->get('title') . ' (' . $cronjob->get('id') . ') properties: ' . print_r($properties, true), '', 'CronManager');
+    }
     $modx->resource = $modx->getObject('modResource', $modx->getOption('site_start'));
 
     /** @var modSnippet $snippet */
@@ -74,11 +81,18 @@ foreach ($cronjobs as $cronjob) {
      *
      * This will allow to define if an error occurred and ease the process of filtering logs
      */
-    $response = $snippet->process($properties);
-    if (json_decode($response, true)) {
-        $response = json_decode($response, true);
-    } else {
-        $response = array('message' => ($response) ? $response : 'No snippet output!');
+    try {
+        $response = $snippet->process($properties);
+        if (substr($response, 0, 1) == '{' && substr($response, (strlen($response) - 1), 1) == '}') {
+            $response = json_decode($response, true);
+        } else {
+            $response = array('message' => ($response) ? $response : 'No snippet output!');
+        }
+    } catch (Exception $e) {
+        $response = array(
+            'error' => '1',
+            'message' => 'Error: ' . $e->getMessage(),
+        );
     }
 
     // add log run

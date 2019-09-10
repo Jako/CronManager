@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed modAction Support
 - Change flat file to class based processors
 - Code refactoring
+- Catch fatal snippet errors and log them in the CronManager log
+- Run the cron connector from the web with a cronjob_id property
 
 ## [1.1.0] - 2012-04-29
 ### Changed
