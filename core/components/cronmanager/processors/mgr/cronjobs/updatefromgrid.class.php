@@ -2,7 +2,7 @@
 /**
  * UpdateFromGrid cronjob
  *
- * @package crosslinks
+ * @package cronmanager
  * @subpackage processor
  */
 

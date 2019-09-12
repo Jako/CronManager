@@ -114,8 +114,8 @@ if ($object->xpdo) {
                 "modCronjobLog"
             );
 
-            $modelPath = $modx->getOption('crosslinks.core_path', null, $modx->getOption('core_path') . 'components/crosslinks/') . 'model/';
-            $modx->addPackage('crosslinks', $modelPath);
+            $modelPath = $modx->getOption('cronmanager.core_path', null, $modx->getOption('core_path') . 'components/cronmanager/') . 'model/';
+            $modx->addPackage('cronmanager', $modelPath);
 
             foreach ($tables as $table) {
                 $modx->log(modX::LOG_LEVEL_INFO, 'Altering table: ' . $table);

@@ -2,17 +2,17 @@
 /**
  * Get list snippets
  *
- * @package crosslinks
+ * @package cronmanager
  * @subpackage processor
  */
 
 class CronMananagerSnippetGetListProcessor extends modObjectGetListProcessor
 {
     public $classKey = 'modSnippet';
-    public $languageTopics = array('crosslinks:default');
+    public $languageTopics = array('cronmanager:default');
     public $defaultSortField = 'name';
     public $defaultSortDirection = 'ASC';
-    public $objectType = 'crosslinks.link';
+    public $objectType = 'cronmanager.snippet';
 
     public function prepareQueryBeforeCount(xPDOQuery $c)
     {
