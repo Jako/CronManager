@@ -10,7 +10,7 @@ class CronManagerCronjobGetListProcessor extends modObjectGetListProcessor
 {
     public $classKey = 'modCronjob';
     public $languageTopics = array('cronmanager:default');
-    public $defaultSortField = 'snippet.name';
+    public $defaultSortField = 'Snippet.name';
     public $defaultSortDirection = 'ASC';
     public $objectType = 'cronmanager.cronjob';
 
