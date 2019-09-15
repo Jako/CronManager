@@ -8,7 +8,7 @@
  * @var modX $modx
  */
 
-// for access without authorization
+// For access without authorization
 define('MODX_REQP', false);
 
 require_once dirname(dirname(dirname(dirname(__FILE__)))) . '/config.core.php';
@@ -21,16 +21,18 @@ $cronmanager = $modx->getService('cronmanager', 'CronManager', $corePath . 'mode
     'core_path' => $corePath
 ));
 
-// check cronjob_id in no cli mode
+// Check cronjob_id in no cli mode
 if (php_sapi_name() != 'cli' &&
     (!isset($_REQUEST['cronjob_id']) || $_REQUEST['cronjob_id'] !== $cronmanager->getOption('cronjob_id'))
 ) {
+    $modx->log(modX::LOG_LEVEL_ERROR, 'The request parameter for cron.php is not set or not equal to the system setting cronmanager.cronjob_id.', '', 'CronManager');
     return '';
 }
 
 $rundatetime = date('Y-m-d H:i:s');
+$success = true;
 
-// get all cronjobs wich needs to be runned
+// Get all cronjobs, wich needs to be runned
 $cronjobs = $modx->getCollection('modCronjob', array(
     array(
         'nextrun' => null,
@@ -42,19 +44,14 @@ $cronjobs = $modx->getCollection('modCronjob', array(
 foreach ($cronjobs as $cronjob) {
     $properties = $cronjob->get('properties');
     if (!empty($properties)) {
-        // try to get a propertyset
         /** @var modPropertySet $propset */
         $propset = $modx->getObject('modPropertySet', array('name' => $properties));
         if (!empty($propset) && is_object($propset) && $propset instanceof modPropertySet) {
             $properties = $propset->getProperties();
-        } elseif (substr($properties, 0, 1) == '{' && substr($properties, (strlen($properties) - 1), 1) == '}') {
-            // try if it is a json object
-            $props = $modx->fromJSON($properties);
-            if (!empty($props) && is_array($props)) {
-                $properties = $props;
-            }
-        } // then must be it a key value pair group
-        else {
+        } elseif (json_decode($properties)) {
+            $tempProps = json_decode($properties, true);
+            $properties = (!empty($tempProps) && is_array($tempProps)) ? $tempProps : array();
+        } else {
             $lines = explode("\n", $properties);
             $properties = array();
             foreach ($lines as $line) {
@@ -63,7 +60,6 @@ foreach ($cronjobs as $cronjob) {
             }
         }
     } else {
-        // when empty, make it an array
         $properties = array();
     }
 
@@ -75,27 +71,30 @@ foreach ($cronjobs as $cronjob) {
     /** @var modSnippet $snippet */
     $snippet = $cronjob->getOne('Snippet');
     /**
-     * The snippet should return a json array :
-     * array('error' => boolean, 'message' => string)
-     * If not, the default output will be transformed
-     *
-     * This will allow to define if an error occurred and ease the process of filtering logs
+     * The snippet should output a json array: array('error' => boolean,
+     * 'message' => string), if not, the output will be set as message.
+     * This will allow to define if an error occurred and ease the process of
+     * filtering logs
      */
     try {
         $response = $snippet->process($properties);
-        if (substr($response, 0, 1) == '{' && substr($response, (strlen($response) - 1), 1) == '}') {
+        if (json_decode($response)) {
             $response = json_decode($response, true);
         } else {
-            $response = array('message' => ($response) ? $response : 'No snippet output!');
+            $response = array(
+                'error' => false,
+                'message' => ($response) ? $response : 'No snippet output!'
+            );
         }
     } catch (Exception $e) {
         $response = array(
-            'error' => '1',
+            'error' => true,
             'message' => 'Error: ' . $e->getMessage(),
         );
+        $success = false;
     }
 
-    // add log run
+    // Add result to log
     /** @var modCronjobLog $log */
     $log = $modx->newObject('modCronjobLog');
     $log->fromArray($response);
@@ -106,4 +105,10 @@ foreach ($cronjobs as $cronjob) {
     $cronjob->set('nextrun', date('Y-m-d H:i:s', (strtotime($rundatetime) + ($cronjob->get('minutes') * 60))));
     $cronjob->addMany($logs);
     $cronjob->save();
+
+    if (php_sapi_name() != 'cli') {
+        exit($rundatetime);
+    } else {
+        exit($success ? 0:1);
+    }
 }
