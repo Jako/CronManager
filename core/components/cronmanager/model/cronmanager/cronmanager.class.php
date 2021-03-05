@@ -127,5 +127,3 @@ class CronManager
         return true;
     }
 }
-
-?>

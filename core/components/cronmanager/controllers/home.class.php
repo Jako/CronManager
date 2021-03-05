@@ -17,7 +17,7 @@ class CronManagerHomeManagerController extends modExtraManagerController
     public function initialize()
     {
         $corePath = $this->modx->getOption('cronmanager.core_path', null, $this->modx->getOption('core_path') . 'components/cronmanager/');
-        $this->cronmanager = $this->modx->getService('cronmanager', 'CronManager', $corePath . '/model/cronmanager/', array(
+        $this->cronmanager = $this->modx->getService('cronmanager', 'CronManager', $corePath . 'model/cronmanager/', array(
             'core_path' => $corePath
         ));
     }
