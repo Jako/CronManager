@@ -5,12 +5,9 @@
  * @package cronmanager
  * @subpackage lexicon
  */
-
 $_lang['cronmanager'] = 'CronManager';
-
 $_lang['cronmanager.menu'] = 'CronManager';
 $_lang['cronmanager.menu_desc'] = 'Cronjobs innerhalb des Managers verwalten';
-
 $_lang['cronmanager.active'] = 'Aktiv';
 $_lang['cronmanager.create'] = 'Neuen Cronjob erstellen';
 $_lang['cronmanager.cronjobs_desc'] = 'Unten können Sie Cronjob-Aktionen hinzufügen, ändern oder entfernen. Denken Sie daran, dass diese Cronjob-Aktionen nur funktionieren, wenn das Setup des CronManagers erfolgreich abgeschlossen wurde! Weitere Informationen finden Sie in der Dokumentation (oder auf der Hilfeschaltfläche).';
@@ -28,10 +25,9 @@ $_lang['cronmanager.selectasnippet'] = 'Bitte wählen Sie einen Ausschnitt aus';
 $_lang['cronmanager.snippet'] = 'Snippet';
 $_lang['cronmanager.update'] = 'Cronjob aktualisieren';
 $_lang['cronmanager.viewlog'] = 'Cron-Log anzeigen';
-
 $_lang['cronmanager.log'] = 'Protokolle für den Cronjob';
 $_lang['cronmanager.log.btnback'] = 'Zurück zu den Cronjobs';
-$_lang['cronmanager.log.date'] = 'Logdate';
+$_lang['cronmanager.log.date'] = 'Log Datum';
 $_lang['cronmanager.log.message'] = 'Log Nachricht';
 $_lang['cronmanager.log.norecords'] = 'Für diesen Cronjob wurden keine Protokolldatensätze gefunden';
 $_lang['cronmanager.log_cronjob_err_ns'] = 'Keine Cronjob-ID festgelegt.';
@@ -52,5 +48,4 @@ $_lang['cronmanager.logs_purge_no_err'] = 'Protokolle ohne Fehler löschen';
 $_lang['cronmanager.logs_purge_nothing'] = 'Nichts zu bereinigen';
 $_lang['cronmanager.logs_purge_success'] = '[[+total]] Protokoll(e) erfolgreich gelöscht.';
 $_lang['cronmanager.logs_purge_title'] = 'Protokolle löschen';
-
 $_lang['cronmanager.debug_mode'] = 'Debug-Modus';
