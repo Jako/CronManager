@@ -5,7 +5,7 @@
  * @package cronmanager
  * @subpackage lexicon
  */
-$_lang['setting_cronmanager.cronjob_id'] = 'Cronjob ID';
-$_lang['setting_cronmanager.cronjob_id_desc'] = 'String, that has to be added to the cronjob url as cronjob_id parameter.';
-$_lang['setting_cronmanager.debug'] = 'Debug';
-$_lang['setting_cronmanager.debug_desc'] = 'Log debug informations in MODX error log.';
+$_lang['setting_cronmanager.cronjob_id'] = 'ID Cronjob';
+$_lang['setting_cronmanager.cronjob_id_desc'] = 'Chaîne, qui doit être ajoutée à l\'url de cronjob comme paramètre cronjob_id.';
+$_lang['setting_cronmanager.debug'] = 'Débogage';
+$_lang['setting_cronmanager.debug_desc'] = 'Enregistrer les informations de débogage dans le journal des erreurs du MODX.';
