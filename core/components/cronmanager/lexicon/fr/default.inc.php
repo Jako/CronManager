@@ -5,22 +5,19 @@
  * @package cronmanager
  * @subpackage lexicon
  */
-
 $_lang['cronmanager'] = 'CronManager';
-
 $_lang['cronmanager.menu'] = 'CronManager';
 $_lang['cronmanager.menu_desc'] = 'Gérez vos tâches cron depuis le manager';
-
 $_lang['cronmanager.active'] = 'Active';
 $_lang['cronmanager.create'] = 'Créer une nouvelle tâche cron';
-$_lang['cronmanager.cronjobs_desc'] = 'Ci-dessous, vous pouvez ajouter, modifier ou supprimer des tâches pour cron. Notez que ces tâches ne seront effectives que si vous avez convenablement installé CronManager! Consultez la documentation (ou le bouton d\'aide) pour plus d\'informations.';
+$_lang['cronmanager.cronjobs_desc'] = 'Ci-dessous, vous pouvez ajouter, modifier ou supprimer des tâches pour cron. Notez que ces tâches ne seront effectives que si vous avez convenablement installé CronManager ! Consultez la documentation (ou le bouton d\'aide) pour plus d\'informations.';
 $_lang['cronmanager.lastrun'] = 'Dernière exécution';
 $_lang['cronmanager.minutes'] = 'Minute(s)';
 $_lang['cronmanager.minutes_desc'] = 'Interval, en minutes, durant lequel ce snippet doit être éxecuté. La valeur minimale est 1 minute.';
 $_lang['cronmanager.nextrun'] = 'Prochaine exécution';
 $_lang['cronmanager.norecords'] = 'Pas de tâche trouvée';
 $_lang['cronmanager.properties'] = 'Propriétés du snippet';
-$_lang['cronmanager.properties_desc'] = 'Vous pouvez entrer le nom d\'un set de propriétés, un jeu de clé-valeur;<br /><ul><li>clé: valeur</li><li>clé2: valeur2</li></ul>ou un objet JSON.';
+$_lang['cronmanager.properties_desc'] = 'Vous pouvez entrer le nom d\'un set de propriétés, un jeu de clé-valeur ;<br /><ul><li>clé : valeur</li><li>clé2 : valeur2</li></ul>ou un objet JSON.';
 $_lang['cronmanager.remove'] = 'Supprimer la tâche cron';
 $_lang['cronmanager.remove_confirm'] = 'Êtes-vous sûr de vouloir supprimer [[+snippet]] de la liste de tâches cron ?';
 $_lang['cronmanager.runempty'] = 'Tâche pas encore démarrée';
@@ -28,7 +25,6 @@ $_lang['cronmanager.selectasnippet'] = 'Veuillez choisir un snippet';
 $_lang['cronmanager.snippet'] = 'Snippet';
 $_lang['cronmanager.update'] = 'Mettre à jour la tâche cron';
 $_lang['cronmanager.viewlog'] = 'Consulter le log de cron';
-
 $_lang['cronmanager.log'] = 'Logs des tâches cron';
 $_lang['cronmanager.log.btnback'] = 'Retour aux tâches';
 $_lang['cronmanager.log.date'] = 'Date du log';
@@ -53,5 +49,4 @@ $_lang['cronmanager.logs_purge_no_err'] = 'Purger les logs sans erreur';
 $_lang['cronmanager.logs_purge_nothing'] = 'Aucun log à purger';
 $_lang['cronmanager.logs_purge_success'] = '[[+total]] log(s) purgé(s) avec succès.';
 $_lang['cronmanager.logs_purge_title'] = 'Purger les logs';
-
 $_lang['cronmanager.debug_mode'] = 'Mode débogage';
