@@ -23,6 +23,10 @@ Install via package manager and create the cronjobs in the custom manager page.
 
 For more information please read the [documentation](https://jako.github.io/CronManager/).
 
+## License
+
+The project is licensed under the [GPLv2 license](https://github.com/Jako/CronManager/blob/master/core/components/cronmanager/docs/license.md).
+
 ## Translations
 
 Translations of the package can be made for the [Default Lexicon](https://hosted.weblate.org/projects/modx-extras/modx-cronmanager-standard/) and the [System Setting Lexicon](https://hosted.weblate.org/projects/modx-extras/modx-cronmanager-system-settings/)
