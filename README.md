@@ -1,4 +1,4 @@
-[![Weblate](https://hosted.weblate.org/widgets/modx-cronmanager/-/system-settings/svg-badge.svg)](https://hosted.weblate.org/engage/modx-cronmanager/)
+[![Default Lexicon](https://hosted.weblate.org/widgets/modx-extras/-/modx-cronmanager-standard/svg-badge.svg)](https://hosted.weblate.org/engage/modx-extras/)
 
 # CronManager
 
@@ -25,4 +25,4 @@ For more information please read the [documentation](https://jako.github.io/Cron
 
 ## Translations
 
-Translations of the package can be made on [Weblate](https://hosted.weblate.org/engage/modx-cronmanager/).
+Translations of the package can be made for the [Default Lexicon](https://hosted.weblate.org/projects/modx-extras/modx-cronmanager-standard/) and the [System Setting Lexicon](https://hosted.weblate.org/projects/modx-extras/modx-cronmanager-system-settings/)
