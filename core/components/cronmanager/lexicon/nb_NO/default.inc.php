@@ -6,7 +6,7 @@
  * @subpackage lexicon
  */
 $_lang['cronmanager'] = 'CronManager';
-$_lang['cronmanager.menu'] = 'CronManager';
+$_lang['cronmanager.menu'] = 'CronBehandler';
 $_lang['cronmanager.menu_desc'] = 'Manage cronjobs within the manager';
 $_lang['cronmanager.active'] = 'Active';
 $_lang['cronmanager.create'] = 'Create new cronjob';
