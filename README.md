@@ -1,4 +1,4 @@
-[![Default Lexicon](https://hosted.weblate.org/widgets/modx-extras/-/modx-cronmanager-standard/svg-badge.svg)](https://hosted.weblate.org/engage/modx-extras/)
+[![Default Lexicon](https://hosted.weblate.org/widgets/modx-extras/-/modx-cronmanager-standard/svg-badge.svg)](https://hosted.weblate.org/projects/modx-extras/modx-cronmanager-standard/)
 
 # CronManager
 
