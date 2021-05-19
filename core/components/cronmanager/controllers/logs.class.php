@@ -46,7 +46,7 @@ class CronManagerLogsManagerController extends modExtraManagerController
         }
         $this->addHtml('<script type="text/javascript">
         Ext.onReady(function() {
-            CronManager.config = ' . json_encode($this->cronmanager->options, JSON_PRETTY_PRINT) . ';
+            CronManager.config = ' . json_encode($this->cronmanager->options, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) . ';
             MODx.load({xtype: "cronmanager-page-logs"});
         });
         </script>');
