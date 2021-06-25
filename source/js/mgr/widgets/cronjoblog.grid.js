@@ -84,6 +84,7 @@ CronManager.grid.CronJobLog = function (config) {
                 fn: this.buttonColumnRenderer,
                 scope: this
             },
+            menuDisabled: true,
             width: 30
         }],
         tbar: [{
