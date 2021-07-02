@@ -3,7 +3,7 @@
  * CronManager Classfile
  *
  * Copyright 2011-2019 by Bert Oost <bert@oostdesign.com>
- * Copyright 2019 by Thomas Jakobi <thomas.jakobi@partout.info>
+ * Copyright 2019-2021 by Thomas Jakobi <thomas.jakobi@partout.info>
  *
  * @package cronmanager
  * @subpackage classfile
@@ -30,7 +30,7 @@ class CronManager
      * The version
      * @var string $version
      */
-    public $version = '1.2.1';
+    public $version = '1.2.2';
 
     /**
      * The class options
@@ -107,23 +107,5 @@ class CronManager
             }
         }
         return $option;
-    }
-
-    public function initialize($ctx = 'web')
-    {
-        switch ($ctx) {
-            case 'mgr':
-                $this->modx->lexicon->load('cronmanager:default');
-
-                if (!$this->modx->loadClass('cronmanagerControllerRequest', $this->config['modelPath'] . 'cronmanager/request/', true, true)) {
-                    return 'Could not load controller request handler.';
-                }
-
-                $this->request = new cronmanagerControllerRequest($this);
-
-                return $this->request->handleRequest();
-                break;
-        }
-        return true;
     }
 }

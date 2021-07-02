@@ -62,6 +62,7 @@ foreach ($cronjobs as $cronjob) {
     } else {
         $properties = array();
     }
+    $properties['CronManager'] = '1';
 
     if ($cronmanager->getOption('debug')) {
         $modx->log(modX::LOG_LEVEL_ERROR, 'CronManager Job: ' . $cronjob->get('title') . ' (' . $cronjob->get('id') . ') properties: ' . print_r($properties, true), '', 'CronManager');

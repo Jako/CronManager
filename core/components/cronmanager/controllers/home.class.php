@@ -1,9 +1,9 @@
 <?php
 /**
- * Home Manager Controller class for CronManager
+ * Home controller
  *
  * @package cronmanager
- * @subpackage controller
+ * @subpackage controllers
  */
 
 /**
@@ -14,6 +14,9 @@ class CronManagerHomeManagerController extends modExtraManagerController
     /** @var CronManager $cronmanager */
     public $cronmanager;
 
+    /**
+     * {@inheritDoc}
+     */
     public function initialize()
     {
         $corePath = $this->modx->getOption('cronmanager.core_path', null, $this->modx->getOption('core_path') . 'components/cronmanager/');
@@ -22,6 +25,9 @@ class CronManagerHomeManagerController extends modExtraManagerController
         ));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function loadCustomCssJs()
     {
         $assetsUrl = $this->cronmanager->getOption('assetsUrl');
@@ -52,20 +58,36 @@ class CronManagerHomeManagerController extends modExtraManagerController
         </script>');
     }
 
+    /**
+     * {@inheritDoc}
+     * @return string[]
+     */
     public function getLanguageTopics()
     {
         return array('core:setting', 'cronmanager:default');
     }
 
+    /**
+     * {@inheritDoc}
+     * @param array $scriptProperties
+     */
     public function process(array $scriptProperties = array())
     {
     }
 
+    /**
+     * {@inheritDoc}
+     * @return string|null
+     */
     public function getPageTitle()
     {
         return $this->modx->lexicon('cronmanager');
     }
 
+    /**
+     * {@inheritDoc}
+     * @return string
+     */
     public function getTemplateFile()
     {
         return $this->cronmanager->getOption('templatesPath') . 'home.tpl';

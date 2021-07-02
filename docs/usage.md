@@ -65,7 +65,12 @@ Example: If you enter 15, the snippet would run every 15 minutes (when the
 cron.php file is called every minute). The snippet properties could contain
 key-value pairs (each on a new line in the format `key: value`), a JSON object
 or the name of a propertyset.
- 
+
+The snippet cannot be terminated with `exit()`, because the CronManager is also
+terminated with exit. So it cannot write any success or error message to the
+database. Since version 1.2.2 `CronManager: 1` is added as default snippet
+property to detect if the snippet is executed by CronManager.
+
 !!! caution 
     After adding a cronjob, it isn't active. You have to change the active state
     to yes in the `Active` column of the overview or check the checkbox in the 
