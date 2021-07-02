@@ -432,6 +432,10 @@ Example: If you enter 15, the snippet would run every 15 minutes (when the
 cron.php file is called every minute). The snippet properties could contain
 key-value pairs (each on a new line in the format <code>key: value</code>), a JSON object
 or the name of a propertyset.</p>
+<p>The snippet cannot be terminated with <code>exit()</code>, because the CronManager is also
+terminated with exit. So it cannot write any success or error message to the
+database. Since version 1.2.2 <code>CronManager: 1</code> is added as default snippet
+property to detect if the snippet is executed by CronManager.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>After adding a cronjob, it isn't active. You have to change the active state
@@ -494,7 +498,7 @@ edit window.</p>
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-          <div>&copy; 2019 <a href="https://treehillstudio.com">Treehill Studio</a></div>
+          <div>&copy; 2019-2021 <a href="https://treehillstudio.com">Treehill Studio</a></div>
         
         <div>powered by
           <a href="http://www.mkdocs.org" title="MkDocs">
