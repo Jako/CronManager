@@ -10,6 +10,22 @@
   margin-right: 1px;
 }
 
+.x-menu-no-icon .x-menu-list li {
+  border-bottom: 1px solid #eee;
+}
+
+.x-menu-no-icon .x-menu-list li a.x-menu-item {
+  padding: 5px 15px;
+}
+
+.x-menu-no-icon .x-menu-list li:last-child {
+  border-bottom: none;
+}
+
+.x-menu-no-icon .x-menu-item-icon {
+  display: none;
+}
+
 .modx-grid-small .x-grid3-cell-inner {
   padding: 8px 5px 8px 5px;
 }

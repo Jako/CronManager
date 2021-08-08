@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Get list cronjob
  *
@@ -23,7 +24,7 @@ class CronManagerCronjoblogsGetListProcessor extends modObjectGetListProcessor
         $query = $this->getProperty('query');
         if (!empty($query)) {
             $c->where(array(
-                'message.name:LIKE' => '%' . $query . '%'
+                '`modCronjobLog`.`message`:LIKE' => '%' . $query . '%'
             ));
         }
 

@@ -88,16 +88,26 @@ CronManager.grid.CronJobLog = function (config) {
             width: 30
         }],
         tbar: [{
-            xtype: 'tbsplit',
+            xtype: 'splitbutton',
             text: _('cronmanager.logs_actions'),
-            menu: [{
-                text: _('cronmanager.logs_purge_no_err'),
-                handler: this.purgeLogs,
-                scope: this
-            }],
-            handler: function (btn) {
-                btn.showMenu();
-            }
+            menu: new Ext.menu.Menu({
+                cls: 'x-menu-no-icon',
+                items: [
+                    {
+                        itemId: 'log-action-purge',
+                        text: _('cronmanager.logs_purge_no_err'),
+                        handler: this.purgeLogs,
+                        scope: this
+                    },{
+                        itemId: 'log-action-delete-selected',
+                        text: _('cronmanager.logs_delete_selected_one'),
+                        handler: this.deleteSelectedLogs,
+                        scope: this
+                    }
+                ]
+            }),
+            arrowHandler: this.setBulkActionsMenuState,
+            handler: this.setBulkActionsMenuState
         }, '->', {
             xtype: 'cronmanager-combo-error',
             submitValue: false,
@@ -163,44 +173,67 @@ CronManager.grid.CronJobLog = function (config) {
 };
 Ext.extend(CronManager.grid.CronJobLog, MODx.grid.Grid, {
     getMenu: function (cfg) {
-        var m = [];
-        if (this.getSelectionModel().getCount() > 1) {
-            // Multiple rows selected
-            var rs = this.getSelectionModel().getSelections();
-            m.push({
-                text: _('cronmanager.logs_delete_selected'),
-                handler: function () {
-                    var cs = this.getSelectedAsList();
-                    if (cs === false) {
+        var actions = [],
+            nSelected = this.getSelectionModel().getCount()
+            ;
+        actions.push({
+            text: _('cronmanager.log_view_full'),
+            handler: this.viewLog
+        });
+        if (nSelected >= 1) {
+            var actionTitle = nSelected > 1 ? _('cronmanager.logs_delete_selected') : _('cronmanager.logs_delete_selected_one') ;
+            actions.push({
+                text: actionTitle,
+                handler: function() {
+                    var selections = this.getSelectedAsList();
+                    if (!selections) {
                         return false;
                     }
                     MODx.msg.confirm({
-                        title: _('cronmanager.logs_delete_selected'),
-                        text: _('cronmanager.logs_delete_selected_confirm'),
+                        title: actionTitle,
+                        text: nSelected > 1 ? _('cronmanager.logs_delete_selected_confirm', {'n': nSelected}) : _('cronmanager.logs_delete_selected_confirm_one'),
                         url: this.config.url,
                         params: {
                             action: 'mgr/cronjoblogs/removeselected',
-                            ids: cs
+                            ids: selections
                         },
                         listeners: {
                             success: {
-                                fn: function (r) {
-                                    this.refresh();
+                                fn: function(e) {
+                                    this.refresh()
                                 },
                                 scope: this
                             }
                         }
-                    });
+                    })
                 }
             });
-        } else {
-            // Single row selected
-            m.push({
-                text: _('cronmanager.log_view_full'),
-                handler: this.viewLog
-            });
         }
-        this.addContextMenuItem(m);
+        this.addContextMenuItem(actions);
+    },
+    setBulkActionsMenuState: function (btn) {
+        var nSelected = this.getSelectionModel().getCount(),
+            menuItemPurge = btn.menu.getComponent('log-action-purge'),
+            menuItemDelete = btn.menu.getComponent('log-action-delete-selected'),
+            textDelete = nSelected > 1
+            ? _('cronmanager.logs_delete_selected')
+            : _('cronmanager.logs_delete_selected_one')
+            ;
+
+        // Disable delete selected if no selections made
+        if (nSelected >= 1) {
+            menuItemDelete.enable();
+        } else {
+            menuItemDelete.disable();
+        }
+        // Disable bulk purge if no records
+        if (this.getStore().getTotalCount() >= 1) {
+            menuItemPurge.enable();
+        } else {
+            menuItemPurge.disable();
+        }
+        menuItemDelete.setText(textDelete);
+        btn.showMenu();
     },
     viewLog: function (btn, e) {
         var fullLog = MODx.load({
@@ -238,6 +271,31 @@ Ext.extend(CronManager.grid.CronJobLog, MODx.grid.Grid, {
                 }
             }
         });
+    },
+    deleteSelectedLogs: function() {
+        var nSelected = this.getSelectionModel().getCount(),
+            selections = this.getSelectedAsList()
+            ;
+        if (selections === false) {
+            return false;
+        }
+        MODx.msg.confirm({
+            title: nSelected > 1 ? _('cronmanager.logs_delete_selected') : _('cronmanager.logs_delete_selected_one'),
+            text: nSelected > 1 ? _('cronmanager.logs_delete_selected_confirm', { 'n': nSelected }) : _('cronmanager.logs_delete_selected_confirm_one'),
+            url: this.config.url,
+            params: {
+                action: 'mgr/cronjoblogs/removeselected',
+                ids: selections
+            },
+            listeners: {
+                success: {
+                    fn: function(e) {
+                        this.refresh()
+                    },
+                    scope: this
+                }
+            }
+        })
     },
     search: function (tf) {
         var s = this.getStore();
@@ -289,7 +347,6 @@ Ext.extend(CronManager.grid.CronJobLog, MODx.grid.Grid, {
     }
 });
 Ext.reg('cronmanager-grid-cronjoblog', CronManager.grid.CronJobLog);
-
 
 CronManager.window.FullLog = function (config) {
     config = config || {};
