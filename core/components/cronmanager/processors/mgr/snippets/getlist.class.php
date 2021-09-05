@@ -38,7 +38,7 @@ class CronMananagerSnippetGetListProcessor extends modObjectGetListProcessor
 
     public function beforeIteration(array $list)
     {
-        if (!$this->getProperty('id') && $this->getProperty('combo', false)) {
+        if (!$this->getProperty('id') && $this->getProperty('combo', false) === 'true') {
             $empty = array(
                 'id' => '',
                 'pagetitle' => '',
@@ -52,7 +52,7 @@ class CronMananagerSnippetGetListProcessor extends modObjectGetListProcessor
     public function prepareRow(xPDOObject $object)
     {
         $ta = parent::prepareRow($object);
-        if ($this->getProperty('combo', false)) {
+        if ($this->getProperty('combo', false) === 'true') {
             $ta['name'] = $ta['name'] . ' (' . $ta['id'] . ')';
         }
 
