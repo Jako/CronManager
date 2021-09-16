@@ -21,13 +21,16 @@ class CronManagerPurgelogsProcessor extends modProcessor
             return $this->failure($this->modx->lexicon('cronmanager.log_cronjob_err_ns'));
         }
 
-        $c = $this->modx->newQuery('modCronjobLog');
-        $c->where(array('cronjob' => $cronjob));
+        $c = ['cronjob' => $cronjob];
         if ($error_only) {
-            $c->where(array('error' => 0));
+            $c['error'] = 0;
         }
 
         $total = $this->modx->removeCollection('modCronjobLog', $c);
+
+        if ($total === false) {
+            return $this->failure($this->modx->lexicon('cronmanager.logs_purge_db_err'));
+        }
 
         if ($total >= 1) {
             $response = $this->modx->lexicon('cronmanager.logs_purge_success', array('total' => $total));

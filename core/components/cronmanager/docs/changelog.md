@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.3] - 2021-09-16
+
+### Added
+
+- Run all cronjobs with one click on a button
+- Run single cronjobs via the context menu or the action button
+- Delete selected logs
+
+### Fixed
+
+- Purging the logs did not work [#45]
+- The cronjob log search did not work [#45]
+- Only the first CronManager job entry was executed
+
 ## [1.2.2] - 2021-07-02
 
 ### Changed

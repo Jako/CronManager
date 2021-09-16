@@ -30,7 +30,7 @@ class CronManager
      * The version
      * @var string $version
      */
-    public $version = '1.2.2';
+    public $version = '1.2.3';
 
     /**
      * The class options
@@ -72,12 +72,14 @@ class CronManager
             'jsUrl' => $assetsUrl . 'js/',
             'cssUrl' => $assetsUrl . 'css/',
             'imagesUrl' => $assetsUrl . 'images/',
-            'connectorUrl' => $assetsUrl . 'connector.php'
+            'connectorUrl' => $assetsUrl . 'connector.php',
+            'cronUrl' => $assetsUrl . 'cron.php'
         ), $options);
 
         // Add default options
         $this->options = array_merge($this->options, array(
-            'debug' => (bool)$this->getOption('debug', $options, false)
+            'debug' => (bool)$this->getOption('debug', $options, false),
+            'cronjob_id' => $this->getOption('cronjob_id', $options, false)
         ));
 
         $this->modx->addPackage($this->namespace, $this->getOption('modelPath'));

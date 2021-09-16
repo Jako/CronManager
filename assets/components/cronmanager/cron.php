@@ -33,13 +33,22 @@ $rundatetime = date('Y-m-d H:i:s');
 $success = true;
 
 // Get all cronjobs, wich needs to be runned
-$cronjobs = $modx->getCollection('modCronjob', array(
-    array(
-        'nextrun' => null,
-        'OR:nextrun:<=' => $rundatetime,
-    ),
+$c = $modx->newQuery('modCronjob');
+$c->where(array(
     'active' => true,
 ));
+if (!isset($_REQUEST['force']) || !$_REQUEST['force']) {
+    $c->where(array(
+        array(
+            'nextrun' => null,
+            'OR:nextrun:<=' => $rundatetime,
+        ),
+    ));
+}
+if (isset($_REQUEST['job']) && $_REQUEST['job']) {
+    $c->where(array('id' => intval($_REQUEST['job'])));
+}
+$cronjobs = $modx->getCollection('modCronjob', $c);
 /** @var modCronjob $cronjob */
 foreach ($cronjobs as $cronjob) {
     $properties = $cronjob->get('properties');
@@ -106,10 +115,17 @@ foreach ($cronjobs as $cronjob) {
     $cronjob->set('nextrun', date('Y-m-d H:i:s', (strtotime($rundatetime) + ($cronjob->get('minutes') * 60))));
     $cronjob->addMany($logs);
     $cronjob->save();
+}
 
-    if (php_sapi_name() != 'cli') {
+if (php_sapi_name() != 'cli') {
+    @session_write_close();
+    if (!isset($_REQUEST['force']) || !$_REQUEST['force']) {
         exit($rundatetime);
     } else {
-        exit($success ? 0:1);
+        exit(json_encode(array(
+            'success' => true
+        )));
     }
+} else {
+    exit($success ? 0 : 1);
 }

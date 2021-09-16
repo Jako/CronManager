@@ -23,7 +23,7 @@ class CronManagerCronjoblogsGetListProcessor extends modObjectGetListProcessor
         $query = $this->getProperty('query');
         if (!empty($query)) {
             $c->where(array(
-                'message.name:LIKE' => '%' . $query . '%'
+                'message:LIKE' => '%' . $query . '%'
             ));
         }
 

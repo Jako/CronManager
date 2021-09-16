@@ -80,6 +80,12 @@ CronManager.grid.CronJobs = function (config) {
             text: _('cronmanager.create'),
             cls: 'primary-button',
             handler: this.createCronjob
+        }, {
+            text: _('cronmanager.run_jobs'),
+            cls: 'secondary-button',
+            handler: function () {
+                this.runCronjobs();
+            }
         }, '->', {
             xtype: 'textfield',
             id: this.ident + '-cronmanager-filter-search',
@@ -131,6 +137,11 @@ Ext.extend(CronManager.grid.CronJobs, MODx.grid.Grid, {
         m.push({
             text: _('cronmanager.viewlog'),
             handler: this.viewLog
+        });
+        m.push('-');
+        m.push({
+            text: _('cronmanager.run_job'),
+            handler: this.runCronjob
         });
         m.push('-');
         m.push({
@@ -194,7 +205,41 @@ Ext.extend(CronManager.grid.CronJobs, MODx.grid.Grid, {
             }
         });
     },
-    viewLog: function (btn, e) {
+    runCronjob: function () {
+        if (!this.menu.record) {
+            return false;
+        }
+        this.runCronjobs(this.menu.record.id);
+    },
+    runCronjobs: function (id = 0) {
+        var params = {
+            cronjob_id: CronManager.config.cronjob_id,
+        };
+        if (id) {
+            Ext.apply(params, {job: id});
+        }
+        var url = CronManager.config.cronUrl + '?' + Ext.urlEncode(params);
+        Ext.apply(params, {force: true});
+        MODx.msg.confirm({
+            title: (id) ? _('cronmanager.run_job') : _('cronmanager.run_jobs'),
+            text: (id) ? _('cronmanager.run_job_confirm') : _('cronmanager.run_jobs_confirm', {
+                id: id
+            }),
+            url: CronManager.config.cronUrl,
+            params: params,
+            listeners: {
+                success: {
+                    fn: function (result) {
+                        Ext.MessageBox.alert(((id) ? _('cronmanager.job_started') : _('cronmanager.jobs_started')), url + '<br><br>' +
+                            ((id) ? _('cronmanager.job_started_message', {id: id}) : _('cronmanager.jobs_started_message')));
+                        this.refresh
+                    },
+                    scope: this
+                }
+            }
+        });
+    },
+    viewLog: function () {
         if (!this.menu.record || !this.menu.record.id) return false;
         location.href = '?a=logs&namespace=' + CronManager.config.namespace + '&id=' + this.menu.record.id;
     },
@@ -225,6 +270,11 @@ Ext.extend(CronManager.grid.CronJobs, MODx.grid.Grid, {
                     text: _('cronmanager.viewlog')
                 },
                 {
+                    className: 'run_job',
+                    icon: 'rocket',
+                    text: _('cronmanager.run_job')
+                },
+                {
                     className: 'remove',
                     icon: 'trash-o',
                     text: _('cronmanager.remove')
@@ -246,6 +296,9 @@ Ext.extend(CronManager.grid.CronJobs, MODx.grid.Grid, {
                     break;
                 case 'update':
                     this.updateCronjob(record, e);
+                    break;
+                case 'run_job':
+                    this.runCronjob(record, e);
                     break;
                 case 'viewlog':
                     this.viewLog(record, e);
@@ -296,7 +349,7 @@ CronManager.window.CreateUpdateCronjob = function (config) {
                         allowBlank: false,
                         allowNegative: false
                     }]
-                },{
+                }, {
                     columnWidth: .2,
                     layout: 'form',
                     items: [{
