@@ -72,6 +72,7 @@ while($cronjob = $modx->getObject('modCronjob', $c)) {
     } else {
         $properties = array();
     }
+    $properties['CronManager'] = '1';
     $properties['cronjob'] = $cronjob;
 
     if ($cronmanager->getOption('debug')) {
