@@ -48,9 +48,10 @@ if (!isset($_REQUEST['force']) || !$_REQUEST['force']) {
 if (isset($_REQUEST['job']) && $_REQUEST['job']) {
     $c->where(array('id' => intval($_REQUEST['job'])));
 }
-$cronjobs = $modx->getCollection('modCronjob', $c);
+$c->sortby('nextrun', 'ASC');
+$c->limit(1);
 /** @var modCronjob $cronjob */
-foreach ($cronjobs as $cronjob) {
+while($cronjob = $modx->getObject('modCronjob', $c)) {
     $properties = $cronjob->get('properties');
     if (!empty($properties)) {
         /** @var modPropertySet $propset */
@@ -72,6 +73,7 @@ foreach ($cronjobs as $cronjob) {
         $properties = array();
     }
     $properties['CronManager'] = '1';
+    $properties['CronManagerJob'] = $cronjob;
 
     if ($cronmanager->getOption('debug')) {
         $modx->log(modX::LOG_LEVEL_ERROR, 'CronManager Job: ' . $cronjob->get('title') . ' (' . $cronjob->get('id') . ') properties: ' . print_r($properties, true), '', 'CronManager');
