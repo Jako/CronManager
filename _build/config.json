@@ -3,7 +3,7 @@
   "lowCaseName": "cronmanager",
   "description": "Create and run cronjobs within the manager",
   "author": "Bert Oost, Thomas Jakobi",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "package": {
     "menus": [
       {
@@ -27,16 +27,6 @@
       }
     ]
   },
-  "dependencies": [
-    {
-      "name": "php",
-      "version": ">=5.6"
-    },
-    {
-      "name": "modx",
-      "version": ">=2.6"
-    }
-  ],
   "database": {
     "tables": [
       "modCronjob",

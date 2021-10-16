@@ -4,8 +4,8 @@
   "author": "Thomas Jakobi <thomas.jakobi@partout.info>",
   "private": true,
   "devDependencies": {
-    "@lodder/grunt-postcss": "^3.0.1",
-    "autoprefixer": "^10.3.6",
+    "@lodder/grunt-postcss": "^3.1.0",
+    "autoprefixer": "^10.3.7",
     "grunt": "^1.4.1",
     "grunt-banner": "^0.6.0",
     "grunt-contrib-cssmin": "^4.0.0",
