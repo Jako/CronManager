@@ -469,7 +469,11 @@ or the name of a propertyset.</p>
 <p>The snippet cannot be terminated with <code>exit()</code>, because the CronManager is also
 terminated with exit. So it cannot write any success or error message to the
 database. Since version 1.2.2 <code>CronManager: 1</code> is added as default snippet
-property to detect if the snippet is executed by CronManager.</p>
+property to detect if the snippet is executed by CronManager. Since version
+1.2.4, the current modCronjob instance is passed as snippet property
+<code>CronManagerJob</code> to the executed snippet. This way the snippet can determine,
+which job triggered it, it can change and save the modCronjob instance to i.e.
+disable the cron job.</p>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
 <p>After adding a cronjob, it isn't active. You have to change the active state
