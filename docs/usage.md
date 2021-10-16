@@ -69,10 +69,10 @@ or the name of a propertyset.
 The snippet cannot be terminated with `exit()`, because the CronManager is also
 terminated with exit. So it cannot write any success or error message to the
 database. Since version 1.2.2 `CronManager: 1` is added as default snippet
-property to detect if the snippet is executed by CronManager. Since version 
-1.2.4, the current modCronjob instance is passed as snippet property 
-`CronManagerJob` to the executed snippet. This way the snippet can determine, 
-which job triggered it, it can change and save the modCronjob instance to i.e. 
+property to detect if the snippet is executed by CronManager. Since version
+1.2.4, the current modCronjob instance is passed as snippet property
+`CronManagerJob` to the executed snippet. This way the snippet can determine,
+which job triggered it, it can change and save the modCronjob instance to i.e.
 disable the cron job.
 
 !!! caution 
