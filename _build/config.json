@@ -3,7 +3,7 @@
   "lowCaseName": "cronmanager",
   "description": "Create and run cronjobs within the manager",
   "author": "Bert Oost, Thomas Jakobi",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "package": {
     "menus": [
       {
@@ -24,6 +24,12 @@
         "key": "cronjob_id",
         "area": "system",
         "value": ""
+      },
+      {
+        "key": "pass_modcronjob",
+        "type": "combo-boolean",
+        "area": "system",
+        "value": "0"
       }
     ]
   },

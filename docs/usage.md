@@ -67,13 +67,14 @@ key-value pairs (each on a new line in the format `key: value`), a JSON object
 or the name of a propertyset.
 
 The snippet cannot be terminated with `exit()`, because the CronManager is also
-terminated with exit. So it cannot write any success or error message to the
-database. Since version 1.2.2 `CronManager: 1` is added as default snippet
+terminated with this exit. So it cannot write any success or error message to
+the database. Since version 1.2.2 `CronManager: 1` is added as default snippet
 property to detect if the snippet is executed by CronManager. Since version
-1.2.4, the current modCronjob instance is passed as snippet property
-`CronManagerJob` to the executed snippet. This way the snippet can determine,
-which job triggered it, it can change and save the modCronjob instance to i.e.
-disable the cron job.
+1.2.4, the current modCronjob instance can be passed as snippet property
+`CronManagerJob` to the executed snippet. This has to be enabled with the
+`cronmanager.pass_modcronjob` MODX system seetting. This way the snippet can
+determine, which job triggered it, it can change and save the modCronjob
+instance to i.e. disable the cron job.
 
 !!! caution 
     After adding a cronjob, it isn't active. You have to change the active state
