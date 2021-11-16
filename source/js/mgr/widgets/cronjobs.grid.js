@@ -222,9 +222,9 @@ Ext.extend(CronManager.grid.CronJobs, MODx.grid.Grid, {
         Ext.apply(params, {force: true});
         MODx.msg.confirm({
             title: (id) ? _('cronmanager.run_job') : _('cronmanager.run_jobs'),
-            text: (id) ? _('cronmanager.run_job_confirm') : _('cronmanager.run_jobs_confirm', {
+            text: (id) ? _('cronmanager.run_job_confirm', {
                 id: id
-            }),
+            }) : _('cronmanager.run_jobs_confirm'),
             url: CronManager.config.cronUrl,
             params: params,
             listeners: {

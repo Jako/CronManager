@@ -11,7 +11,7 @@
 // For access without authorization
 define('MODX_REQP', false);
 
-require_once dirname(dirname(dirname(dirname(__FILE__)))) . '/config.core.php';
+require_once dirname(__FILE__, 4) . '/config.core.php';
 require_once MODX_CORE_PATH . 'config/' . MODX_CONFIG_KEY . '.inc.php';
 require_once MODX_CONNECTORS_PATH . 'index.php';
 
@@ -25,7 +25,7 @@ $cronmanager = $modx->getService('cronmanager', 'CronManager', $corePath . 'mode
 if (php_sapi_name() != 'cli' &&
     (!isset($_REQUEST['cronjob_id']) || $_REQUEST['cronjob_id'] !== $cronmanager->getOption('cronjob_id'))
 ) {
-    $modx->log(modX::LOG_LEVEL_ERROR, 'The request parameter for cron.php is not set or not equal to the system setting cronmanager.cronjob_id.', '', 'CronManager');
+    $modx->log(xPDO::LOG_LEVEL_ERROR, 'The request parameter for cron.php is not set or not equal to the system setting cronmanager.cronjob_id.', '', 'CronManager');
     return '';
 }
 
@@ -48,15 +48,18 @@ if (!isset($_REQUEST['force']) || !$_REQUEST['force']) {
 if (isset($_REQUEST['job']) && $_REQUEST['job']) {
     $c->where(array('id' => intval($_REQUEST['job'])));
 }
-$c->sortby('nextrun', 'ASC');
+$c->sortby('nextrun');
 $c->limit(1);
+$c->prepare();
+$test = $c->toSQL();
+
 /** @var modCronjob $cronjob */
 while ($cronjob = $modx->getObject('modCronjob', $c)) {
     $properties = $cronjob->get('properties');
     if (!empty($properties)) {
         /** @var modPropertySet $propset */
         $propset = $modx->getObject('modPropertySet', array('name' => $properties));
-        if (!empty($propset) && is_object($propset) && $propset instanceof modPropertySet) {
+        if (!empty($propset) && $propset instanceof modPropertySet) {
             $properties = $propset->getProperties();
         } elseif (json_decode($properties)) {
             $tempProps = json_decode($properties, true);
@@ -78,7 +81,7 @@ while ($cronjob = $modx->getObject('modCronjob', $c)) {
     }
 
     if ($cronmanager->getOption('debug')) {
-        $modx->log(modX::LOG_LEVEL_ERROR, 'CronManager Job: ' . $cronjob->get('title') . ' (' . $cronjob->get('id') . ') properties: ' . print_r($properties, true), '', 'CronManager');
+        $modx->log(xPDO::LOG_LEVEL_ERROR, 'CronManager Job: ' . $cronjob->get('title') . ' (' . $cronjob->get('id') . ') properties: ' . print_r($properties, true), '', 'CronManager');
     }
     $modx->resource = $modx->getObject('modResource', $modx->getOption('site_start'));
 
@@ -86,9 +89,9 @@ while ($cronjob = $modx->getObject('modCronjob', $c)) {
     $snippet = $cronjob->getOne('Snippet');
     /**
      * The snippet should output a json array: array('error' => boolean,
-     * 'message' => string), if not, the output will be set as message.
-     * This will allow to define if an error occurred and ease the process of
-     * filtering logs
+     * 'message' => string). If this is not the case, the snippet output is set
+     * as message. This makes it possible to indicate in the snippet output
+     * whether an error has occurred. This makes it easier to filter logs.
      */
     try {
         $response = $snippet->process($properties);
@@ -97,7 +100,7 @@ while ($cronjob = $modx->getObject('modCronjob', $c)) {
         } else {
             $response = array(
                 'error' => false,
-                'message' => ($response) ? $response : 'No snippet output!'
+                'message' => ($response) ?: 'No snippet output!'
             );
         }
     } catch (Exception $e) {
@@ -119,7 +122,16 @@ while ($cronjob = $modx->getObject('modCronjob', $c)) {
     $cronjob->set('nextrun', date('Y-m-d H:i:s', (strtotime($rundatetime) + ($cronjob->get('minutes') * 60))));
     $cronjob->addMany($logs);
     $cronjob->save();
-}
+
+    if (isset($_REQUEST['force']) || $_REQUEST['force']) {
+        $c->where(array(
+            array(
+                'nextrun' => null,
+                'OR:nextrun:<=' => $rundatetime,
+            ),
+        ));
+    }
+};
 
 if (php_sapi_name() != 'cli') {
     @session_write_close();
