@@ -123,7 +123,7 @@ while ($cronjob = $modx->getObject('modCronjob', $c)) {
     $cronjob->addMany($logs);
     $cronjob->save();
 
-    if (isset($_REQUEST['force']) || $_REQUEST['force']) {
+    if (isset($_REQUEST['force']) && $_REQUEST['force']) {
         $c->where(array(
             array(
                 'nextrun' => null,
@@ -135,12 +135,12 @@ while ($cronjob = $modx->getObject('modCronjob', $c)) {
 
 if (php_sapi_name() != 'cli') {
     @session_write_close();
-    if (!isset($_REQUEST['force']) || !$_REQUEST['force']) {
-        exit($rundatetime);
-    } else {
+    if (isset($_REQUEST['force']) && $_REQUEST['force']) {
         exit(json_encode(array(
             'success' => true
         )));
+    } else {
+        exit($rundatetime);
     }
 } else {
     exit($success ? 0 : 1);
