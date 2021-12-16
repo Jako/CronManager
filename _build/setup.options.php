@@ -20,7 +20,7 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
         $output .= '<h2>Install CronManager</h2>
 
         <p>Thanks for installing CronManager. This open source extra was
-        developped by OostDesign and is developped further by Treehill Studio -
+        developed by OostDesign and is developed further by Treehill Studio -
         MODX development in Münsterland.</p>
 
         <p>During the installation, we will collect some statistical data (the
@@ -36,8 +36,8 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
     case xPDOTransport::ACTION_UPGRADE:
         $output .= '<h2>Upgrade CronManager</h2>
 
-        <p>CronManager will be upgraded. This open source extra was developped
-        by OostDesign and is developped further by Treehill Studio - MODX
+        <p>CronManager will be upgraded. This open source extra was developed
+        by OostDesign and is developed further by Treehill Studio - MODX
         development in Münsterland.</p>
 
         During the upgrade, we will collect some statistical data (the hostname,
