@@ -131,7 +131,7 @@ while ($cronjob = $modx->getObject('modCronjob', $c)) {
             ),
         ));
     }
-};
+}
 
 if (php_sapi_name() != 'cli') {
     @session_write_close();

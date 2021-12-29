@@ -38,9 +38,9 @@ CronManager.panel.Home = function (config) {
             listeners: {
                 afterrender: function (component) {
                     component.getEl().select('img').on('click', function () {
-                        var msg = '<span style="display: inline-block; text-align: center">© 2011-2019 by <a href="https://oostdesign.com/" target="_blank">OostDesign</a><br>' +
+                        var msg = '<span style="display: inline-block; text-align: center">&copy; 2011-2019 by <a href="https://oostdesign.com/" target="_blank">OostDesign</a><br>' +
                             '<img src="' + CronManager.config.assetsUrl + 'img/mgr/treehill-studio.png" srcset="' + CronManager.config.assetsUrl + 'img/mgr/treehill-studio@2x.png 2x" alt="Treehill Studio" style="margin-top: 10px"><br>' +
-                            '© 2019-2021 by <a href="https://treehillstudio.com" target="_blank">Treehill Studio</a>' +
+                            '&copy; 2019-2021 by <a href="https://treehillstudio.com" target="_blank">Treehill Studio</a>' +
                             '</span>';
                         Ext.Msg.show({
                             title: _('cronmanager') + ' ' + CronManager.config.version,
