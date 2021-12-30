@@ -1,0 +1,30 @@
+{
+  "name": "treehillstudio/cronmanager",
+  "description": "Create and run cronjobs within the manager",
+  "authors": [
+    {
+      "name": "Bert Oost",
+      "email": "bert@oostdesign.com",
+      "homepage": "https://github.com/bertoost"
+    },
+    {
+      "name": "Thomas Jakobi",
+      "email": "office@treehillstudio.com",
+      "homepage": "https://treehillstudio.com"
+    }
+  ],
+  "license": "proprietary",
+  "config": {
+    "platform": {
+      "php": "5.6"
+    }
+  },
+  "require": {
+    "php": ">=5.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "TreehillStudio\\CronManager\\": "src/"
+    }
+  }
+}

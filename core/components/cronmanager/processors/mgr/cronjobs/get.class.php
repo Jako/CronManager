@@ -9,9 +9,11 @@
 class CronManagerCronjobGetProcessor extends modObjectGetProcessor
 {
     public $classKey = 'modCronjob';
-    public $languageTopics = array('cronmanager:default');
     public $objectType = 'cronmanager.cronjob';
 
+    /**
+     * {@inheritDoc}
+     */
     public function beforeOutput()
     {
         $snippet = $this->object->getOne('Snippet');

@@ -17,7 +17,7 @@ if ($object->xpdo) {
             /** @var modX $modx */
             $modx = &$object->xpdo;
             /** @var modSystemSetting $settingObject */
-            $settingObject = $modx->getObject('modSystemSetting', array('key' => 'cronmanager.cronjob_id'));
+            $settingObject = $modx->getObject('modSystemSetting', ['key' => 'cronmanager.cronjob_id']);
             if ($settingObject) {
                 if ($settingObject->get('value') == '') {
                     $settingObject->set('value', md5(time()));

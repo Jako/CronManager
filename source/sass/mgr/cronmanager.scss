@@ -153,7 +153,7 @@ $borderRadius: 3px;
   pointer-events: none;
   position: absolute;
   width: 180px;
-  z-index: 10;
+  z-index: 15;
   &:before,
   &:after {
     border: 5px solid mix(#000000, $red, 15);
@@ -198,3 +198,5 @@ $borderRadius: 3px;
     width: 300px;
   }
 }
+
+@import 'modx3';

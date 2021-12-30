@@ -3,13 +3,14 @@
  * Remove selected cronjobs
  *
  * @package cronmanager
- * @subpackage processor
+ * @subpackage processors
  */
 
-class CronManagerCronjobRemoveselectedProcessor extends modProcessor
+use TreehillStudio\CronManager\Processors\Processor;
+
+class CronManagerCronjobRemoveselectedProcessor extends Processor
 {
-    public $languageTopics = array('cronmanager:default');
-    public $objectType = 'cronmanager.cronjob';
+    public $languageTopics = ['cronmanager:default'];
 
     public function process()
     {

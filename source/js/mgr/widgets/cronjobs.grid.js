@@ -18,13 +18,14 @@ CronManager.grid.CronJobs = function (config) {
         baseParams: {
             action: 'mgr/cronjobs/getlist'
         },
-        save_action: 'mgr/cronjobs/updatefromgrid',
         autosave: true,
+        save_action: 'mgr/cronjobs/updateFromGrid',
         fields: ['id', 'snippet', 'snippet_name', 'properties', 'minutes', 'nextrun', 'lastrun', 'active', 'sortorder'],
         paging: true,
         remoteSort: true,
         autoExpandColumn: 'snippet',
         emptyText: _('cronmanager.norecords'),
+        showActionsColumn: false,
         columns: [{
             header: _('cronmanager.snippet'),
             dataIndex: 'snippet_name',

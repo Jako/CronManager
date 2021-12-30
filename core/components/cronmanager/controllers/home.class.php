@@ -20,9 +20,9 @@ class CronManagerHomeManagerController extends modExtraManagerController
     public function initialize()
     {
         $corePath = $this->modx->getOption('cronmanager.core_path', null, $this->modx->getOption('core_path') . 'components/cronmanager/');
-        $this->cronmanager = $this->modx->getService('cronmanager', 'CronManager', $corePath . 'model/cronmanager/', array(
+        $this->cronmanager = $this->modx->getService('cronmanager', 'CronManager', $corePath . 'model/cronmanager/', [
             'core_path' => $corePath
-        ));
+        ]);
     }
 
     /**
@@ -64,14 +64,14 @@ class CronManagerHomeManagerController extends modExtraManagerController
      */
     public function getLanguageTopics()
     {
-        return array('core:setting', 'cronmanager:default');
+        return ['core:setting', 'cronmanager:default'];
     }
 
     /**
      * {@inheritDoc}
      * @param array $scriptProperties
      */
-    public function process(array $scriptProperties = array())
+    public function process(array $scriptProperties = [])
     {
     }
 

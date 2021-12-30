@@ -1,7 +1,7 @@
 CronManager.panel.Home = function (config) {
     config = config || {};
     Ext.applyIf(config, {
-        cls: 'container home-panel' + ((CronManager.config.debug) ? ' debug' : ''),
+        cls: 'container home-panel' + ((CronManager.config.debug) ? ' debug' : '') + ' modx' + CronManager.config.modxversion,
         defaults: {
             collapsible: false,
             autoHeight: true

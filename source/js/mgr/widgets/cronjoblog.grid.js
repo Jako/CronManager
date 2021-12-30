@@ -32,6 +32,7 @@ CronManager.grid.CronJobLog = function (config) {
         pluralText: _('cronmanager.log_messages'),
         sm: this.sm,
         emptyText: _('cronmanager.log.norecords'),
+        showActionsColumn: false,
         columns: [this.sm, {
             header: _('cronmanager.log_error'),
             dataIndex: 'error',

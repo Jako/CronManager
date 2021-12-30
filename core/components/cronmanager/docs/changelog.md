@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fix undefined array key warning [#49]
 
+### Changed
+
+- Code refactoring
+- Full MODX 3 compatibility
+
 ## [1.2.5] - 2021-11-11
 
 ### Fixed

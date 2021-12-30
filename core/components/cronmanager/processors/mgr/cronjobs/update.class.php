@@ -3,15 +3,19 @@
  * Update cronjob
  *
  * @package cronmanager
- * @subpackage processor
+ * @subpackage processors
  */
 
-class CronManagerCronjobUpdateProcessor extends modObjectUpdateProcessor
+use TreehillStudio\CronManager\Processors\ObjectUpdateProcessor;
+
+class CronManagerCronjobUpdateProcessor extends ObjectUpdateProcessor
 {
     public $classKey = 'modCronjob';
-    public $languageTopics = array('cronmanager:default');
     public $objectType = 'cronmanager.cronjob';
 
+    /**
+     * @return bool
+     */
     public function beforeSave()
     {
         $this->object->set('minutes', $this->getProperty('minutes', 1));

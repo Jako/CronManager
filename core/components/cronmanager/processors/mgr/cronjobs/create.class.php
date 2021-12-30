@@ -1,17 +1,22 @@
 <?php
 /**
- * Create cronjob
+ * Create Cronjob
  *
  * @package cronmanager
- * @subpackage processor
+ * @subpackage processors
  */
 
-class CronManagerCronjobCreateProcessor extends modObjectCreateProcessor
+use TreehillStudio\CronManager\Processors\ObjectCreateProcessor;
+
+class CronManagerCronjobCreateProcessor extends ObjectCreateProcessor
 {
     public $classKey = 'modCronjob';
-    public $languageTopics = array('cronmanager:default');
     public $objectType = 'cronmanager.cronjob';
 
+    /**
+     * {@inheritDoc}
+     * @return bool
+     */
     public function beforeSave()
     {
         $this->object->set('minutes', $this->getProperty('minutes', 1));

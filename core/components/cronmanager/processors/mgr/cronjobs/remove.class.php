@@ -3,13 +3,14 @@
  * Remove cronjob
  *
  * @package cronmanager
- * @subpackage processor
+ * @subpackage processors
  */
 
-class CronManagerCronjobRemoveProcessor extends modObjectRemoveProcessor
+use TreehillStudio\CronManager\Processors\ObjectRemoveProcessor;
+
+class CronManagerCronjobRemoveProcessor extends ObjectRemoveProcessor
 {
     public $classKey = 'modCronjob';
-    public $languageTopics = array('cronmanager:default');
     public $objectType = 'cronmanager.cronjob';
 }
 

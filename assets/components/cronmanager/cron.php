@@ -17,9 +17,9 @@ require_once MODX_CONNECTORS_PATH . 'index.php';
 
 $corePath = $modx->getOption('cronmanager.core_path', null, $modx->getOption('core_path') . 'components/cronmanager/');
 /** @var CronManager $cronmanager */
-$cronmanager = $modx->getService('cronmanager', 'CronManager', $corePath . 'model/cronmanager/', array(
+$cronmanager = $modx->getService('cronmanager', 'CronManager', $corePath . 'model/cronmanager/', [
     'core_path' => $corePath
-));
+]);
 
 // Check cronjob_id in no cli mode
 if (php_sapi_name() != 'cli' &&
@@ -34,19 +34,19 @@ $success = true;
 
 // Get all cronjobs, wich needs to be runned
 $c = $modx->newQuery('modCronjob');
-$c->where(array(
+$c->where([
     'active' => true,
-));
+]);
 if (!isset($_REQUEST['force']) || !$_REQUEST['force']) {
-    $c->where(array(
-        array(
+    $c->where([
+        [
             'nextrun' => null,
             'OR:nextrun:<=' => $rundatetime,
-        ),
-    ));
+        ],
+    ]);
 }
 if (isset($_REQUEST['job']) && $_REQUEST['job']) {
-    $c->where(array('id' => intval($_REQUEST['job'])));
+    $c->where(['id' => intval($_REQUEST['job'])]);
 }
 $c->sortby('nextrun');
 $c->limit(1);
@@ -58,22 +58,22 @@ while ($cronjob = $modx->getObject('modCronjob', $c)) {
     $properties = $cronjob->get('properties');
     if (!empty($properties)) {
         /** @var modPropertySet $propset */
-        $propset = $modx->getObject('modPropertySet', array('name' => $properties));
+        $propset = $modx->getObject('modPropertySet', ['name' => $properties]);
         if (!empty($propset) && $propset instanceof modPropertySet) {
             $properties = $propset->getProperties();
         } elseif (json_decode($properties)) {
             $tempProps = json_decode($properties, true);
-            $properties = (!empty($tempProps) && is_array($tempProps)) ? $tempProps : array();
+            $properties = (!empty($tempProps) && is_array($tempProps)) ? $tempProps : [];
         } else {
             $lines = explode("\n", $properties);
-            $properties = array();
+            $properties = [];
             foreach ($lines as $line) {
                 list($key, $value) = explode(':', $line);
                 $properties[trim($key)] = trim($value);
             }
         }
     } else {
-        $properties = array();
+        $properties = [];
     }
     $properties['CronManager'] = '1';
     if ($cronmanager->getOption('pass_modcronjob')) {
@@ -98,16 +98,16 @@ while ($cronjob = $modx->getObject('modCronjob', $c)) {
         if (json_decode($response)) {
             $response = json_decode($response, true);
         } else {
-            $response = array(
+            $response = [
                 'error' => false,
                 'message' => ($response) ?: 'No snippet output!'
-            );
+            ];
         }
     } catch (Exception $e) {
-        $response = array(
+        $response = [
             'error' => true,
             'message' => 'Error: ' . $e->getMessage(),
-        );
+        ];
         $success = false;
     }
 
@@ -116,7 +116,7 @@ while ($cronjob = $modx->getObject('modCronjob', $c)) {
     $log = $modx->newObject('modCronjobLog');
     $log->fromArray($response);
     $log->set('logdate', $rundatetime);
-    $logs = array($log);
+    $logs = [$log];
 
     $cronjob->set('lastrun', $rundatetime);
     $cronjob->set('nextrun', date('Y-m-d H:i:s', (strtotime($rundatetime) + ($cronjob->get('minutes') * 60))));
@@ -124,21 +124,21 @@ while ($cronjob = $modx->getObject('modCronjob', $c)) {
     $cronjob->save();
 
     if (isset($_REQUEST['force']) && $_REQUEST['force']) {
-        $c->where(array(
-            array(
+        $c->where([
+            [
                 'nextrun' => null,
                 'OR:nextrun:<=' => $rundatetime,
-            ),
-        ));
+            ],
+        ]);
     }
 }
 
 if (php_sapi_name() != 'cli') {
     @session_write_close();
     if (isset($_REQUEST['force']) && $_REQUEST['force']) {
-        exit(json_encode(array(
+        exit(json_encode([
             'success' => true
-        )));
+        ]));
     } else {
         exit($rundatetime);
     }

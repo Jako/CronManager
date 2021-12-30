@@ -14,14 +14,20 @@ class CronManagerLogsManagerController extends modExtraManagerController
     /** @var CronManager $cronmanager */
     public $cronmanager;
 
+    /**
+     * {@inheritDoc}
+     */
     public function initialize()
     {
         $corePath = $this->modx->getOption('cronmanager.core_path', null, $this->modx->getOption('core_path') . 'components/cronmanager/');
-        $this->cronmanager = $this->modx->getService('cronmanager', 'CronManager', $corePath . 'model/cronmanager/', array(
+        $this->cronmanager = $this->modx->getService('cronmanager', 'CronManager', $corePath . 'model/cronmanager/', [
             'core_path' => $corePath
-        ));
+        ]);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function loadCustomCssJs()
     {
         $assetsUrl = $this->cronmanager->getOption('assetsUrl');
@@ -52,20 +58,36 @@ class CronManagerLogsManagerController extends modExtraManagerController
         </script>');
     }
 
+    /**
+     * {@inheritDoc}
+     * @return string[]
+     */
     public function getLanguageTopics()
     {
-        return array('core:setting', 'cronmanager:default');
+        return ['core:setting', 'cronmanager:default'];
     }
 
-    public function process(array $scriptProperties = array())
+    /**
+     * {@inheritDoc}
+     * @param array $scriptProperties
+     */
+    public function process(array $scriptProperties = [])
     {
     }
 
+    /**
+     * {@inheritDoc}
+     * @return string|null
+     */
     public function getPageTitle()
     {
         return $this->modx->lexicon('cronmanager');
     }
 
+    /**
+     * {@inheritDoc}
+     * @return string
+     */
     public function getTemplateFile()
     {
         return $this->cronmanager->getOption('templatesPath') . 'logs.tpl';

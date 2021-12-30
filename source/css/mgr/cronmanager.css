@@ -13,15 +13,12 @@
 .x-menu-no-icon .x-menu-list li {
   border-bottom: 1px solid #eee;
 }
-
 .x-menu-no-icon .x-menu-list li a.x-menu-item {
   padding: 5px 15px;
 }
-
 .x-menu-no-icon .x-menu-list li:last-child {
   border-bottom: none;
 }
-
 .x-menu-no-icon .x-menu-item-icon {
   display: none;
 }
@@ -29,47 +26,36 @@
 .modx-grid-small .x-grid3-cell-inner {
   padding: 8px 5px 8px 5px;
 }
-
 .modx-grid-small .x-grid3-hd-inner {
   padding: 8px 18px 8px 5px;
 }
-
 .modx-grid-small .x-grid3-td-checker {
   padding: 6px 0 0;
 }
-
 .modx-grid-small .x-grid3-td-checker.x-grid3-hd {
   padding-top: 0;
 }
-
 .modx-grid-small .x-panel-tbar .x-toolbar {
   padding-top: 2px;
 }
-
 .modx-grid-small .x-panel-tbar .x-toolbar.x-small-editor .x-form-text {
   padding: 3px 8px 2px 8px;
 }
-
 .modx-grid-small .x-panel-tbar .x-toolbar .x-btn {
   padding: 4px 10px 4px 10px;
 }
-
 .modx-grid-small .x-panel-bbar .x-toolbar .x-btn {
   padding: 2px 2px;
 }
-
 .modx-grid-small .x-panel-bbar .x-toolbar .x-form-text {
   padding: 2px 3px;
 }
-
 .modx-grid-small .x-tbar-loading:before {
   line-height: 16px;
 }
-
 .modx-grid-small .x-tbar-page-last:before, .modx-grid-small .x-tbar-page-next:before, .modx-grid-small .x-tbar-page-prev:before, .modx-grid-small .x-tbar-page-first:before {
   line-height: 16px;
 }
-
 .modx-grid-small .x-btn-icon.arrow_up button:before, .modx-grid-small .x-btn-icon.arrow_down button:before, .modx-grid-small .x-btn-icon.refresh button:before {
   line-height: 16px;
 }
@@ -77,14 +63,12 @@
 .action-buttons {
   text-align: center;
 }
-
 .action-buttons li {
   display: inline-block;
   font-size: 1.1em;
-  line-height: .7;
+  line-height: 0.7;
   margin-right: 5px;
 }
-
 .action-buttons li:last-child {
   margin-right: 0;
 }
@@ -96,11 +80,9 @@
   transition: opacity 0.5s;
   margin-top: 20px;
 }
-
 .treehillstudio_about:hover {
   opacity: 1;
 }
-
 .treehillstudio_about .x-panel-body {
   text-align: right;
 }
@@ -109,7 +91,6 @@
   color: #b2bf28;
   text-decoration: none;
 }
-
 .treehillstudio_window a:hover {
   color: #77801a;
 }
@@ -130,54 +111,61 @@
   pointer-events: none;
   position: absolute;
   width: 180px;
-  z-index: 10;
+  z-index: 15;
 }
-
 .ribbon:before, .ribbon:after {
   border: 5px solid #a20000;
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   z-index: -1;
 }
-
 .ribbon.top-right {
   right: -10px;
   top: -10px;
 }
-
 .ribbon.top-right:before, .ribbon.top-right:after {
   border-right-color: transparent;
   border-top-color: transparent;
 }
-
 .ribbon.top-right:before {
   left: 0;
   top: 0;
 }
-
 .ribbon.top-right:after {
   bottom: 0;
   right: 0;
 }
-
 .ribbon.top-right span {
   left: -46px;
   top: 46px;
-  -ms-transform: rotate(45deg);
-      transform: rotate(45deg);
+  transform: rotate(45deg);
 }
-
 .ribbon span {
   background-color: #be0000;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   color: #ffffff;
   display: block;
-  font: 700 18px/1 'Lato', sans-serif;
+  font: 700 18px/1 "Lato", sans-serif;
   padding: 15px 0;
   position: absolute;
   text-align: center;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   text-transform: uppercase;
   width: 300px;
+}
+
+@media screen and (min-width: 961px) {
+  #modx-content > .x-panel-bwrap > .x-panel-body > .x-panel.modx3.debug {
+    margin-right: 15px;
+  }
+  #modx-content > .x-panel-bwrap > .x-panel-body > .x-panel.modx3.debug .modx-page-header {
+    padding-right: 0;
+  }
+  #modx-content > .x-panel-bwrap > .x-panel-body > .x-panel.modx3.debug .modx-page-header ~ .x-panel {
+    margin-right: 0;
+  }
+  #modx-content > .x-panel-bwrap > .x-panel-body > .x-panel.modx3 .treehillstudio_about {
+    margin: 0 15px;
+  }
 }

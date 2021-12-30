@@ -6,11 +6,11 @@
  * @subpackage processor
  */
 
-class CronManagerPurgelogsProcessor extends modProcessor
+use TreehillStudio\CronManager\Processors\Processor;
+
+class CronManagerPurgelogsProcessor extends Processor
 {
-    public $classKey = 'modCronjob';
-    public $languageTopics = array('cronmanager:default');
-    public $objectType = 'cronmanager.cronjob';
+    public $languageTopics = ['cronmanager:default'];
 
     public function process()
     {
@@ -33,7 +33,7 @@ class CronManagerPurgelogsProcessor extends modProcessor
         }
 
         if ($total >= 1) {
-            $response = $this->modx->lexicon('cronmanager.logs_purge_success', array('total' => $total));
+            $response = $this->modx->lexicon('cronmanager.logs_purge_success', ['total' => $total]);
         } else {
             $response = $this->modx->lexicon('cronmanager.logs_purge_nothing');
         }

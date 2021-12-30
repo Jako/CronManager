@@ -1,40 +1,48 @@
 <?php
 /**
- * Get list cronjob
+ * Get list cronjob log
  *
  * @package cronmanager
- * @subpackage processor
+ * @subpackage processors
  */
 
-class CronManagerCronjoblogsGetListProcessor extends modObjectGetListProcessor
+use TreehillStudio\CronManager\Processors\ObjectGetListProcessor;
+
+class CronManagerCronjoblogsGetListProcessor extends ObjectGetListProcessor
 {
     public $classKey = 'modCronjobLog';
-    public $languageTopics = array('cronmanager:default');
     public $defaultSortField = 'id';
     public $defaultSortDirection = 'DESC';
     public $objectType = 'cronmanager.modcronjoblog';
 
+    protected $search = ['message'];
+    protected $nameField = 'cronjob';
+
+    /**
+     * {@inheritDoc}
+     * @param xPDOQuery $c
+     * @return xPDOQuery
+     */
     public function prepareQueryBeforeCount(xPDOQuery $c)
     {
-        $c->where(array(
-            'cronjob' => $this->getProperty('cronjob')
-        ));
+        $c = parent::prepareQueryBeforeCount($c);
 
-        $query = $this->getProperty('query');
-        if (!empty($query)) {
-            $c->where(array(
-                'message:LIKE' => '%' . $query . '%'
-            ));
-        }
+        $c->where([
+            'cronjob' => $this->getProperty('cronjob')
+        ]);
 
         $error = $this->getProperty('error', 'all');
         if ($error != 'all') {
-            $c->where(array('error' => $error));
+            $c->where(['error' => $error]);
         }
 
         return $c;
     }
 
+    /**
+     * @param xPDOObject $object
+     * @return array
+     */
     public function prepareRow(xPDOObject $object)
     {
         $ta = $object->toArray('', false, true);

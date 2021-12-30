@@ -109,10 +109,10 @@ if ($object->xpdo) {
             /** @var modX $modx */
             $modx = &$object->xpdo;
 
-            $tables = array(
+            $tables = [
                 "modCronjob",
                 "modCronjobLog"
-            );
+            ];
 
             $modelPath = $modx->getOption('cronmanager.core_path', null, $modx->getOption('core_path') . 'components/cronmanager/') . 'model/';
             $modx->addPackage('cronmanager', $modelPath);
