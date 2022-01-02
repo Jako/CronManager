@@ -3,7 +3,7 @@
  * CronManager
  *
  * Copyright 2011-2019 by Bert Oost <bert@oostdesign.com>
- * Copyright 2019-2021 by Thomas Jakobi <thomas.jakobi@partout.info>
+ * Copyright 2019-2021 by Thomas Jakobi <office@treehillstudio.com>
  *
  * @package cronmanager
  * @subpackage classfile
@@ -40,7 +40,7 @@ class CronManager
      * The version
      * @var string $version
      */
-    public $version = '1.2.6';
+    public $version = '1.2.5';
 
     /**
      * The class options

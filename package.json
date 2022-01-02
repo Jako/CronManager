@@ -1,7 +1,7 @@
 {
   "name": "cronmanager",
   "description": "Create and run cronjobs within the manager",
-  "author": "Thomas Jakobi <thomas.jakobi@partout.info>",
+  "author": "Thomas Jakobi <office@treehillstudio.com>",
   "private": true,
   "devDependencies": {
     "autoprefixer": "^10.4.0",
