@@ -3,7 +3,7 @@
  * Get list cronjob
  *
  * @package cronmanager
- * @subpackage processor
+ * @subpackage processors
  */
 
 class CronManagerCronjobGetProcessor extends modObjectGetProcessor

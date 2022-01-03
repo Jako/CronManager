@@ -1,6 +1,6 @@
 <?php
 /**
- * The default lexicon topics for the CronManager
+ * Default lexicon entries for CronManager
  *
  * @package cronmanager
  * @subpackage lexicon

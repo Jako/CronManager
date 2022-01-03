@@ -1,14 +1,11 @@
 const gulp = require('gulp'),
     autoprefixer = require('autoprefixer'),
-    changed = require('gulp-changed'),
     composer = require('gulp-uglify/composer'),
     concat = require('gulp-concat'),
     cssnano = require('cssnano'),
     footer = require('gulp-footer'),
     format = require('date-format'),
-    fs = require('fs'),
     header = require('gulp-header'),
-    imagemin = require('gulp-imagemin'),
     postcss = require('gulp-postcss'),
     rename = require('gulp-rename'),
     replace = require('gulp-replace'),
@@ -67,19 +64,7 @@ gulp.task('sass-mgr', function () {
 });
 
 gulp.task('images-mgr', function () {
-    return gulp.src('./source/img/**/*.+(png|jpg|gif|svg)')
-        .pipe(changed('assets/components/cronmanager/img/mgr/'))
-        .pipe(imagemin([
-            imagemin.gifsicle({interlaced: true}),
-            imagemin.mozjpeg({progressive: true}),
-            imagemin.optipng({optimizationLevel: 7}),
-            imagemin.svgo({
-                plugins: [
-                    {removeViewBox: true},
-                    {cleanupIDs: true}
-                ]
-            })
-        ]))
+    return gulp.src('./source/img/**/*.(png|jpg|gif|svg)')
         .pipe(gulp.dest('assets/components/cronmanager/img/'));
 });
 

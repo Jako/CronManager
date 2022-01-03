@@ -3,7 +3,7 @@
  * Abstract processor
  *
  * @package cronmanager
- * @subpackage processor
+ * @subpackage processors
  */
 
 namespace TreehillStudio\CronManager\Processors;

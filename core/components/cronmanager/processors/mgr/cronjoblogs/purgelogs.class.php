@@ -3,7 +3,7 @@
  * Purges logs from the given Cronjob
  *
  * @package cronmanager
- * @subpackage processor
+ * @subpackage processors
  */
 
 use TreehillStudio\CronManager\Processors\Processor;
