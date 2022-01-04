@@ -5,8 +5,8 @@
  * @package cronmanager
  * @subpackage build
  *
- * @var mixed $object
  * @var array $options
+ * @var xPDOObject $object
  * @var xPDOTransport $transport
  */
 
@@ -14,7 +14,7 @@ $url = 'https://treehillstudio.com/extras/package/statistics';
 $params = [];
 
 /** @var xPDO $modx */
-$modx = &$object->xpdo;
+$modx =& $object->xpdo;
 $c = $modx->newQuery('transport.modTransportPackage');
 $c->where(
     [
@@ -34,10 +34,8 @@ $c->where(
 );
 $c->where(
     [
-        [
-            'modTransportPackage.signature:LIKE' => $options['namespace'] . '-%',
-        ],
-        'installed:IS NOT' => null
+        'modTransportPackage.signature:LIKE' => $options['namespace'] . '-%',
+        'modTransportPackage.installed:IS NOT' => null
     ]
 );
 $c->limit(1);
@@ -93,16 +91,18 @@ $params = [
  * Curl POST.
  */
 $curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, $url);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 120);
-curl_setopt($curl, CURLOPT_POST, true);
-curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));
-curl_setopt($curl, CURLOPT_TIMEOUT, 120);
+if ($curl) {
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 120);
+    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));
+    curl_setopt($curl, CURLOPT_TIMEOUT, 120);
 
-$response = curl_exec($curl);
-$responseInfo = curl_getinfo($curl);
-$curlError = curl_error($curl);
-curl_close($curl);
+    $response = curl_exec($curl);
+    $responseInfo = curl_getinfo($curl);
+    $curlError = curl_error($curl);
+    curl_close($curl);
+}
 
 return true;
