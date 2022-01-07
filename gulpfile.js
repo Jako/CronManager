@@ -73,7 +73,7 @@ gulp.task('bump-copyright', function () {
         'core/components/cronmanager/model/cronmanager/cronmanager.class.php',
         'core/components/cronmanager/src/CronManager.php',
     ], {base: './'})
-        .pipe(replace(/Copyright 2019(-\d{4})? by/g, 'Copyright ' + (new Date().getFullYear() > 2019 ? '2019-' : '') + new Date().getFullYear() + ' by'))
+        .pipe(replace(/Copyright 2019(-\d{4})? by/g, 'Copyright ' + (year > 2019 ? '2019-' : '') + year + ' by'))
         .pipe(gulp.dest('.'));
 });
 gulp.task('bump-version', function () {
@@ -88,14 +88,14 @@ gulp.task('bump-homepanel', function () {
         'source/js/mgr/widgets/home.panel.js',
         'source/js/mgr/widgets/logs.panel.js',
     ], {base: './'})
-        .pipe(replace(/&copy; 2019(-\d{4})?/g, '&copy; ' + (new Date().getFullYear() > 2019 ? '2019-' : '') + new Date().getFullYear()))
+        .pipe(replace(/&copy; 2019(-\d{4})?/g, '&copy; ' + (year > 2019 ? '2019-' : '') + year))
         .pipe(gulp.dest('.'));
 });
 gulp.task('bump-docs', function () {
     return gulp.src([
         'mkdocs.yml',
     ], {base: './'})
-        .pipe(replace(/&copy; 2019(-\d{4})?/g, '&copy; ' + (new Date().getFullYear() > 2019 ? '2019-' : '') + new Date().getFullYear()))
+        .pipe(replace(/&copy; 2019(-\d{4})?/g, '&copy; ' + (year > 2019 ? '2019-' : '') + year))
         .pipe(gulp.dest('.'));
 });
 gulp.task('bump', gulp.series('bump-copyright', 'bump-version', 'bump-homepanel', 'bump-docs'));
@@ -106,7 +106,7 @@ gulp.task('watch', function () {
     gulp.watch(['./source/js/**/*.js'], gulp.series('scripts-mgr'));
     // Watch .scss files
     gulp.watch(['./source/scss/**/*.scss'], gulp.series('sass-mgr'));
-    // Watch .scss files
+    // Watch *.(png|jpg|gif|svg) files
     gulp.watch(['./source/img/**/*.(png|jpg|gif|svg)'], gulp.series('images-mgr'));
 });
 
