@@ -5,7 +5,7 @@ Create and run cronjobs within the manager
 ### Requirements
 
 * MODX Revolution 2.6+
-* PHP v5.6+
+* PHP 5.6+
 
 ### Features
 
