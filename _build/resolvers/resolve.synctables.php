@@ -107,7 +107,7 @@ if ($object->xpdo) {
         case xPDOTransport::ACTION_INSTALL:
         case xPDOTransport::ACTION_UPGRADE:
             /** @var modX $modx */
-            $modx = &$object->xpdo;
+            $modx =& $object->xpdo;
 
             $tables = [
                 "modCronjob",
