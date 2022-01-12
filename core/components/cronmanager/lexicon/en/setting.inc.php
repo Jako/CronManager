@@ -1,6 +1,6 @@
 <?php
 /**
- * Setting lexicon entries for CronManager
+ * Setting Lexicon Entries for CronManager
  *
  * @package cronmanager
  * @subpackage lexicon
