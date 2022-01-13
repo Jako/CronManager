@@ -36,17 +36,17 @@ if (!function_exists('updateTableColumns')) {
         foreach ($columns as $column) {
             if (isset($unusedColumns[$column])) {
                 $m->alterField($table, $column);
-                $modx->log(modX::LOG_LEVEL_INFO, ' -- altered column: ' . $column);
+                $modx->log(xPDO::LOG_LEVEL_INFO, ' -- altered column: ' . $column);
                 unset($unusedColumns[$column]);
             } else {
                 $m->addField($table, $column);
-                $modx->log(modX::LOG_LEVEL_INFO, ' -- added column: ' . $column);
+                $modx->log(xPDO::LOG_LEVEL_INFO, ' -- added column: ' . $column);
             }
         }
 
         foreach ($unusedColumns as $column => $v) {
             $m->removeField($table, $column);
-            $modx->log(modX::LOG_LEVEL_INFO, ' -- removed column: ' . $column);
+            $modx->log(xPDO::LOG_LEVEL_INFO, ' -- removed column: ' . $column);
         }
     }
 }
@@ -73,7 +73,7 @@ if (!function_exists('updateTableIndexes')) {
 
         foreach ($oldIndexes as $oldIndex) {
             $m->removeIndex($table, $oldIndex);
-            $modx->log(modX::LOG_LEVEL_INFO, ' -- removed index: ' . $oldIndex);
+            $modx->log(xPDO::LOG_LEVEL_INFO, ' -- removed index: ' . $oldIndex);
         }
 
         $meta = $modx->getIndexMeta($table);
@@ -82,7 +82,7 @@ if (!function_exists('updateTableIndexes')) {
         foreach ($indexes as $index) {
             if ($index == 'PRIMARY') continue;
             $m->addIndex($table, $index);
-            $modx->log(modX::LOG_LEVEL_INFO, ' -- added index: ' . $index);
+            $modx->log(xPDO::LOG_LEVEL_INFO, ' -- added index: ' . $index);
         }
     }
 }
@@ -94,10 +94,10 @@ if (!function_exists('alterTable')) {
      */
     function alterTable($modx, $table)
     {
-        $modx->log(modX::LOG_LEVEL_INFO, ' - Updating columns');
+        $modx->log(xPDO::LOG_LEVEL_INFO, ' - Updating columns');
         updateTableColumns($modx, $table);
 
-        $modx->log(modX::LOG_LEVEL_INFO, ' - Updating indexes');
+        $modx->log(xPDO::LOG_LEVEL_INFO, ' - Updating indexes');
         updateTableIndexes($modx, $table);
     }
 }
@@ -118,7 +118,7 @@ if ($object->xpdo) {
             $modx->addPackage('cronmanager', $modelPath);
 
             foreach ($tables as $table) {
-                $modx->log(modX::LOG_LEVEL_INFO, 'Altering table: ' . $table);
+                $modx->log(xPDO::LOG_LEVEL_INFO, 'Altering table: ' . $table);
                 alterTable($modx, $table);
             }
 
