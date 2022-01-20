@@ -367,8 +367,7 @@ CronManager.window.FullLog = function (config) {
             handler: function () {
                 this.close();
             }
-        }],
-        keys: []
+        }]
     });
     CronManager.window.FullLog.superclass.constructor.call(this, config);
 };
