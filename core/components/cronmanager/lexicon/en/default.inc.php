@@ -35,7 +35,7 @@ $_lang['cronmanager.logs_desc'] = 'View the logs for the selected cronjob.';
 $_lang['cronmanager.logs_filter_all'] = 'All Logs';
 $_lang['cronmanager.logs_filter_error'] = 'With Error(s)';
 $_lang['cronmanager.logs_filter_no_error'] = 'Without Error';
-$_lang['cronmanager.logs_purge_confirm'] = 'Purge the logs of this cronjob that don’t contain errors?<br><br><span class="red">Warning:</span> Ensure your snippet/job correctly defines the error `status`, otherwise all your logs for this cronjob will be wiped.';
+$_lang['cronmanager.logs_purge_confirm'] = 'Purge the logs of this cronjob that don’t contain errors?<br><br><span class="red">Warning:</span> Make sure that your snippet/job correctly outputs the `error` status in a JSON object, otherwise all logs for this cronjob will be wiped.';
 $_lang['cronmanager.logs_purge_db_err'] = 'Attempted to purge logs but a query error occurred. See the MODX and/or server logs for more information.';
 $_lang['cronmanager.logs_purge_no_err'] = 'Purge Logs Without Error';
 $_lang['cronmanager.logs_purge_nothing'] = 'Nothing to purge';
