@@ -8,7 +8,7 @@
 $_lang['cronmanager'] = 'CronManager';
 $_lang['cronmanager.active'] = 'Active';
 $_lang['cronmanager.create'] = 'Créer une nouvelle tâche cron';
-$_lang['cronmanager.cronjobs_desc'] = 'Ci-dessous, vous pouvez ajouter, modifier ou supprimer des actions de cronjob. Elles ne fonctionneront que si la configuration de CronManager est respectée. La documentation (ou le bouton d\'aide) contient plus de détails.';
+$_lang['cronmanager.cronjobs_desc'] = 'Ci-dessous, vous pouvez ajouter, modifier ou supprimer des actions de cronjob. Elles ne fonctionneront que si la configuration de CronManager est respectée. La documentation (ou le bouton d’aide) contient plus de détails.';
 $_lang['cronmanager.debug_mode'] = 'Mode débogage';
 $_lang['cronmanager.job_started'] = 'Tâche cron exécuté';
 $_lang['cronmanager.job_started_message'] = 'Le tâche cron [[+id]] a été exécuté.';
@@ -35,8 +35,8 @@ $_lang['cronmanager.logs_desc'] = 'Consultez les logs de la tâche sélectionné
 $_lang['cronmanager.logs_filter_all'] = 'Tous les logs';
 $_lang['cronmanager.logs_filter_error'] = 'Avec erreur(s)';
 $_lang['cronmanager.logs_filter_no_error'] = 'Sans erreur';
-$_lang['cronmanager.logs_purge_confirm'] = 'Purger les journaux de ce tâche cron qui ne contiennent pas d\'erreurs?<br><br><span class="red">Avertissement:</span> Assurez-vous que votre snippet/job définit correctement l\'erreur \'status\', sinon tous vos journaux pour ce tâche cron seront effacés.';
-$_lang['cronmanager.logs_purge_db_err'] = 'Attempted to purge logs but a query error occurred. Consultez les journaux de MODX et/ou du serveur pour plus d\'informations.';
+$_lang['cronmanager.logs_purge_confirm'] = 'Purger les journaux de ce tâche cron qui ne contiennent pas d’erreurs?<br><br><span class="red">Avertissement:</span> Assurez-vous que votre snippet/job définit correctement l’erreur `status`, sinon tous vos journaux pour ce tâche cron seront effacés.';
+$_lang['cronmanager.logs_purge_db_err'] = 'Attempted to purge logs but a query error occurred. Consultez les journaux de MODX et/ou du serveur pour plus d’informations.';
 $_lang['cronmanager.logs_purge_no_err'] = 'Purger les logs sans erreur';
 $_lang['cronmanager.logs_purge_nothing'] = 'Aucun log à purger';
 $_lang['cronmanager.logs_purge_success'] = '[[+total]] journal(s) purgé(s).';
@@ -44,7 +44,7 @@ $_lang['cronmanager.logs_purge_title'] = 'Purger les logs';
 $_lang['cronmanager.menu'] = 'CronManager';
 $_lang['cronmanager.menu_desc'] = 'Gérez vos tâches cron depuis le manager';
 $_lang['cronmanager.minutes'] = 'Minute(s)';
-$_lang['cronmanager.minutes_desc'] = 'La fréquence d\'exécution de ce snippet. Minimum une minute.';
+$_lang['cronmanager.minutes_desc'] = 'La fréquence d’exécution de ce snippet. Minimum une minute.';
 $_lang['cronmanager.nextrun'] = 'Prochaine exécution';
 $_lang['cronmanager.norecords'] = 'Pas de tâche trouvée';
 $_lang['cronmanager.properties'] = 'Propriétés du snippet';
