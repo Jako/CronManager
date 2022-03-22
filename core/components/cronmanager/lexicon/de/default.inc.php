@@ -35,7 +35,7 @@ $_lang['cronmanager.logs_desc'] = 'Die Protokolle für den ausgewählten Cronjob
 $_lang['cronmanager.logs_filter_all'] = 'Alle Protokolle';
 $_lang['cronmanager.logs_filter_error'] = 'Mit Fehler(n)';
 $_lang['cronmanager.logs_filter_no_error'] = 'Ohne Fehler';
-$_lang['cronmanager.logs_purge_confirm'] = 'Möchten Sie die fehlerfreien Protokolle dieses Cronjobs wirklich löschen?<br><br><span class="red">Warnung:</span> Stellen Sie sicher, dass Ihr Snippet/Job den Fehlerstatus korrekt ausgibt, andernfalls werden alle Protokolle für diesen Cronjob gelöscht.';
+$_lang['cronmanager.logs_purge_confirm'] = 'Möchten Sie die fehlerfreien Protokolle dieses Cronjobs wirklich löschen?<br><br><span class="red">Warnung:</span> Stellen Sie sicher, dass Ihr Snippet/Job den Status `error` in einem JSON Objekt korrekt ausgibt, andernfalls werden alle Protokolle für diesen Cronjob gelöscht.';
 $_lang['cronmanager.logs_purge_db_err'] = 'Es wurde versucht, die Protokolle zu löschen, aber es ist ein Abfragefehler aufgetreten. Weitere Informationen finden Sie in den MODX- und/oder Server-Protokollen.';
 $_lang['cronmanager.logs_purge_no_err'] = 'Protokolle ohne Fehler löschen';
 $_lang['cronmanager.logs_purge_nothing'] = 'Nichts zu bereinigen';
