@@ -35,7 +35,7 @@ $_lang['cronmanager.logs_desc'] = 'Consultez les logs de la tâche sélectionné
 $_lang['cronmanager.logs_filter_all'] = 'Tous les logs';
 $_lang['cronmanager.logs_filter_error'] = 'Avec erreur(s)';
 $_lang['cronmanager.logs_filter_no_error'] = 'Sans erreur';
-$_lang['cronmanager.logs_purge_confirm'] = 'Purger les journaux de ce tâche cron qui ne contiennent pas d’erreurs?<br><br><span class="red">Avertissement:</span> Assurez-vous que votre snippet/job définit correctement l’erreur `status`, sinon tous vos journaux pour ce tâche cron seront effacés.';
+$_lang['cronmanager.logs_purge_confirm'] = 'Purger les journaux de ce tâche cron qui ne contiennent pas d’erreurs?<br><br><span class="red">Avertissement:</span> Assurez-vous que votre snippet/job produit correctement le statut `error` dans un objet JSON, sinon tous vos journaux pour ce tâche cron seront effacés.';
 $_lang['cronmanager.logs_purge_db_err'] = 'Attempted to purge logs but a query error occurred. Consultez les journaux de MODX et/ou du serveur pour plus d’informations.';
 $_lang['cronmanager.logs_purge_no_err'] = 'Purger les logs sans erreur';
 $_lang['cronmanager.logs_purge_nothing'] = 'Aucun log à purger';
