@@ -11,7 +11,7 @@ CronManager.grid.CronJobs = function (config) {
         + '</tpl>', {
         compiled: true
     });
-    this.ident = 'cronmanager-cronjobs' + Ext.id();
+    this.ident = 'cronmanager-cronjobs-' + Ext.id();
     Ext.applyIf(config, {
         id: this.ident + '-cronmanager-grid-cronjobs',
         url: CronManager.config.connectorUrl,
@@ -314,7 +314,7 @@ Ext.reg('cronmanager-grid-cronjobs', CronManager.grid.CronJobs);
 
 CronManager.window.CreateUpdateCronjob = function (config) {
     config = config || {};
-    this.ident = config.ident || 'cucronjob' + Ext.id();
+    this.ident = 'cronmanager-cronjob-createupdate-' + Ext.id();
     Ext.applyIf(config, {
         id: this.ident,
         url: CronManager.config.connectorUrl,

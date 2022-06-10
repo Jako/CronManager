@@ -12,7 +12,7 @@ CronManager.grid.CronJobLog = function (config) {
         compiled: true
     });
     this.sm = new Ext.grid.CheckboxSelectionModel();
-    this.ident = 'cronmanager-cronjoblog' + Ext.id();
+    this.ident = 'cronmanager-cronjoblog-' + Ext.id();
     Ext.applyIf(config, {
         id: this.ident + '-cronmanager-grid-cronjoblog',
         url: CronManager.config.connectorUrl,
