@@ -66,7 +66,6 @@ CronManager.grid.CronJobs = function (config) {
         }, {
             header: _('id'),
             dataIndex: 'id',
-            sortable: true,
             hidden: true,
             width: 25
         }, {

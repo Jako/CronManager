@@ -1,5 +1,7 @@
 CronManager.grid.CronJobLog = function (config) {
     config = config || {};
+    this.ident = 'cronmanager-cronjoblog-' + Ext.id();
+    this.sm = new Ext.grid.CheckboxSelectionModel();
     this.buttonColumnTpl = new Ext.XTemplate('<tpl for=".">'
         + '<tpl if="action_buttons !== null">'
         + '<ul class="action-buttons">'
@@ -11,8 +13,6 @@ CronManager.grid.CronJobLog = function (config) {
         + '</tpl>', {
         compiled: true
     });
-    this.sm = new Ext.grid.CheckboxSelectionModel();
-    this.ident = 'cronmanager-cronjoblog-' + Ext.id();
     Ext.applyIf(config, {
         id: this.ident + '-cronmanager-grid-cronjoblog',
         url: CronManager.config.connectorUrl,
@@ -30,9 +30,9 @@ CronManager.grid.CronJobLog = function (config) {
         sortDir: 'DESC',
         singleText: _('cronmanager.log_message'),
         pluralText: _('cronmanager.log_messages'),
-        sm: this.sm,
         emptyText: _('cronmanager.log.norecords'),
         showActionsColumn: false,
+        sm: this.sm,
         columns: [this.sm, {
             header: _('cronmanager.log_error'),
             dataIndex: 'error',
@@ -77,7 +77,6 @@ CronManager.grid.CronJobLog = function (config) {
         }, {
             header: _('id'),
             dataIndex: 'id',
-            sortable: true,
             hidden: true,
             width: 25
         }, {
