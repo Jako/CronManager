@@ -111,6 +111,19 @@ $borderRadius: 3px;
   }
 }
 
+.x-grid-editor {
+  .x-form-check-wrap {
+    background: #f0f0f0;
+    .x-form-cb-label {
+      left: 2px;
+      top: 6px;
+      &:before {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
 .treehillstudio_about {
   cursor: pointer;
   height: 40px;
