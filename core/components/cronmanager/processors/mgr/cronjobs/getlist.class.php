@@ -41,10 +41,12 @@ class CronManagerCronjobGetListProcessor extends ObjectGetListProcessor
     public function prepareRow(xPDOObject $object)
     {
         $ta = $object->toArray('', false, true);
-        $nextrun = DateTime::createFromFormat('Y-m-d H:i:s', $ta['nextrun']);
-        $ta['nextrun'] = ($nextrun) ? $nextrun->format('c') : '<em>' . $this->modx->lexicon('cronmanager.runempty') . '</em>';
-        $lastrun = DateTime::createFromFormat('Y-m-d H:i:s', $ta['lastrun']);
-        $ta['lastrun'] = ($lastrun) ? $lastrun->format('c') : '<em>' . $this->modx->lexicon('cronmanager.runempty') . '</em>';
+        if (empty($ta['nextrun'])) {
+            $ta['nextrun'] = '<em>' . $this->modx->lexicon('cronmanager.runempty') . '</em>';
+        }
+        if (empty($ta['lastrun'])) {
+            $ta['lastrun'] = '<em>' . $this->modx->lexicon('cronmanager.runempty') . '</em>';
+        }
         return $ta;
     }
 }

@@ -40,6 +40,7 @@ class CronManagerHomeManagerController extends modExtraManagerController
             $this->addCss($cssSourceUrl . 'cronmanager.css?v=v' . $this->cronmanager->version);
             $this->addJavascript($jsSourceUrl . 'cronmanager.js?v=v' . $this->cronmanager->version);
             $this->addJavascript($jsSourceUrl . 'helper/combo.js?v=v' . $this->cronmanager->version);
+            $this->addJavascript($jsSourceUrl . 'helper/util.js?v=v' . $this->cronmanager->version);
             $this->addJavascript($jsSourceUrl . 'widgets/home.panel.js?v=v' . $this->cronmanager->version);
             $this->addJavascript($jsSourceUrl . 'widgets/logs.panel.js?v=v' . $this->cronmanager->version);
             $this->addJavascript($jsSourceUrl . 'widgets/cronjobs.grid.js?v=v' . $this->cronmanager->version);

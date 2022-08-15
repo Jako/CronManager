@@ -38,6 +38,7 @@ gulp.task('scripts-mgr', function () {
     return gulp.src([
         'source/js/mgr/cronmanager.js',
         'source/js/mgr/helper/combo.js',
+        'source/js/mgr/helper/util.js',
         'source/js/mgr/widgets/home.panel.js',
         'source/js/mgr/widgets/logs.panel.js',
         'source/js/mgr/widgets/cronjobs.grid.js',

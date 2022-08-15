@@ -45,12 +45,12 @@ CronManager.grid.CronJobs = function (config) {
             header: _('cronmanager.lastrun'),
             dataIndex: 'lastrun',
             sortable: false,
-            renderer: Ext.util.Format.dateRenderer(MODx.config.manager_date_format + ' ' + MODx.config.manager_time_format)
+            renderer: CronManager.util.dateRenderer()
         }, {
             header: _('cronmanager.nextrun'),
             dataIndex: 'nextrun',
             sortable: false,
-            renderer: Ext.util.Format.dateRenderer(MODx.config.manager_date_format + ' ' + MODx.config.manager_time_format)
+            renderer: CronManager.util.dateRenderer()
         }, {
             header: _('cronmanager.active'),
             dataIndex: 'active',

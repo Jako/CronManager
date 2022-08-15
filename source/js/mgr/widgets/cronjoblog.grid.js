@@ -60,7 +60,7 @@ CronManager.grid.CronJobLog = function (config) {
             dataIndex: 'logdate',
             width: 40,
             sortable: true,
-            renderer: Ext.util.Format.dateRenderer(MODx.config.manager_date_format + ' ' + MODx.config.manager_time_format)
+            renderer: CronManager.util.dateRenderer()
         }, {
             header: _('cronmanager.log.message'),
             dataIndex: 'message',
