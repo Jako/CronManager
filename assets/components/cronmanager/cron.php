@@ -50,8 +50,6 @@ if (isset($_REQUEST['job']) && $_REQUEST['job']) {
 }
 $c->sortby('nextrun');
 $c->limit(1);
-$c->prepare();
-$test = $c->toSQL();
 
 /** @var modCronjob $cronjob */
 while ($cronjob = $modx->getObject('modCronjob', $c)) {
