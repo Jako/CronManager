@@ -43,9 +43,15 @@ class CronManagerCronjobGetListProcessor extends ObjectGetListProcessor
         $ta = $object->toArray('', false, true);
         if (empty($ta['nextrun'])) {
             $ta['nextrun'] = '<em>' . $this->modx->lexicon('cronmanager.runempty') . '</em>';
+        } else {
+            $nextrun = DateTime::createFromFormat('Y-m-d H:i:s', $ta['nextrun']);
+            $ta['nextrun'] = ($nextrun) ? $nextrun->format('Y-m-d H:i:s') : $nextrun;
         }
         if (empty($ta['lastrun'])) {
             $ta['lastrun'] = '<em>' . $this->modx->lexicon('cronmanager.runempty') . '</em>';
+        }else {
+            $lastrun = DateTime::createFromFormat('Y-m-d H:i:s', $ta['lastrun']);
+            $ta['lastrun'] = ($lastrun) ? $lastrun->format('Y-m-d H:i:s') : $lastrun;
         }
         return $ta;
     }

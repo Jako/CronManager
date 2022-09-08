@@ -40,7 +40,7 @@ class CronManager
      * The version
      * @var string $version
      */
-    public $version = '1.2.7';
+    public $version = '1.2.8-rc1';
 
     /**
      * The class options

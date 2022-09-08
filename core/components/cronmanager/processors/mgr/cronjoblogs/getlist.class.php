@@ -46,7 +46,9 @@ class CronManagerCronjoblogsGetListProcessor extends ObjectGetListProcessor
     public function prepareRow(xPDOObject $object)
     {
         $ta = $object->toArray('', false, true);
-        $ta['day'] = DateTime::createFromFormat('Y-m-d', $ta['logdate']);
+        $logdate = DateTime::createFromFormat('Y-m-d H:i:s', $ta['logdate']);
+        $ta['logdate'] = ($logdate) ? $logdate->format('Y-m-d H:i:s') : $logdate;
+        $ta['day'] = ($logdate) ? $logdate->format('Y-m-d') : $logdate;
         return $ta;
     }
 }
