@@ -40,7 +40,7 @@ class CronManager
      * The version
      * @var string $version
      */
-    public $version = '1.2.8-rc1';
+    public $version = '1.3.0';
 
     /**
      * The class options
@@ -91,6 +91,7 @@ class CronManager
         $this->options = array_merge($this->options, [
             'debug' => (bool)$this->getOption('debug', $options, false),
             'modxversion' => $modxversion['version'],
+            'is_admin' => $this->modx->user && ($modx->hasPermission('settings') || $modx->hasPermission($this->namespace . '_settings')),
             'cronjob_id' => $this->getOption('cronjob_id', $options, false)
         ]);
 

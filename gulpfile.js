@@ -34,25 +34,25 @@ pkg.dependencies.forEach(function (dependency, index) {
     }
 });
 
-gulp.task('scripts-mgr', function () {
+const scriptsMgr = function () {
     return gulp.src([
         'source/js/mgr/cronmanager.js',
         'source/js/mgr/helper/combo.js',
         'source/js/mgr/helper/util.js',
         'source/js/mgr/widgets/home.panel.js',
-        'source/js/mgr/widgets/logs.panel.js',
+        'source/js/mgr/widgets/settings.panel.js',
         'source/js/mgr/widgets/cronjobs.grid.js',
         'source/js/mgr/widgets/cronjoblog.grid.js',
-        'source/js/mgr/sections/home.js',
-        'source/js/mgr/sections/logs.js'
+        'source/js/mgr/sections/home.js'
     ])
         .pipe(concat('cronmanager.min.js'))
         .pipe(uglify())
         .pipe(header(banner + '\n', {pkg: pkg}))
         .pipe(gulp.dest('assets/components/cronmanager/js/mgr/'))
-});
+};
+gulp.task('scripts', gulp.series(scriptsMgr));
 
-gulp.task('sass-mgr', function () {
+const sassMgr = function () {
     return gulp.src([
         'source/sass/mgr/cronmanager.scss'
     ])
@@ -76,61 +76,62 @@ gulp.task('sass-mgr', function () {
         }))
         .pipe(footer('\n' + banner, {pkg: pkg}))
         .pipe(gulp.dest('assets/components/cronmanager/css/mgr/'))
-});
+};
+gulp.task('sass', gulp.series(sassMgr));
 
-gulp.task('images-mgr', function () {
+const imagesMgr = function () {
     return gulp.src('./source/img/**/*.+(png|jpg|gif|svg)')
         .pipe(gulp.dest('assets/components/cronmanager/img/'));
-});
+};
+gulp.task('images', gulp.series(imagesMgr));
 
-gulp.task('bump-copyright', function () {
+const bumpCopyright = function () {
     return gulp.src([
         'core/components/cronmanager/model/cronmanager/cronmanager.class.php',
         'core/components/cronmanager/src/CronManager.php',
     ], {base: './'})
         .pipe(replace(/Copyright 2019(-\d{4})? by/g, 'Copyright ' + (year > 2019 ? '2019-' : '') + year + ' by'))
         .pipe(gulp.dest('.'));
-});
-gulp.task('bump-version', function () {
+};
+const bumpVersion = function () {
     return gulp.src([
         'core/components/cronmanager/src/CronManager.php',
     ], {base: './'})
         .pipe(replace(/version = '\d+.\d+.\d+[-a-z0-9]*'/ig, 'version = \'' + pkg.version + '\''))
         .pipe(gulp.dest('.'));
-});
-gulp.task('bump-homepanel', function () {
+};
+const bumpHomepanel = function () {
     return gulp.src([
         'source/js/mgr/widgets/home.panel.js',
-        'source/js/mgr/widgets/logs.panel.js',
     ], {base: './'})
         .pipe(replace(/&copy; 2019(-\d{4})?/g, '&copy; ' + (year > 2019 ? '2019-' : '') + year))
         .pipe(gulp.dest('.'));
-});
-gulp.task('bump-docs', function () {
+};
+const bumpDocs = function () {
     return gulp.src([
         'mkdocs.yml',
     ], {base: './'})
         .pipe(replace(/&copy; 2019(-\d{4})?/g, '&copy; ' + (year > 2019 ? '2019-' : '') + year))
         .pipe(gulp.dest('.'));
-});
-gulp.task('bump-requirements', function () {
+};
+const bumpRequirements = function () {
     return gulp.src([
         'docs/index.md',
     ], {base: './'})
         .pipe(replace(/[*-] MODX Revolution \d.\d.*/g, '* MODX Revolution ' + modxversion + '+'))
         .pipe(replace(/[*-] PHP (v)?\d.\d.*/g, '* PHP ' + phpversion + '+'))
         .pipe(gulp.dest('.'));
-});
-gulp.task('bump', gulp.series('bump-copyright', 'bump-version', 'bump-homepanel', 'bump-docs', 'bump-requirements'));
+};
+gulp.task('bump', gulp.series(bumpCopyright, bumpVersion, bumpHomepanel, bumpDocs, bumpRequirements));
 
 gulp.task('watch', function () {
     // Watch .js files
-    gulp.watch(['./source/js/**/*.js'], gulp.series('scripts-mgr'));
+    gulp.watch(['./source/js/**/*.js'], gulp.series('scripts'));
     // Watch .scss files
-    gulp.watch(['./source/sass/**/*.scss'], gulp.series('sass-mgr'));
+    gulp.watch(['./source/sass/**/*.scss'], gulp.series('sass'));
     // Watch *.(png|jpg|gif|svg) files
-    gulp.watch(['./source/img/**/*.(png|jpg|gif|svg)'], gulp.series('images-mgr'));
+    gulp.watch(['./source/images/**/*.(png|jpg|gif|svg)'], gulp.series('images'));
 });
 
 // Default Task
-gulp.task('default', gulp.series('bump', 'scripts-mgr', 'sass-mgr', 'images-mgr'));
+gulp.task('default', gulp.series('bump', 'scripts', 'sass', 'images'));

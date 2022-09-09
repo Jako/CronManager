@@ -10,18 +10,15 @@ use TreehillStudio\CronManager\Processors\Processor;
 
 class CronManagerPurgelogsProcessor extends Processor
 {
-    public $languageTopics = ['cronmanager:default'];
-
     public function process()
     {
         $cronjob = $this->getProperty('cronjob');
         $error_only = (bool)$this->getProperty('error_only', true);
 
-        if (!$cronjob) {
-            return $this->failure($this->modx->lexicon('cronmanager.log_cronjob_err_ns'));
+        $c = [];
+        if ($cronjob) {
+            $c['cronjob'] = $cronjob;
         }
-
-        $c = ['cronjob' => $cronjob];
         if ($error_only) {
             $c['error'] = 0;
         }

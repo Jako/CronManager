@@ -10,8 +10,6 @@ use TreehillStudio\CronManager\Processors\Processor;
 
 class CronManagerCronjobRemoveselectedProcessor extends Processor
 {
-    public $languageTopics = ['cronmanager:default'];
-
     public function process()
     {
         $logIds = $this->getProperty('ids');

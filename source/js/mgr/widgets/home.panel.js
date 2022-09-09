@@ -15,22 +15,8 @@ CronManager.panel.Home = function (config) {
                 autoHeight: true
             },
             border: true,
-            cls: 'cronmanager-panel',
             items: [{
-                html: '<p>' + _('cronmanager.cronjobs_desc') + '</p>',
-                border: false,
-                cls: 'panel-desc'
-            }, {
-                layout: 'form',
-                cls: 'x-form-label-left main-wrapper',
-                defaults: {
-                    autoHeight: true
-                },
-                border: true,
-                items: [{
-                    xtype: 'cronmanager-grid-cronjobs',
-                    preventRender: true
-                }]
+                xtype: 'cronmanager-panel-overview'
             }]
         }, {
             cls: "treehillstudio_about",
@@ -58,3 +44,90 @@ CronManager.panel.Home = function (config) {
 };
 Ext.extend(CronManager.panel.Home, MODx.Panel);
 Ext.reg('cronmanager-panel-home', CronManager.panel.Home);
+
+CronManager.panel.HomeTab = function (config) {
+    config = config || {};
+    Ext.applyIf(config, {
+        id: 'cronmanager-panel-' + config.tabtype,
+        title: config.title,
+        items: [{
+            html: '<p>' + config.description + '</p>',
+            border: false,
+            cls: 'panel-desc'
+        }, {
+            layout: 'form',
+            cls: 'x-form-label-left main-wrapper',
+            defaults: {
+                autoHeight: true
+            },
+            border: true,
+            items: [{
+                id: 'cronmanager-panel-' + config.tabtype + '-grid',
+                xtype: 'cronmanager-grid-' + config.tabtype,
+                preventRender: true
+            }]
+        }]
+    });
+    CronManager.panel.HomeTab.superclass.constructor.call(this, config);
+};
+Ext.extend(CronManager.panel.HomeTab, MODx.Panel);
+Ext.reg('cronmanager-panel-hometab', CronManager.panel.HomeTab);
+
+CronManager.panel.Overview = function (config) {
+    config = config || {};
+    this.ident = 'cronmanager-panel-overview-' + Ext.id();
+    this.panelOverviewTabs = [{
+        xtype: 'cronmanager-panel-hometab',
+        title: _('cronmanager.cronjobs'),
+        description: _('cronmanager.cronjobs_desc'),
+        tabtype: 'cronjobs'
+    }, {
+        xtype: 'cronmanager-panel-hometab',
+        title: _('cronmanager.cronjoblog'),
+        description: _('cronmanager.cronjoblog_desc'),
+        tabtype: 'cronjoblog'
+    }];
+    if (CronManager.config.is_admin) {
+        this.panelOverviewTabs.push({
+            xtype: 'cronmanager-panel-settings'
+        })
+    }
+    Ext.applyIf(config, {
+        id: this.ident,
+        items: [{
+            xtype: 'modx-tabs',
+            border: true,
+            stateful: true,
+            stateId: 'cronmanager-panel-overview',
+            stateEvents: ['tabchange'],
+            getState: function () {
+                return {
+                    activeTab: this.items.indexOf(this.getActiveTab())
+                };
+            },
+            autoScroll: true,
+            deferredRender: false,
+            forceLayout: true,
+            defaults: {
+                layout: 'form',
+                autoHeight: true,
+                hideMode: 'offsets'
+            },
+            items: this.panelOverviewTabs,
+            listeners: {
+                tabchange: function (o, t) {
+                    if (t.xtype === 'cronmanager-panel-settings') {
+                        Ext.getCmp('cronmanager-grid-system-settings').getStore().reload();
+                    } else if (t.xtype === 'cronmanager-panel-hometab') {
+                        if (Ext.getCmp('cronmanager-panel-' + t.tabtype + '-grid')) {
+                            Ext.getCmp('cronmanager-panel-' + t.tabtype + '-grid').getStore().reload();
+                        }
+                    }
+                }
+            }
+        }]
+    });
+    CronManager.panel.Overview.superclass.constructor.call(this, config);
+};
+Ext.extend(CronManager.panel.Overview, MODx.Panel);
+Ext.reg('cronmanager-panel-overview', CronManager.panel.Overview);

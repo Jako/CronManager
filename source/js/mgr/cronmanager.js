@@ -13,5 +13,3 @@ Ext.extend(cronmanager, Ext.Component, {
 Ext.reg('cronmanager', cronmanager);
 
 CronManager = new cronmanager();
-
-MODx.config.help_url = 'https://jako.github.io/CronManager/usage/';

@@ -36,23 +36,25 @@ class CronManagerHomeManagerController extends modExtraManagerController
         $cssUrl = $this->cronmanager->getOption('cssUrl') . 'mgr/';
         $cssSourceUrl = $assetsUrl . '../../../source/css/mgr/';
 
-        if ($this->cronmanager->getOption('debug') && ($this->cronmanager->getOption('assetsUrl') != MODX_ASSETS_URL . 'components/cronmanager/')) {
+        if ($this->cronmanager->getOption('debug') && ($assetsUrl != MODX_ASSETS_URL . 'components/cronmanager/')) {
             $this->addCss($cssSourceUrl . 'cronmanager.css?v=v' . $this->cronmanager->version);
             $this->addJavascript($jsSourceUrl . 'cronmanager.js?v=v' . $this->cronmanager->version);
             $this->addJavascript($jsSourceUrl . 'helper/combo.js?v=v' . $this->cronmanager->version);
             $this->addJavascript($jsSourceUrl . 'helper/util.js?v=v' . $this->cronmanager->version);
             $this->addJavascript($jsSourceUrl . 'widgets/home.panel.js?v=v' . $this->cronmanager->version);
-            $this->addJavascript($jsSourceUrl . 'widgets/logs.panel.js?v=v' . $this->cronmanager->version);
             $this->addJavascript($jsSourceUrl . 'widgets/cronjobs.grid.js?v=v' . $this->cronmanager->version);
             $this->addJavascript($jsSourceUrl . 'widgets/cronjoblog.grid.js?v=v' . $this->cronmanager->version);
+            $this->addJavascript(MODX_MANAGER_URL . 'assets/modext/widgets/core/modx.grid.settings.js');
+            $this->addJavascript($jsSourceUrl . 'widgets/settings.panel.js?v=v' . $this->cronmanager->version);
             $this->addLastJavascript($jsSourceUrl . 'sections/home.js?v=v' . $this->cronmanager->version);
-            $this->addLastJavascript($jsSourceUrl . 'sections/logs.js?v=v' . $this->cronmanager->version);
         } else {
             $this->addCss($cssUrl . 'cronmanager.min.css?v=v' . $this->cronmanager->version);
+            $this->addJavascript(MODX_MANAGER_URL . 'assets/modext/widgets/core/modx.grid.settings.js');
             $this->addLastJavascript($jsUrl . 'cronmanager.min.js?v=v' . $this->cronmanager->version);
         }
         $this->addHtml('<script type="text/javascript">
         Ext.onReady(function() {
+            MODx.config.help_url = "https://jako.github.io/CronManager/usage/";
             CronManager.config = ' . json_encode($this->cronmanager->options, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) . ';
             MODx.load({xtype: "cronmanager-page-home"});
         });

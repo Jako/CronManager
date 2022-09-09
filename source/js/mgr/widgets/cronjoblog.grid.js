@@ -33,6 +33,8 @@ CronManager.grid.CronJobLog = function (config) {
         emptyText: _('cronmanager.log.norecords'),
         showActionsColumn: false,
         sm: this.sm,
+        height: 600,
+        autoHeight: false,
         columns: [this.sm, {
             header: _('cronmanager.log_error'),
             dataIndex: 'error',
@@ -238,6 +240,7 @@ Ext.extend(CronManager.grid.CronJobLog, MODx.grid.Grid, {
     viewLog: function (btn, e) {
         var fullLog = MODx.load({
             xtype: 'cronmanager-window-fulllog',
+            title: this.menu.record.logdate,
             record: this.menu.record,
             listeners: {
                 success: {
@@ -350,22 +353,24 @@ Ext.reg('cronmanager-grid-cronjoblog', CronManager.grid.CronJobLog);
 
 CronManager.window.FullLog = function (config) {
     config = config || {};
-
+    this.ident = 'cronmanager-cronjob-fulllog-' + Ext.id();
     Ext.applyIf(config, {
-        title: config.record.logdate,
+        id: this.ident,
+        width: 750,
+        autoHeight: true,
+        closeAction: 'close',
+        cls: 'modx-window cronmanager-window',
         fields: [{
             xtype: 'textarea',
             name: 'message',
             anchor: '100%',
             readOnly: true,
-            height: '150'
+            height: 300
         }],
         buttons: [{
             text: _('close'),
             scope: this,
-            handler: function () {
-                this.close();
-            }
+            handler: this.close
         }]
     });
     CronManager.window.FullLog.superclass.constructor.call(this, config);

@@ -27,9 +27,12 @@ class CronManagerCronjoblogsGetListProcessor extends ObjectGetListProcessor
     {
         $c = parent::prepareQueryBeforeCount($c);
 
-        $c->where([
-            'cronjob' => $this->getProperty('cronjob')
-        ]);
+        $cronjob = $this->getProperty('cronjob');
+        if ($cronjob) {
+            $c->where([
+                'cronjob' => $cronjob
+            ]);
+        }
 
         $error = $this->getProperty('error', 'all');
         if ($error != 'all') {
@@ -47,7 +50,6 @@ class CronManagerCronjoblogsGetListProcessor extends ObjectGetListProcessor
     {
         $ta = $object->toArray('', false, true);
         $logdate = DateTime::createFromFormat('Y-m-d H:i:s', $ta['logdate']);
-        $ta['logdate'] = ($logdate) ? $logdate->format('Y-m-d H:i:s') : $logdate;
         $ta['day'] = ($logdate) ? $logdate->format('Y-m-d') : $logdate;
         return $ta;
     }

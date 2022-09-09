@@ -33,7 +33,7 @@ CronManager.grid.CronJobs = function (config) {
         }, {
             header: _('cronmanager.minutes'),
             dataIndex: 'minutes',
-            sortable: false,
+            sortable: true,
             width: 40,
             editor: {
                 xtype: 'numberfield',
@@ -44,17 +44,17 @@ CronManager.grid.CronJobs = function (config) {
         }, {
             header: _('cronmanager.lastrun'),
             dataIndex: 'lastrun',
-            sortable: false,
+            sortable: true,
             renderer: CronManager.util.dateRenderer()
         }, {
             header: _('cronmanager.nextrun'),
             dataIndex: 'nextrun',
-            sortable: false,
+            sortable: true,
             renderer: CronManager.util.dateRenderer()
         }, {
             header: _('cronmanager.active'),
             dataIndex: 'active',
-            sortable: false,
+            sortable: true,
             width: 40,
             renderer: MODx.grid.Grid.prototype.rendYesNo,
             editor: {
@@ -133,7 +133,7 @@ Ext.extend(CronManager.grid.CronJobs, MODx.grid.Grid, {
         m.push('-');
         m.push({
             text: _('cronmanager.viewlog'),
-            handler: this.viewLog
+            handler: this.viewlogCronjob
         });
         m.push('-');
         m.push({
@@ -179,6 +179,27 @@ Ext.extend(CronManager.grid.CronJobs, MODx.grid.Grid, {
         });
         createUpdateCronjob.fp.getForm().setValues(r);
         createUpdateCronjob.show(e.target);
+    },
+    viewlogCronjob: function (btn, e) {
+        var r;
+        if (!this.menu.record || !this.menu.record.id) {
+            return false;
+        }
+        r = this.menu.record;
+
+        var viewlogCronjob = MODx.load({
+            xtype: 'cronmanager-window-cronjob-viewlog',
+            title: _('cronmanager.viewlog_title', {snippet: r.snippet_name}),
+            record: r,
+            listeners: {
+                success: {
+                    fn: this.refresh,
+                    scope: this
+                }
+            }
+        });
+        viewlogCronjob.fp.getForm().setValues(r);
+        viewlogCronjob.show(e.target);
     },
     removeCronjob: function () {
         if (!this.menu.record) {
@@ -298,7 +319,7 @@ Ext.extend(CronManager.grid.CronJobs, MODx.grid.Grid, {
                     this.runCronjob(record, e);
                     break;
                 case 'viewlog':
-                    this.viewLog(record, e);
+                    this.viewlogCronjob(record, e);
                     break;
                 default:
                     break;
@@ -376,3 +397,28 @@ CronManager.window.CreateUpdateCronjob = function (config) {
 };
 Ext.extend(CronManager.window.CreateUpdateCronjob, MODx.Window);
 Ext.reg('cronmanager-window-cronjob-create-update', CronManager.window.CreateUpdateCronjob);
+
+CronManager.window.ViewlogCronjob = function (config) {
+    config = config || {};
+    this.ident = 'cronmanager-cronjob-viewlog-' + Ext.id();
+    Ext.applyIf(config, {
+        id: this.ident,
+        width: 900,
+        autoHeight: true,
+        closeAction: 'close',
+        cls: 'modx-window cronmanager-window',
+        fields: [{
+            xtype: 'cronmanager-grid-cronjoblog',
+            preventRender: true,
+            cronjob: config.record.id
+        }],
+        buttons: [{
+            text: _('close'),
+            scope: this,
+            handler: this.close
+        }]
+    });
+    CronManager.window.ViewlogCronjob.superclass.constructor.call(this, config);
+};
+Ext.extend(CronManager.window.ViewlogCronjob, MODx.Window);
+Ext.reg('cronmanager-window-cronjob-viewlog', CronManager.window.ViewlogCronjob);
