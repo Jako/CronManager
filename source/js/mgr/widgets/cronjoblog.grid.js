@@ -171,7 +171,7 @@ CronManager.grid.CronJobLog = function (config) {
             })
         });
     }
-    CronManager.grid.CronJobLog.superclass.constructor.call(this, config)
+    CronManager.grid.CronJobLog.superclass.constructor.call(this, config);
 };
 Ext.extend(CronManager.grid.CronJobLog, MODx.grid.Grid, {
     getMenu: function (cfg) {
