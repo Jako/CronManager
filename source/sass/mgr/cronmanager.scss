@@ -113,11 +113,12 @@ $borderRadius: 3px;
 
 .x-grid-editor {
   .x-form-check-wrap {
+    line-height: 34px;
     background: #f0f0f0;
     .x-form-cb-label {
-      left: 2px;
-      top: 6px;
       &:before {
+        left: 0;
+        top: 10px;
         font-size: 14px;
       }
     }
