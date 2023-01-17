@@ -14,7 +14,7 @@ CronManager.grid.CronJobLog = function (config) {
         compiled: true
     });
     Ext.applyIf(config, {
-        id: this.ident + '-cronmanager-grid-cronjoblog',
+        id: this.ident,
         url: CronManager.config.connectorUrl,
         baseParams: {
             action: 'mgr/cronjoblogs/getlist',

@@ -13,7 +13,7 @@ CronManager.grid.CronJobs = function (config) {
     });
     this.ident = 'cronmanager-cronjobs-' + Ext.id();
     Ext.applyIf(config, {
-        id: this.ident + '-cronmanager-grid-cronjobs',
+        id: this.ident,
         url: CronManager.config.connectorUrl,
         baseParams: {
             action: 'mgr/cronjobs/getlist'
