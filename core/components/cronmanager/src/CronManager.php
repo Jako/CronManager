@@ -87,6 +87,13 @@ class CronManager
             'cronUrl' => $assetsUrl . 'cron.php'
         ], $options);
 
+        $lexicon = $this->modx->getService('lexicon', 'modLexicon');
+        $lexicon->load($this->namespace . ':default');
+
+        $this->packageName = $this->modx->lexicon('cronmanager');
+
+        $this->modx->addPackage($this->namespace, $this->getOption('modelPath'));
+
         // Add default options
         $this->options = array_merge($this->options, [
             'debug' => (bool)$this->getOption('debug', $options, false),
@@ -94,10 +101,6 @@ class CronManager
             'is_admin' => $this->modx->user && ($modx->hasPermission('settings') || $modx->hasPermission($this->namespace . '_settings')),
             'cronjob_id' => $this->getOption('cronjob_id', $options, false)
         ]);
-
-        $this->modx->addPackage($this->namespace, $this->getOption('modelPath'));
-        $lexicon = $this->modx->getService('lexicon', 'modLexicon');
-        $lexicon->load($this->namespace . ':default');
     }
 
     /**
