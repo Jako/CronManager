@@ -24,7 +24,7 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
         development in Münsterland.</p>
 
         <p>During the installation, we will collect some statistical data (the
-        hostname, the IP address, the PHP version and the MODX version of your
+        hostname, the MODX UUID, the PHP version and the MODX version of your
         MODX installation). Your data will be kept confidential and under no
         circumstances be used for promotional purposes or disclosed to third
         parties. We only like to know the usage count of this package.</p>
@@ -40,12 +40,11 @@ switch ($options[xPDOTransport::PACKAGE_ACTION]) {
         by OostDesign and is maintained by Treehill Studio - MODX development 
         in Münsterland.</p>
 
-        During the upgrade, we will collect some statistical data (the hostname,
-        the IP address, the PHP version, the MODX version of your MODX
-        installation and the previous installed version of this extra package).
-        Your data will be kept confidential and under no circumstances be used
-        for promotional purposes or disclosed to third parties. We only like to
-        know the usage count of this package.</p>
+        <p>During the installation, we will collect some statistical data (the
+        hostname, the MODX UUID, the PHP version and the MODX version of your
+        MODX installation). Your data will be kept confidential and under no
+        circumstances be used for promotional purposes or disclosed to third
+        parties. We only like to know the usage count of this package.</p>
 
         <p>If you upgrade this package, you are giving us your permission to
         collect, process and use that data for statistical purposes.</p>';
