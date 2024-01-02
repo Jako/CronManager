@@ -1,4 +1,4 @@
-[![Default Lexicon](https://hosted.weblate.org/widgets/modx-extras/-/modx-cronmanager-standard/svg-badge.svg)](https://hosted.weblate.org/projects/modx-extras/modx-cronmanager-standard/)
+[![Default Lexicon](https://hosted.weblate.org/widgets/modx-extras/cronmanager/standard/svg-badge.svg)](https://hosted.weblate.org/projects/modx-extras/cronmanager/standard/)
 
 # CronManager
 
@@ -29,4 +29,4 @@ The project is licensed under the [GPLv2 license](https://github.com/Jako/CronMa
 
 ## Translations
 
-Translations of the package can be made for the [Default Lexicon](https://hosted.weblate.org/projects/modx-extras/modx-cronmanager-standard/) and the [System Setting Lexicon](https://hosted.weblate.org/projects/modx-extras/modx-cronmanager-system-settings/)
+Translations of the package can be made for the [Default Lexicon](https://hosted.weblate.org/projects/modx-extras/cronmanager/standard/) and the [System Setting Lexicon](https://hosted.weblate.org/projects/modx-extras/cronmanager/system-settings/)
