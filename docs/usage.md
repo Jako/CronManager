@@ -32,7 +32,7 @@ minute cronjob, you could change the crontab interval to your own needs.
 
 To use the component, navigate to your manager and click on "Extras > CronManager".
 
-[![](img/cronmanager.png)](img/cronmanager.png)
+![Cronjobs](img/cronmanager.png)
 
 You could create a new cronjob with a click on the create new cronjob button on
 the top left above the cronjob grid.
@@ -54,7 +54,7 @@ run column will contain a date when the cron script is executed.
 
 The create/edit window for one cronjob has a lot of options, that could be set.
 
-[![](img/cronmanager-edit.png)](img/cronmanager-edit.png)
+![Update Cronjob](img/cronmanager-edit.png)
 
 You could set the executed snippet, the minute interval, the active state and
 the snippet properties. The snippet is executed on the `site_start` resource and
