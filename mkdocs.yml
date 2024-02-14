@@ -6,7 +6,7 @@ edit_uri: tree/master/docs
 repo_name: 'Jako/CronManager'
 repo_url: https://github.com/Jako/CronManager
 
-copyright: '&copy; 2019-2022 <a href="https://treehillstudio.com">Treehill Studio</a>'
+copyright: '&copy; 2019-2024 <a href="https://treehillstudio.com">Treehill Studio</a>'
 
 nav:
 - Description: 'index.md'

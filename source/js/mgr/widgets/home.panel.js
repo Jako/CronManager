@@ -26,7 +26,7 @@ CronManager.panel.Home = function (config) {
                     this.getEl().select('img').on('click', function () {
                         var msg = '<span style="display: inline-block; text-align: center">&copy; 2011-2019 by <a href="https://oostdesign.com/" target="_blank">OostDesign</a><br>' +
                             '<img src="' + CronManager.config.assetsUrl + 'img/mgr/treehill-studio.png" srcset="' + CronManager.config.assetsUrl + 'img/mgr/treehill-studio@2x.png 2x" alt="Treehill Studio" style="margin-top: 10px"><br>' +
-                            '&copy; 2019-2022 by <a href="https://treehillstudio.com" target="_blank">Treehill Studio</a>' +
+                            '&copy; 2019-2024 by <a href="https://treehillstudio.com" target="_blank">Treehill Studio</a>' +
                             '</span>';
                         Ext.Msg.show({
                             title: _('cronmanager') + ' ' + CronManager.config.version,

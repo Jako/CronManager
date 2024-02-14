@@ -3,7 +3,7 @@
  * CronManager
  *
  * Copyright 2011-2019 by Bert Oost <bert@oostdesign.com>
- * Copyright 2019-2022 by Thomas Jakobi <office@treehillstudio.com>
+ * Copyright 2019-2024 by Thomas Jakobi <office@treehillstudio.com>
  *
  * @package cronmanager
  * @subpackage classfile
