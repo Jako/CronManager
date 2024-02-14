@@ -23,7 +23,7 @@ CronManager.grid.CronJobs = function (config) {
         remoteSort: true,
         autoExpandColumn: 'snippet',
         autosave: true,
-        save_action: 'mgr/cronjobs/updateFromGrid',
+        save_action: 'mgr/cronjobs/updatefromgrid',
         showActionsColumn: false,
         emptyText: _('cronmanager.norecords'),
         columns: [{
