@@ -320,7 +320,8 @@ Ext.extend(CronManager.grid.CronJobLog, MODx.grid.Grid, {
         this.getBottomToolbar().changePage(1);
         this.refresh();
     },
-    buttonColumnRenderer: function () {
+    buttonColumnRenderer: function (value, metaData) {
+    metaData.css = 'x-grid-cell-icons';
         var values = {
             action_buttons: [
                 {

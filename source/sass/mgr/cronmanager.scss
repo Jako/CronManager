@@ -39,6 +39,14 @@ $borderRadius: 3px;
     }
 }
 
+.modx-grid {
+  .x-grid-cell-icons {
+    .x-grid3-cell-inner {
+      padding-right: 5px;
+    }
+  }
+}
+
 .modx-grid-small {
   .x-grid3-cell-inner {
     padding: 8px 5px 8px 5px;
