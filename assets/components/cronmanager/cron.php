@@ -11,7 +11,7 @@
 // For access without authorization
 define('MODX_REQP', false);
 
-require_once dirname(__FILE__, 4) . '/config.core.php';
+require_once dirname(dirname(dirname(dirname(__FILE__)))) . '/config.core.php';
 require_once MODX_CORE_PATH . 'config/' . MODX_CONFIG_KEY . '.inc.php';
 require_once MODX_CONNECTORS_PATH . 'index.php';
 
@@ -29,10 +29,9 @@ if (php_sapi_name() != 'cli' &&
     return '';
 }
 
-$rundatetime = date('Y-m-d H:i:s');
 $success = true;
 
-// Get all cronjobs, wich needs to be runned
+// Determines all cronjobs that need to be executed
 $c = $modx->newQuery('modCronjob');
 $c->where([
     'active' => true,
@@ -41,18 +40,21 @@ if (!isset($_REQUEST['force']) || !$_REQUEST['force']) {
     $c->where([
         [
             'nextrun' => null,
-            'OR:nextrun:<=' => $rundatetime,
+            'OR:nextrun:<=' => date('Y-m-d H:i:s'),
         ],
     ]);
 }
 if (isset($_REQUEST['job']) && $_REQUEST['job']) {
-    $c->where(['id' => intval($_REQUEST['job'])]);
+    $c->where([
+        'id' => intval($_REQUEST['job'])
+    ]);
 }
 $c->sortby('nextrun');
 $c->limit(1);
 
 /** @var modCronjob $cronjob */
 while ($cronjob = $modx->getObject('modCronjob', $c)) {
+    $rundatetime = ($cronjob->get('lastrun')) ? $cronjob->get('lastrun') : date('Y-m-d H:i:s');
     $properties = $cronjob->get('properties');
     if (!empty($properties)) {
         /** @var modPropertySet $propset */
@@ -122,6 +124,7 @@ while ($cronjob = $modx->getObject('modCronjob', $c)) {
     $cronjob->save();
 
     if (isset($_REQUEST['force']) && $_REQUEST['force']) {
+        // Force run only the first cronjob to avoid an infinite loop
         $c->where([
             [
                 'nextrun' => null,
@@ -138,7 +141,7 @@ if (php_sapi_name() != 'cli') {
             'success' => true
         ]));
     } else {
-        exit($rundatetime);
+        exit(isset($rundatetime) ? $rundatetime : date('Y-m-d H:i:s'));
     }
 } else {
     exit($success ? 0 : 1);

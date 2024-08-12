@@ -20,7 +20,10 @@
     }
   },
   "require": {
-    "php": ">=5.6"
+    "php": ">=5.6",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "ext-pdo": "*"
   },
   "autoload": {
     "psr-4": {

@@ -56,15 +56,15 @@ The create/edit window for one cronjob has a lot of options, that could be set.
 
 ![Update Cronjob](img/cronmanager-edit.png)
 
-You could set the executed snippet, the minute interval, the active state and
-the snippet properties. The snippet is executed on the `site_start` resource and
-it should return a json array: `{"error": boolean, "message": "string"}`. If
-not, the output will be saved in the log message and the log entry will be set
-to successful. The minute interval sets the interval the snippet is executed.
-Example: If you enter 15, the snippet would run every 15 minutes (when the
-cron.php file is called every minute). The snippet properties could contain
-key-value pairs (each on a new line in the format `key: value`), a JSON object
-or the name of a propertyset.
+You could set the executed snippet, the active state, the minute interval, the
+next run and the snippet properties. The snippet is executed on the `site_start`
+resource, and it should return a json array: `{"error": boolean, "message":
+"string"}`. If not, the output will be saved in the log message and the log
+entry will be set to successful. The minute interval sets the interval the
+snippet is executed. Example: If you enter 15, the snippet would run every 15
+minutes (when the cron.php file is called every minute). The snippet properties
+could contain key-value pairs (each on a new line in the format `key: value`), a
+JSON object or the name of a propertyset.
 
 The snippet cannot be terminated with `exit()`, because the CronManager is also
 terminated with this exit. So it cannot write any success or error message to

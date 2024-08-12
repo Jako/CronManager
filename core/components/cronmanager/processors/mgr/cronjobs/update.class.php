@@ -19,6 +19,9 @@ class CronManagerCronjobUpdateProcessor extends ObjectUpdateProcessor
     public function beforeSave()
     {
         $this->object->set('minutes', $this->getProperty('minutes', 1));
+        if (!$this->getProperty('nextrun')) {
+            $this->object->set('nextrun');
+        }
 
         return parent::beforeSave();
     }

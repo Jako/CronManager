@@ -160,6 +160,7 @@ Ext.extend(CronManager.grid.CronJobs, MODx.grid.Grid, {
                 return false;
             }
             r = this.menu.record;
+            r.nextrun = (typeof r.nextrun === 'string' && r.nextrun !== '' && Date.parseDate(r.nextrun, 'Y-m-d H:i:s')) ? r.nextrun : '';
         } else {
             r = {
                 parameter: '{}'
@@ -275,7 +276,7 @@ Ext.extend(CronManager.grid.CronJobs, MODx.grid.Grid, {
         this.refresh();
     },
     buttonColumnRenderer: function (value, metaData) {
-    metaData.css = 'x-grid-cell-icons';
+        metaData.css = 'x-grid-cell-icons';
         var values = {
             action_buttons: [
                 {
@@ -345,7 +346,7 @@ CronManager.window.CreateUpdateCronjob = function (config) {
             items: [{
                 layout: 'column',
                 items: [{
-                    columnWidth: .6,
+                    columnWidth: .8,
                     layout: 'form',
                     items: [{
                         xtype: 'cronmanager-combo-snippets',
@@ -355,6 +356,19 @@ CronManager.window.CreateUpdateCronjob = function (config) {
                         allowBlank: false
                     }]
                 }, {
+                    columnWidth: .2,
+                    layout: 'form',
+                    items: [{
+                        xtype: 'xcheckbox',
+                        fieldLabel: _('cronmanager.active'),
+                        name: 'active',
+                        hiddenName: 'active',
+                        anchor: '100%'
+                    }]
+                }]
+            }, {
+                layout: 'column',
+                items: [{
                     columnWidth: .2,
                     layout: 'form',
                     items: [{
@@ -369,14 +383,17 @@ CronManager.window.CreateUpdateCronjob = function (config) {
                         allowNegative: false
                     }]
                 }, {
-                    columnWidth: .2,
+                    columnWidth: .8,
                     layout: 'form',
                     items: [{
-                        xtype: 'xcheckbox',
-                        fieldLabel: _('cronmanager.active'),
-                        name: 'active',
-                        hiddenName: 'active',
-                        anchor: '100%'
+                        xtype: 'xdatetime',
+                        fieldLabel: _('cronmanager.nextrun'),
+                        name: 'nextrun',
+                        hiddenName: 'nextrun',
+                        anchor: '100%',
+                        allowBlank: true,
+                        dateFormat: MODx.config.manager_date_format,
+                        timeFormat: MODx.config.manager_time_format,
                     }]
                 }]
             }]
