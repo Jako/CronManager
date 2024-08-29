@@ -13,6 +13,7 @@ require_once MODX_CORE_PATH . 'config/' . MODX_CONFIG_KEY . '.inc.php';
 require_once MODX_CONNECTORS_PATH . 'index.php';
 
 $corePath = $modx->getOption('cronmanager.core_path', null, $modx->getOption('core_path') . 'components/cronmanager/');
+/** @var CronManager $cronmanager */
 $cronmanager = $modx->getService('cronmanager', 'CronManager', $corePath . 'model/cronmanager/', [
     'core_path' => $corePath
 ]);
