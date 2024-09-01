@@ -54,7 +54,7 @@ $c->limit(1);
 
 /** @var modCronjob $cronjob */
 while ($cronjob = $modx->getObject('modCronjob', $c)) {
-    $rundatetime = ($cronjob->get('lastrun')) ? $cronjob->get('lastrun') : date('Y-m-d H:i:s');
+    $rundatetime = ($cronjob->get('nextrun')) ? $cronjob->get('nextrun') : date('Y-m-d H:i:s');
     $properties = $cronjob->get('properties');
     if (!empty($properties)) {
         /** @var modPropertySet $propset */
