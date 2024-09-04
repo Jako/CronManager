@@ -21,7 +21,6 @@ $_lang['cronmanager.lastrun'] = 'Dernière exécution';
 $_lang['cronmanager.log.date'] = 'Date du log';
 $_lang['cronmanager.log.message'] = 'Message de log';
 $_lang['cronmanager.log.norecords'] = 'Aucune entrée de log pour cette tâche';
-$_lang['cronmanager.log_cronjob_err_ns'] = 'Aucun ID de tâche cron de défini.';
 $_lang['cronmanager.log_day'] = 'Jour';
 $_lang['cronmanager.log_error'] = 'Erreur';
 $_lang['cronmanager.log_message'] = 'message';

@@ -11,3 +11,5 @@ $_lang['setting_cronmanager.debug'] = 'Débogage';
 $_lang['setting_cronmanager.debug_desc'] = 'Enregistrer les informations de débogage dans le journal des erreurs du MODX.';
 $_lang['setting_cronmanager.pass_modcronjob'] = 'Passer le modCronjob';
 $_lang['setting_cronmanager.pass_modcronjob_desc'] = 'Passer l’instance de modCronjob au snippet exécuté dans la propriété du snippet CronManagerJob. Désactivez cette option si le snippet cronjob génère une erreur "Object of class modCronjob_mysql could not be converted to string".';
+$_lang['setting_cronmanager.purge_running'] = 'Nettoyage des cronjobs en cours';
+$_lang['setting_cronmanager.purge_running_desc'] = 'Anzahl der Minuten, nach denen laufende Cronjobs bereinigt werden, um nicht mehr reagierende Cronjobs zurückzusetzen.';

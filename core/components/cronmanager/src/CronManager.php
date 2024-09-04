@@ -40,7 +40,7 @@ class CronManager
      * The version
      * @var string $version
      */
-    public $version = '1.3.2';
+    public $version = '1.4.0-rc1';
 
     /**
      * The class options
@@ -99,7 +99,8 @@ class CronManager
             'debug' => (bool)$this->getOption('debug', $options, false),
             'modxversion' => $modxversion['version'],
             'is_admin' => $this->modx->user && $this->modx->context && ($modx->hasPermission('settings') || $modx->hasPermission($this->namespace . '_settings')),
-            'cronjob_id' => $this->getOption('cronjob_id', $options, false)
+            'cronjob_id' => $this->getOption('cronjob_id', $options, false),
+            'purge_running' => $this->getOption('purge_running', $options, 60),
         ]);
     }
 

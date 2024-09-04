@@ -18,7 +18,7 @@ CronManager.grid.CronJobs = function (config) {
         baseParams: {
             action: 'mgr/cronjobs/getlist'
         },
-        fields: ['id', 'snippet', 'snippet_name', 'properties', 'minutes', 'nextrun', 'lastrun', 'active', 'sortorder'],
+        fields: ['id', 'snippet', 'snippet_name', 'properties', 'minutes', 'nextrun', 'lastrun', 'active', 'running', 'sortorder'],
         paging: true,
         remoteSort: true,
         autoExpandColumn: 'snippet',
@@ -61,6 +61,12 @@ CronManager.grid.CronJobs = function (config) {
                 xtype: 'combo-boolean'
             }
         }, {
+            header: _('cronmanager.running'),
+            dataIndex: 'running',
+            sortable: true,
+            width: 40,
+            renderer: MODx.grid.Grid.prototype.rendYesNo,
+        }, {
             header: _('id'),
             dataIndex: 'id',
             hidden: true,
@@ -71,7 +77,8 @@ CronManager.grid.CronJobs = function (config) {
                 scope: this
             },
             menuDisabled: true,
-            width: 30
+            fixed: true,
+            width: 100
         }],
         tbar: [{
             text: _('cronmanager.create'),
@@ -235,10 +242,14 @@ Ext.extend(CronManager.grid.CronJobs, MODx.grid.Grid, {
             cronjob_id: CronManager.config.cronjob_id,
         };
         if (id) {
-            Ext.apply(params, {job: id});
+            Ext.apply(params, {
+                job: id
+            });
         }
         var url = CronManager.config.cronUrl + '?' + Ext.urlEncode(params);
-        Ext.apply(params, {force: true});
+        Ext.apply(params, {
+            force: true
+        });
         MODx.msg.confirm({
             title: (id) ? _('cronmanager.run_job') : _('cronmanager.run_jobs'),
             text: (id) ? _('cronmanager.run_job_confirm', {

@@ -21,7 +21,6 @@ $_lang['cronmanager.lastrun'] = 'Last Run';
 $_lang['cronmanager.log.date'] = 'Logdate';
 $_lang['cronmanager.log.message'] = 'Log Message';
 $_lang['cronmanager.log.norecords'] = 'No log records found for this cronjob';
-$_lang['cronmanager.log_cronjob_err_ns'] = 'No cronjob ID set.';
 $_lang['cronmanager.log_day'] = 'Day';
 $_lang['cronmanager.log_error'] = 'Error';
 $_lang['cronmanager.log_message'] = 'message';
@@ -56,6 +55,7 @@ $_lang['cronmanager.run_job_confirm'] = 'Are you sure you want to run the cronjo
 $_lang['cronmanager.run_jobs'] = 'Run Cronjobs';
 $_lang['cronmanager.run_jobs_confirm'] = 'Are you sure you want to run the cronjobs?';
 $_lang['cronmanager.runempty'] = 'Cronjob not started yet';
+$_lang['cronmanager.running'] = 'Running';
 $_lang['cronmanager.selectasnippet'] = 'Please select a snippet';
 $_lang['cronmanager.settings'] = '<i class="icon icon-cog"></i>';
 $_lang['cronmanager.settings_desc'] = 'Edit the settings of CronManager. You can edit the value of a system setting by double-clicking on the ‘Value’ table cell or by right-clicking in the table cell.';

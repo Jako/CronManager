@@ -6,6 +6,7 @@
         <field key="minutes" dbtype="int" precision="11" phptype="integer" null="false" default="60"/>
         <field key="lastrun" dbtype="datetime" phptype="datetime" null="true"/>
         <field key="nextrun" dbtype="datetime" phptype="datetime" null="true"/>
+        <field key="running" dbtype="int" precision="1" phptype="boolean" null="false" default="0"/>
         <field key="active" dbtype="int" precision="1" phptype="boolean" null="false" default="0"/>
 
         <composite alias="Log" class="modCronjobLog" local="id" foreign="cronjob" cardinality="many" owner="local"/>

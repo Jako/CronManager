@@ -6,7 +6,9 @@
  * @subpackage processors
  */
 
-class CronManagerCronjobGetProcessor extends modObjectGetProcessor
+use TreehillStudio\CronManager\Processors\ObjectGetProcessor;
+
+class CronManagerCronjobGetProcessor extends ObjectGetProcessor
 {
     public $classKey = 'modCronjob';
     public $objectType = 'cronmanager.cronjob';

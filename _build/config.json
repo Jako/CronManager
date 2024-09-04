@@ -3,7 +3,7 @@
   "lowCaseName": "cronmanager",
   "description": "Create and run cronjobs within the manager",
   "author": "Bert Oost, Thomas Jakobi",
-  "version": "1.3.2",
+  "version": "1.4.0-rc1",
   "package": {
     "menus": [
       {
@@ -30,6 +30,11 @@
         "type": "combo-boolean",
         "area": "system",
         "value": "0"
+      },
+      {
+        "key": "purge_running",
+        "area": "system",
+        "value": "60"
       }
     ]
   },

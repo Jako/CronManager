@@ -80,3 +80,14 @@ instance to i.e. disable the cron job.
     After adding a cronjob, it isn't active. You have to change the active state
     to yes in the `Active` column of the overview or check the checkbox in the 
     edit window.
+
+## System Settings
+
+CronManager uses the following system settings in the namespace `cronmanager`:
+
+| Key                         | Name                   | Description                                                                                                                                                                                                                 | Default |
+|-----------------------------|------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
+| cronmanager.cronjob_id      | Cronjob ID             | String, that has to be added to the cronjob URL as cronjob_id parameter.                                                                                                                                                    | -       |
+| cronmanager.debug           | Debug                  | Log debug information in the MODX error log.                                                                                                                                                                                | No      |
+| cronmanager.pass_modcronjob | Pass modCronjob        | Pass the modCronjob instance to the executed snippet in the CronManagerJob snippet property. Disable the option if the cronjob snippet throws an "Object of class modCronjob_mysql could not be converted to string" error. | No      |
+| cronmanager.purge_running   | Purge Running Cronjobs | Number of minutes after which running cronjobs are cleaned up in order to reset cronjobs that are no longer responding.                                                                                                     | 60      |

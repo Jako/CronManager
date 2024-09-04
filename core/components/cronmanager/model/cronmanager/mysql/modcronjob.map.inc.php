@@ -18,6 +18,7 @@ $xpdo_meta_map['modCronjob']= array (
     'minutes' => 60,
     'lastrun' => NULL,
     'nextrun' => NULL,
+    'running' => 0,
     'active' => 0,
   ),
   'fieldMeta' => 
@@ -55,6 +56,14 @@ $xpdo_meta_map['modCronjob']= array (
       'dbtype' => 'datetime',
       'phptype' => 'datetime',
       'null' => true,
+    ),
+    'running' => 
+    array (
+      'dbtype' => 'int',
+      'precision' => '1',
+      'phptype' => 'boolean',
+      'null' => false,
+      'default' => 0,
     ),
     'active' => 
     array (
