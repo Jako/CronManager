@@ -378,6 +378,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#system-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Settings
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -452,6 +461,15 @@
   <a href="#createedit" class="md-nav__link">
     <span class="md-ellipsis">
       Create/Edit
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Settings
     </span>
   </a>
   
@@ -541,6 +559,44 @@ instance to i.e. disable the cron job.</p>
 to yes in the <code>Active</code> column of the overview or check the checkbox in the 
 edit window.</p>
 </div>
+<h2 id="system-settings">System Settings</h2>
+<p>CronManager uses the following system settings in the namespace <code>cronmanager</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Name</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cronmanager.cronjob_id</td>
+<td>Cronjob ID</td>
+<td>String, that has to be added to the cronjob URL as cronjob_id parameter.</td>
+<td>-</td>
+</tr>
+<tr>
+<td>cronmanager.debug</td>
+<td>Debug</td>
+<td>Log debug information in the MODX error log.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>cronmanager.pass_modcronjob</td>
+<td>Pass modCronjob</td>
+<td>Pass the modCronjob instance to the executed snippet in the CronManagerJob snippet property. Disable the option if the cronjob snippet throws an "Object of class modCronjob_mysql could not be converted to string" error.</td>
+<td>No</td>
+</tr>
+<tr>
+<td>cronmanager.purge_running</td>
+<td>Purge Running Cronjobs</td>
+<td>Number of minutes after which running cronjobs are cleaned up in order to reset cronjobs that are no longer responding.</td>
+<td>60</td>
+</tr>
+</tbody>
+</table>
 
 
 
