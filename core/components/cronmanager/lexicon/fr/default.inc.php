@@ -50,6 +50,7 @@ $_lang['cronmanager.properties'] = 'Propriétés du snippet';
 $_lang['cronmanager.properties_desc'] = 'Vous pouvez saisir un nom de jeu de propriétés, saisir des paires clé-valeur<br><ul><li>key : value</li><li>key2 : value2</li></ul>ou saisir un objet JSON sous forme brute.';
 $_lang['cronmanager.remove'] = 'Supprimer la tâche cron';
 $_lang['cronmanager.remove_confirm'] = 'Êtes-vous sûr de vouloir supprimer [[+snippet]] de la liste de tâches cron ?';
+$_lang['cronmanager.running'] = 'Exécuté';
 $_lang['cronmanager.run_job'] = 'Exécuter la tâche cron';
 $_lang['cronmanager.run_job_confirm'] = 'Êtes-vous sûr de vouloir exécuter la tâche cron [[id]] ?';
 $_lang['cronmanager.run_jobs'] = 'Exécuter des tâches cron';
