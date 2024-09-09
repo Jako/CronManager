@@ -178,7 +178,7 @@ $borderRadius: 3px;
   z-index: 15;
   &:before,
   &:after {
-    border: 5px solid mix(#000000, $red, 15);
+    border: 5px solid mix(#000000, $red, 15%);
     content: '';
     display: block;
     position: absolute;
