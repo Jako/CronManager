@@ -10,7 +10,8 @@ If you have access to there server with SSH could add the cronjob with the
 php /path/to/your/modx/installation/assets/components/cronmanager/cron.php
 ```
 
-!!! note
+!!! note "This depends on your hosting"
+
     In some cases this command needs some modifications (i.e. the path to a
     version specific php file). Please discuss this with your hosting provider.
 
@@ -76,7 +77,8 @@ property to detect if the snippet is executed by CronManager. Since version
 determine, which job triggered it, it can change and save the modCronjob
 instance to i.e. disable the cron job.
 
-!!! caution 
+!!! caution "Check the active state"
+
     After adding a cronjob, it isn't active. You have to change the active state
     to yes in the `Active` column of the overview or check the checkbox in the 
     edit window.
