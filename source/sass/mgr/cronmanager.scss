@@ -1,3 +1,5 @@
+@use "sass:color";
+
 $treehillstudio-color: #cbd842;
 $red: #be0000;
 $boxShadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
@@ -149,10 +151,10 @@ $borderRadius: 3px;
 
 .treehillstudio_window {
   a {
-    color: darken($treehillstudio-color, 10);
+    color: color.adjust($treehillstudio-color, $lightness: -10%);
     text-decoration: none;
     &:hover {
-      color: darken($treehillstudio-color, 25);
+      color: color.adjust($treehillstudio-color, $lightness: -25%);
     }
   }
 }
@@ -178,7 +180,7 @@ $borderRadius: 3px;
   z-index: 15;
   &:before,
   &:after {
-    border: 5px solid mix(#000000, $red, 15%);
+    border: 5px solid color.adjust($red, $lightness: -15%);
     content: '';
     display: block;
     position: absolute;
