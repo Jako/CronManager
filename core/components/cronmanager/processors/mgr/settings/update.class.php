@@ -13,10 +13,22 @@ if (file_exists(MODX_PROCESSORS_PATH . 'system/settings/update.class.php')) {
     class_alias(\MODX\Revolution\Processors\System\Settings\Update::class, \modSystemSettingsUpdateProcessor::class);
 }
 
+/**
+ * Class CronManagerSystemSettingsUpdateProcessor
+ */
 class CronManagerSystemSettingsUpdateProcessor extends modSystemSettingsUpdateProcessor
 {
     public $checkSavePermission = false;
     public $languageTopics = ['setting', 'namespace', 'cronmanager:setting'];
+
+    /**
+     * {@inheritDoc}
+     * @return bool
+     */
+    public function checkPermissions()
+    {
+        return !empty($this->permission) ? $this->modx->hasPermission($this->permission) || $this->modx->hasPermission('cronmanager_' . $this->permission) : true;
+    }
 
     /**
      * {@inheritDoc}
@@ -50,7 +62,7 @@ class CronManagerSystemSettingsUpdateProcessor extends modSystemSettingsUpdatePr
         if (strpos($key, 'cronmanager.') !== 0) {
             $this->addFieldError('key', $this->modx->lexicon('cronmanager.systemsetting_key_err_nv'));
         }
-        if (!$this->modx->hasPermission('settings') && !$this->modx->hasPermission('cronmanager_settings')) {
+        if (!$this->modx->hasPermission($this->permission) && !$this->modx->hasPermission('cronmanager_' . $this->permission)) {
             $this->addFieldError('usergroup', $this->modx->lexicon('cronmanager.systemsetting_usergroup_err_nv'));
         }
     }
