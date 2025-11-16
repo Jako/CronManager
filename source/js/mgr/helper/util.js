@@ -1,11 +1,11 @@
-CronManager.util.dateRenderer = function (format) {
-    return function (v) {
-        if (typeof v === 'string' && v !== '' && Date.parseDate(v, 'Y-m-d H:i:s')) {
-            var format = (format) ? format : MODx.config.manager_date_format + ' ' + MODx.config.manager_time_format;
-            v = Date.parseDate(v, 'Y-m-d H:i:s');
-            return Ext.util.Format.date(v, format);
+CronManager.util.dateRenderer = function (dateFormat) {
+    return function (value) {
+        if (typeof value === 'string' && value !== '' && Date.parseDate(value, 'Y-m-d H:i:s')) {
+            var format = (dateFormat) ? dateFormat : MODx.config.manager_date_format + ' ' + MODx.config.manager_time_format;
+            value = Date.parseDate(value, 'Y-m-d H:i:s');
+            return Ext.util.Format.date(value, format);
         } else {
-            return v;
+            return value;
         }
     }
 };
