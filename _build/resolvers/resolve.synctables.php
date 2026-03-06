@@ -20,7 +20,7 @@ if (!function_exists('updateTableColumns')) {
         $tableName = str_replace('`', '', $tableName);
         $dbname = $modx->getOption('dbname');
 
-        $c = $modx->prepare("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE table_schema = :dbName AND table_name = :tableName");
+        $c = $modx->prepare('SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE table_schema = :dbName AND table_name = :tableName');
         $c->bindParam(':dbName', $dbname);
         $c->bindParam(':tableName', $tableName);
         $c->execute();
