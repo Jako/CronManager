@@ -10,10 +10,11 @@ If you have access to there server with SSH could add the cronjob with the
 php /path/to/your/modx/installation/assets/components/cronmanager/cron.php
 ```
 
-!!! note "This depends on your hosting"
+!!! note "Binary path of the php command"
 
-    In some cases this command needs some modifications (i.e. the path to a
-    version specific php file). Please discuss this with your hosting provider.
+    The php command often has to be replaced with a version specific php binary
+    path like `/usr/bin/php8.2-cli`. This depends on your hosting and a hosting
+    administrator can help you to get the right path.
 
 The cron connector could also be called as an external webcronjob using the
 following url:
