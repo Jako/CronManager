@@ -78,7 +78,7 @@ property to detect if the snippet is executed by CronManager. Since version
 determine, which job triggered it, it can change and save the modCronjob
 instance to i.e. disable the cron job.
 
-!!! caution "Check the active state"
+!!! warning "Check the active state"
 
     After adding a cronjob, it isn't active. You have to change the active state
     to yes in the `Active` column of the overview or check the checkbox in the 
