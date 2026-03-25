@@ -102,11 +102,11 @@
 }
 
 .treehillstudio_window a {
-  color: #b2bf28;
+  color: rgb(178.3157894737, 191.4868421053, 39.5131578947);
   text-decoration: none;
 }
 .treehillstudio_window a:hover {
-  color: #77801a;
+  color: rgb(119.2631578947, 128.0723684211, 26.4276315789);
 }
 
 .home-panel.debug {
@@ -128,7 +128,7 @@
   z-index: 15;
 }
 .ribbon:before, .ribbon:after {
-  border: 5px solid #a20000;
+  border: 5px solid rgb(113.5, 0, 0);
   content: "";
   display: block;
   position: absolute;

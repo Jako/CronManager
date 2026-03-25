@@ -3,7 +3,7 @@
  * CronManager
  *
  * Copyright 2011-2019 by Bert Oost <bert@oostdesign.com>
- * Copyright 2019-2024 by Thomas Jakobi <office@treehillstudio.com>
+ * Copyright 2019-2026 by Thomas Jakobi <office@treehillstudio.com>
  *
  * @package cronmanager
  * @subpackage classfile
@@ -40,7 +40,7 @@ class CronManager
      * The version
      * @var string $version
      */
-    public $version = '1.4.0';
+    public $version = '1.5.0';
 
     /**
      * The class options
@@ -95,11 +95,12 @@ class CronManager
 
         // Add default options
         $this->options = array_merge($this->options, [
-            'debug' => (bool)$this->getOption('debug', $options, false),
+            'debug' => $this->getBooleanOption('debug', $options, false),
             'modxversion' => $modxversion['version'],
             'is_admin' => $this->modx->user && $this->modx->context && ($modx->hasPermission('settings') || $modx->hasPermission($this->namespace . '_settings')),
             'cronjob_id' => $this->getOption('cronjob_id', $options, false),
             'purge_running' => $this->getOption('purge_running', $options, 60),
+            'daylight_saving' => $this->getBooleanOption('daylight_saving', $options, false),
         ]);
     }
 
@@ -125,5 +126,19 @@ class CronManager
             }
         }
         return $option;
+    }
+
+    /**
+     * Get Boolean Option
+     *
+     * @param string $key
+     * @param array $options
+     * @param mixed $default
+     * @return bool
+     */
+    public function getBooleanOption($key, $options = [], $default = null)
+    {
+        $option = $this->getOption($key, $options, $default);
+        return ($option === 'true' || $option === true || $option === '1' || $option === 1);
     }
 }

@@ -5,13 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2026-03-25
+
+### Added
+
+- Regard daylight saving for the next run calculation with the `cronmanager.daylight_saving` system setting 
+
 ## [1.4.0] - 2024-09-07
 
 ### Added
 
 - Add a running column to the cronjob table.
 - Don't execute a cronjob if it is already running
-- Purge running cronjobs after minutes set by the cronmanager.purge_running system setting 
+- Purge running cronjobs after minutes set by the `cronmanager.purge_running` system setting 
 
 ### Fixed
 
