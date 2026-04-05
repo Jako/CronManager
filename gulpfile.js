@@ -109,7 +109,7 @@ const bumpHomepanel = function () {
 };
 const bumpDocs = function () {
     return gulp.src([
-        'mkdocs.yml',
+        'zensical.toml',
     ], {base: './'})
         .pipe(replace(/&copy; 2019(-\d{4})?/g, '&copy; ' + (year > 2019 ? '2019-' : '') + year))
         .pipe(gulp.dest('.'));
