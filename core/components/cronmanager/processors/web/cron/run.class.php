@@ -69,10 +69,30 @@ class CronMananagerCronRunProcessor extends Processor
         }
         $c->sortby('nextrun');
 
+        // Get catch-up behavior option (default: enabled for backward compatibility)
+        // 1 = enable catch-up (original behavior)
+        // 0 = disable catch-up (reschedule from current time)
+        $catchup = (int)$this->cronmanager->getOption('cron_enable_catchup', null, 0);
+            
         /** @var modCronjob $cronjob */
         $cronjobs = $this->modx->getIterator('modCronjob', $c);
         foreach ($cronjobs as $cronjob) {
+            // Determine initial base datetime for scheduling
             $rundatetime = ($cronjob->get('nextrun')) ? $cronjob->get('nextrun') : date('Y-m-d H:i:s');
+           
+            if (!$catchup) {
+                // Catch-up disabled:
+                // Always reschedule based on the current time to avoid executing missed runs
+                $rundatetime = date('Y-m-d H:i:s');
+            } else {
+                // Catch-up enabled:
+                // If nextrun is significantly in the past, reset to current time
+                // This prevents excessive back-to-back executions ("catch-up loops")
+                if (strtotime($rundatetime) < time() - 60) {
+                    $rundatetime = date('Y-m-d H:i:s');
+                }
+            }
+
             $properties = $cronjob->get('properties');
             if (!empty($properties)) {
                 /** @var modPropertySet $propset */
@@ -140,9 +160,9 @@ class CronMananagerCronRunProcessor extends Processor
             $logs = [$log];
 
             $cronjob->set('lastrun', $rundatetime);
-            if ($this->cronmanager->getOption('daylight_saving') && $cronjob->get('minutes') > 60) {
+            if ($this->cronmanager->getOption('daylight_saving') && $cronjob->get('minutes') > 60) {    
                 $cronjob->set('nextrun', date('Y-m-d H:i:s', strtotime($cronjob->get('minutes') . ' minutes', (strtotime($rundatetime)))));
-            } else {
+            } else {    
                 $cronjob->set('nextrun', date('Y-m-d H:i:s', (strtotime($rundatetime) + ($cronjob->get('minutes') * 60))));
             }
             $cronjob->set('running', false);
