@@ -3,7 +3,7 @@
   "lowCaseName": "cronmanager",
   "description": "Create and run cronjobs within the manager",
   "author": "Bert Oost, Thomas Jakobi",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "package": {
     "menus": [
       {

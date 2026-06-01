@@ -141,9 +141,15 @@ class CronMananagerCronRunProcessor extends Processor
 
             $cronjob->set('lastrun', $rundatetime);
             if ($this->cronmanager->getOption('daylight_saving') && $cronjob->get('minutes') > 60) {
-                $cronjob->set('nextrun', date('Y-m-d H:i:s', strtotime($cronjob->get('minutes') . ' minutes', (strtotime($rundatetime)))));
+                do {
+                    $rundatetime = date('Y-m-d H:i:s', strtotime($cronjob->get('minutes') . ' minutes', (strtotime($rundatetime))));
+                } while (strtotime($rundatetime) < time());
+                $cronjob->set('nextrun', $rundatetime);
             } else {
-                $cronjob->set('nextrun', date('Y-m-d H:i:s', (strtotime($rundatetime) + ($cronjob->get('minutes') * 60))));
+                do {
+                    $rundatetime = date('Y-m-d H:i:s', (strtotime($rundatetime) + ($cronjob->get('minutes') * 60)));
+                } while (strtotime($rundatetime) < time());
+                $cronjob->set('nextrun', $rundatetime);
             }
             $cronjob->set('running', false);
             $cronjob->addMany($logs);
