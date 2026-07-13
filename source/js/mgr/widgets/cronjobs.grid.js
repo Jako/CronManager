@@ -357,7 +357,7 @@ CronManager.window.CreateUpdateCronjob = function (config) {
             items: [{
                 layout: 'column',
                 items: [{
-                    columnWidth: .8,
+                    columnWidth: 0.8,
                     layout: 'form',
                     items: [{
                         xtype: 'cronmanager-combo-snippets',
@@ -367,7 +367,7 @@ CronManager.window.CreateUpdateCronjob = function (config) {
                         allowBlank: false
                     }]
                 }, {
-                    columnWidth: .2,
+                    columnWidth: 0.2,
                     layout: 'form',
                     items: [{
                         xtype: 'xcheckbox',
@@ -380,7 +380,7 @@ CronManager.window.CreateUpdateCronjob = function (config) {
             }, {
                 layout: 'column',
                 items: [{
-                    columnWidth: .2,
+                    columnWidth: 0.2,
                     layout: 'form',
                     items: [{
                         xtype: 'numberfield',
@@ -394,7 +394,7 @@ CronManager.window.CreateUpdateCronjob = function (config) {
                         allowNegative: false
                     }]
                 }, {
-                    columnWidth: .8,
+                    columnWidth: 0.8,
                     layout: 'form',
                     items: [{
                         xtype: 'xdatetime',
