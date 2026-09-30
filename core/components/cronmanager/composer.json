@@ -1,6 +1,7 @@
 {
   "name": "treehillstudio/cronmanager",
   "description": "Create and run cronjobs within the manager",
+  "version": "1.5.1",
   "authors": [
     {
       "name": "Bert Oost",
