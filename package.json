@@ -4,9 +4,9 @@
   "description": "Create and run cronjobs within the manager",
   "author": "Thomas Jakobi <office@treehillstudio.com>",
   "private": true,
-  "version": "1.5.1",
-  "phpversion": "5.6",
-  "modxversion": "2.6",
+  "version": "1.2.8",
+  "phpversion": "7.2",
+  "modxversion": "2.7",
   "startYear": "2019",
   "scripts": {
     "build": "node build.js",
