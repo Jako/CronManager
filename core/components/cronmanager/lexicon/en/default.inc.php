@@ -61,7 +61,7 @@ $_lang['cronmanager.settings'] = '<i class="icon icon-cog"></i>';
 $_lang['cronmanager.settings_desc'] = 'Edit the settings of CronManager. You can edit the value of a system setting by double-clicking on the ‘Value’ table cell or by right-clicking in the table cell.';
 $_lang['cronmanager.snippet'] = 'Snippet';
 $_lang['cronmanager.systemsetting_key_err_nv'] = 'You can only edit settings with the prefix cronmanager.';
-$_lang['cronmanager.systemsetting_usergroup_err_nv'] = 'Only users with a settings permission or settings_cronmanager permission can change the settings.';
+$_lang['cronmanager.systemsetting_usergroup_err_nv'] = 'Only users with a settings permission or cronmanager_settings permission can change the settings.';
 $_lang['cronmanager.update'] = 'Update Cronjob';
 $_lang['cronmanager.viewlog'] = 'View Cron Log';
 $_lang['cronmanager.viewlog_title'] = 'View Cron Log for [[+snippet]]';

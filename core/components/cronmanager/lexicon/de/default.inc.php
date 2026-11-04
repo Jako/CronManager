@@ -61,7 +61,7 @@ $_lang['cronmanager.settings'] = '<i class="icon icon-cog"></i>';
 $_lang['cronmanager.settings_desc'] = 'Bearbeiten Sie die Einstellungen von CronManager. Sie können den Wert einer Systemeinstellung mit einem Doppelklick auf die ‚Wert‘-Tabellenzelle oder die Systemeinstellung mit einem Rechtsklick in der Tabellenzelle bearbeiten.';
 $_lang['cronmanager.snippet'] = 'Snippet';
 $_lang['cronmanager.systemsetting_key_err_nv'] = 'Sie können nur Einstellungen mit dem Präfix cronmanager bearbeiten.';
-$_lang['cronmanager.systemsetting_usergroup_err_nv'] = 'Nur Benutzer mit einer settings-Berechtigung oder settings_cronmanager-Berechtigung können die Einstellungen ändern.';
+$_lang['cronmanager.systemsetting_usergroup_err_nv'] = 'Nur Benutzer mit einer settings-Berechtigung oder cronmanager_settings-Berechtigung können die Einstellungen ändern.';
 $_lang['cronmanager.update'] = 'Cronjob aktualisieren';
 $_lang['cronmanager.viewlog'] = 'Cron-Log anzeigen';
 $_lang['cronmanager.viewlog_title'] = 'Cron-Log für [[+snippet]]';

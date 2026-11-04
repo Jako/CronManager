@@ -61,7 +61,7 @@ $_lang['cronmanager.settings'] = '<i class="icon icon-cog"></i>';
 $_lang['cronmanager.settings_desc'] = 'Modifier les paramètres de CronManager. Vous pouvez modifier la valeur d’un paramètre système en double-cliquant sur la cellule de tableau ‘Valeur’ ou en cliquant avec le bouton droit de la souris dans la cellule de tableau.';
 $_lang['cronmanager.snippet'] = 'Snippet';
 $_lang['cronmanager.systemsetting_key_err_nv'] = 'Vous ne pouvez modifier les paramètres qu’avec le préfixe cronmanager.';
-$_lang['cronmanager.systemsetting_usergroup_err_nv'] = 'Seuls les utilisateurs disposant de l’autorisation settings ou settings_cronmanager peuvent modifier les paramètre.';
+$_lang['cronmanager.systemsetting_usergroup_err_nv'] = 'Seuls les utilisateurs disposant de l’autorisation settings ou cronmanager_settings peuvent modifier les paramètre.';
 $_lang['cronmanager.update'] = 'Mettre à jour la tâche cron';
 $_lang['cronmanager.viewlog'] = 'Consulter le log de cron';
 $_lang['cronmanager.viewlog_title'] = 'Log de cron pour [[+snippet]]';
