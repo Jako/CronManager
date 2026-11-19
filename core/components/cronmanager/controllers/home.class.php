@@ -55,7 +55,7 @@ class CronManagerHomeManagerController extends modExtraManagerController
         $this->addHtml('<script type="text/javascript">
         Ext.onReady(function() {
             MODx.config.help_url = "https://jako.github.io/CronManager/usage/";
-            CronManager.config = ' . json_encode($this->cronmanager->options, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) . ';
+            CronManager.config = ' . json_encode($this->cronmanager->getManagerOptions(), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) . ';
             MODx.load({xtype: "cronmanager-page-home"});
         });
         </script>');
